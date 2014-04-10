@@ -1,16 +1,26 @@
-# Bootstrap
-app/bootstrap*
+app/*\.cache
+app/cache/*
 
-# Symfony directories
-vendor/*
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
+app/logs/*
 
-# Configuration files
-app/config/parameters.ini
 app/config/parameters.yml
+app/config/*.local.yml
+app/config/deploy.rb
+behat.yml
 
-# Composer
-composer.phar
+web/bundles/*
+web/css/*
+web/js/*
+web/assets/compiled/*
+web/media/*
+
+bin/behat
+bin/doctrine*
+bin/phpspec
+bin/webunit
+bin/phpunit
+bin/phpcrodm
+bin/phpcrodm.php
+bin/jackalope
+bin/phpunit
+vendor/*
