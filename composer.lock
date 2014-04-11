@@ -2772,12 +2772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "607f20d4f9757e28e762f71d4a89d49f6900c564"
+                "reference": "03000a7fcd4072bd7e1f99c8ce4328621c5773b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/607f20d4f9757e28e762f71d4a89d49f6900c564",
-                "reference": "607f20d4f9757e28e762f71d4a89d49f6900c564",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/03000a7fcd4072bd7e1f99c8ce4328621c5773b9",
+                "reference": "03000a7fcd4072bd7e1f99c8ce4328621c5773b9",
                 "shasum": ""
             },
             "require": {
@@ -2832,7 +2832,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-04-08 08:59:38"
+            "time": "2014-04-10 15:52:42"
         },
         {
             "name": "nikic/php-parser",
@@ -4542,12 +4542,12 @@
             "target-dir": "Sylius/Bundle/PaymentsBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Sylius/SyliusPaymentBundle.git",
+                "url": "https://github.com/pjedrzejewski/SyliusPaymentsBundle.git",
                 "reference": "678694ad7630df3ddbe6293d23de498d904d08fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusPaymentBundle/zipball/678694ad7630df3ddbe6293d23de498d904d08fe",
+                "url": "https://api.github.com/repos/pjedrzejewski/SyliusPaymentsBundle/zipball/678694ad7630df3ddbe6293d23de498d904d08fe",
                 "reference": "678694ad7630df3ddbe6293d23de498d904d08fe",
                 "shasum": ""
             },
@@ -4742,12 +4742,12 @@
             "target-dir": "Sylius/Bundle/PromotionsBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Sylius/SyliusPromotionBundle.git",
+                "url": "https://github.com/pjedrzejewski/SyliusPromotionsBundle.git",
                 "reference": "6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusPromotionBundle/zipball/6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2",
+                "url": "https://api.github.com/repos/pjedrzejewski/SyliusPromotionsBundle/zipball/6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2",
                 "reference": "6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2",
                 "shasum": ""
             },
@@ -5095,12 +5095,12 @@
             "target-dir": "Sylius/Bundle/TaxonomiesBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Sylius/SyliusTaxonomyBundle.git",
+                "url": "https://github.com/pjedrzejewski/SyliusTaxonomiesBundle.git",
                 "reference": "2711aa33aa126f77a339e782c1007b5755bd2522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusTaxonomyBundle/zipball/2711aa33aa126f77a339e782c1007b5755bd2522",
+                "url": "https://api.github.com/repos/pjedrzejewski/SyliusTaxonomiesBundle/zipball/2711aa33aa126f77a339e782c1007b5755bd2522",
                 "reference": "2711aa33aa126f77a339e782c1007b5755bd2522",
                 "shasum": ""
             },
@@ -5956,12 +5956,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "230b2dc2b78601f30dbaa30b9abee4cad4520e78"
+                "reference": "78630533b84da2716bae6b56ae0fcc531342aeba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/230b2dc2b78601f30dbaa30b9abee4cad4520e78",
-                "reference": "230b2dc2b78601f30dbaa30b9abee4cad4520e78",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/78630533b84da2716bae6b56ae0fcc531342aeba",
+                "reference": "78630533b84da2716bae6b56ae0fcc531342aeba",
                 "shasum": ""
             },
             "require": {
@@ -6058,7 +6058,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-04-10 12:53:45"
+            "time": "2014-04-10 21:38:26"
         },
         {
             "name": "twig/extensions",

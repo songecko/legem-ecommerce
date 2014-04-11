@@ -1,19 +1,37 @@
-app/*\.cache
-app/cache/*
+# Bootstrap
+app/bootstrap*
 
+# Symfony directories
+vendor/*
 app/logs/*
+app/cache/*
+web/css/*
+web/js/*
+web/admin/css/*
+web/admin/js/*
+web/uploads/*
+web/bundles/*
+web/assets/compiled/*
+web/media/*
+/composer.lock
 
+
+# Configuration files
+app/config/parameters.ini
 app/config/parameters.yml
 app/config/*.local.yml
 app/config/deploy.rb
 behat.yml
 
-web/bundles/*
-web/css/*
-web/js/*
-web/assets/compiled/*
-web/media/*
 
+# eclipse
+.externalToolBuilders
+.settings
+.buildpath
+.project
+
+#Others
+.DS_Store
 bin/behat
 bin/doctrine*
 bin/phpspec
@@ -23,4 +41,3 @@ bin/phpcrodm
 bin/phpcrodm.php
 bin/jackalope
 bin/phpunit
-vendor/*
