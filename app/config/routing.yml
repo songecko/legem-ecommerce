@@ -1,3 +1,7 @@
+legemdary:
+    resource: "@LegemdaryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 sylius_installer:
     resource: @SyliusInstallerBundle/Resources/config/routing.yml
 

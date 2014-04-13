@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c4af2d24d3d790a2d2e256c2562326ce",
+    "hash": "2111c5094fac8a8cf015cb2f42652c7a",
     "packages": [
         {
             "name": "ajbdev/authorizenet-php-api",
@@ -1026,12 +1026,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "890829effff016b53f392d45702107a09e71edcf"
+                "reference": "c04a931899f6847f7b0220150fb2be90a21ca269"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/890829effff016b53f392d45702107a09e71edcf",
-                "reference": "890829effff016b53f392d45702107a09e71edcf",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/c04a931899f6847f7b0220150fb2be90a21ca269",
+                "reference": "c04a931899f6847f7b0220150fb2be90a21ca269",
                 "shasum": ""
             },
             "require": {
@@ -1095,7 +1095,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2014-04-03 21:10:08"
+            "time": "2014-04-12 17:19:31"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1172,12 +1172,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "1dc1e7418b147e3760c155bd8b22e067dbe677d1"
+                "reference": "f2cd33516faa4a773d576ad58d02e283467acdd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/1dc1e7418b147e3760c155bd8b22e067dbe677d1",
-                "reference": "1dc1e7418b147e3760c155bd8b22e067dbe677d1",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/f2cd33516faa4a773d576ad58d02e283467acdd0",
+                "reference": "f2cd33516faa4a773d576ad58d02e283467acdd0",
                 "shasum": ""
             },
             "require": {
@@ -1244,7 +1244,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2014-03-27 15:45:55"
+            "time": "2014-04-12 08:05:29"
         },
         {
             "name": "guzzle/common",
@@ -3327,12 +3327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-collection.git",
-                "reference": "8ecd043d427706ead32abfc76ca672c8a4efad43"
+                "reference": "94a2c04376f49c12d5936b16d846579a1b3605bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-collection/zipball/8ecd043d427706ead32abfc76ca672c8a4efad43",
-                "reference": "8ecd043d427706ead32abfc76ca672c8a4efad43",
+                "url": "https://api.github.com/repos/schmittjoh/php-collection/zipball/94a2c04376f49c12d5936b16d846579a1b3605bc",
+                "reference": "94a2c04376f49c12d5936b16d846579a1b3605bc",
                 "shasum": ""
             },
             "require": {
@@ -3369,7 +3369,7 @@
                 "sequence",
                 "set"
             ],
-            "time": "2014-04-04 12:06:15"
+            "time": "2014-04-11 10:32:20"
         },
         {
             "name": "phpcr/phpcr",
@@ -4141,70 +4141,6 @@
             "time": "2014-04-09 04:39:31"
         },
         {
-            "name": "sylius/fixtures-bundle",
-            "version": "v0.9.0",
-            "target-dir": "Sylius/Bundle/FixturesBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Sylius/SyliusFixturesBundle.git",
-                "reference": "96588d06be9429432d396f687dd5f5cd9fcbfe25"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusFixturesBundle/zipball/96588d06be9429432d396f687dd5f5cd9fcbfe25",
-                "reference": "96588d06be9429432d396f687dd5f5cd9fcbfe25",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "sylius/core-bundle": "0.9.*@dev"
-            },
-            "require-dev": {
-                "doctrine/doctrine-fixtures-bundle": "2.2.*",
-                "fzaninotto/faker": "1.2.*"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Sylius\\Bundle\\FixturesBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paweł Jędrzejewski",
-                    "email": "pjedrzejewski@diweb.pl",
-                    "homepage": "http://pjedrzejewski.com"
-                },
-                {
-                    "name": "Sylius project",
-                    "homepage": "http://sylius.org"
-                },
-                {
-                    "name": "Community contributions",
-                    "homepage": "http://github.com/Sylius/Sylius/contributors"
-                }
-            ],
-            "description": "Sylius fixtures bundle. It contains the fixtures from the core bundle so a user can install the core without the fixtures.",
-            "homepage": "http://sylius.org",
-            "keywords": [
-                "ecommerce",
-                "shop",
-                "store",
-                "sylius",
-                "webshop"
-            ],
-            "time": "2014-03-27 08:24:23"
-        },
-        {
             "name": "sylius/flow-bundle",
             "version": "v0.9.0",
             "target-dir": "Sylius/Bundle/FlowBundle",
@@ -4542,12 +4478,12 @@
             "target-dir": "Sylius/Bundle/PaymentsBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pjedrzejewski/SyliusPaymentsBundle.git",
+                "url": "https://github.com/Sylius/SyliusPaymentBundle.git",
                 "reference": "678694ad7630df3ddbe6293d23de498d904d08fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pjedrzejewski/SyliusPaymentsBundle/zipball/678694ad7630df3ddbe6293d23de498d904d08fe",
+                "url": "https://api.github.com/repos/Sylius/SyliusPaymentBundle/zipball/678694ad7630df3ddbe6293d23de498d904d08fe",
                 "reference": "678694ad7630df3ddbe6293d23de498d904d08fe",
                 "shasum": ""
             },
@@ -4742,12 +4678,12 @@
             "target-dir": "Sylius/Bundle/PromotionsBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pjedrzejewski/SyliusPromotionsBundle.git",
+                "url": "https://github.com/Sylius/SyliusPromotionBundle.git",
                 "reference": "6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pjedrzejewski/SyliusPromotionsBundle/zipball/6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2",
+                "url": "https://api.github.com/repos/Sylius/SyliusPromotionBundle/zipball/6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2",
                 "reference": "6a92351d9f8cacbea9bb7b3e9aa68efffa1f62b2",
                 "shasum": ""
             },
@@ -5095,12 +5031,12 @@
             "target-dir": "Sylius/Bundle/TaxonomiesBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pjedrzejewski/SyliusTaxonomiesBundle.git",
+                "url": "https://github.com/Sylius/SyliusTaxonomyBundle.git",
                 "reference": "2711aa33aa126f77a339e782c1007b5755bd2522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pjedrzejewski/SyliusTaxonomiesBundle/zipball/2711aa33aa126f77a339e782c1007b5755bd2522",
+                "url": "https://api.github.com/repos/Sylius/SyliusTaxonomyBundle/zipball/2711aa33aa126f77a339e782c1007b5755bd2522",
                 "reference": "2711aa33aa126f77a339e782c1007b5755bd2522",
                 "shasum": ""
             },
@@ -5735,55 +5671,6 @@
             "time": "2014-04-01 18:02:48"
         },
         {
-            "name": "symfony/expression-language",
-            "version": "dev-master",
-            "target-dir": "Symfony/Component/ExpressionLanguage",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/expression-language.git",
-                "reference": "d955750d9c7bf5b1c32629333e973de0c583d70b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/expression-language/zipball/d955750d9c7bf5b1c32629333e973de0c583d70b",
-                "reference": "d955750d9c7bf5b1c32629333e973de0c583d70b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\ExpressionLanguage\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony ExpressionLanguage Component",
-            "homepage": "http://symfony.com",
-            "time": "2014-03-03 12:53:01"
-        },
-        {
             "name": "symfony/icu",
             "version": "1.2.x-dev",
             "target-dir": "Symfony/Component/Icu",
@@ -5952,16 +5839,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "2.3.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "78630533b84da2716bae6b56ae0fcc531342aeba"
+                "reference": "c875acf3a264f852e4bb2ddc5987bb5426d41cda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/78630533b84da2716bae6b56ae0fcc531342aeba",
-                "reference": "78630533b84da2716bae6b56ae0fcc531342aeba",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/c875acf3a264f852e4bb2ddc5987bb5426d41cda",
+                "reference": "c875acf3a264f852e4bb2ddc5987bb5426d41cda",
                 "shasum": ""
             },
             "require": {
@@ -5982,6 +5869,7 @@
                 "symfony/doctrine-bridge": "self.version",
                 "symfony/dom-crawler": "self.version",
                 "symfony/event-dispatcher": "self.version",
+                "symfony/expression-language": "self.version",
                 "symfony/filesystem": "self.version",
                 "symfony/finder": "self.version",
                 "symfony/form": "self.version",
@@ -5998,7 +5886,11 @@
                 "symfony/proxy-manager-bridge": "self.version",
                 "symfony/routing": "self.version",
                 "symfony/security": "self.version",
+                "symfony/security-acl": "self.version",
                 "symfony/security-bundle": "self.version",
+                "symfony/security-core": "self.version",
+                "symfony/security-csrf": "self.version",
+                "symfony/security-http": "self.version",
                 "symfony/serializer": "self.version",
                 "symfony/stopwatch": "self.version",
                 "symfony/swiftmailer-bridge": "self.version",
@@ -6014,15 +5906,16 @@
                 "doctrine/data-fixtures": "1.0.*",
                 "doctrine/dbal": "~2.2",
                 "doctrine/orm": "~2.2,>=2.2.3",
+                "egulias/email-validator": "1.1.0",
                 "ircmaxell/password-compat": "1.0.*",
                 "monolog/monolog": "~1.3",
-                "ocramius/proxy-manager": ">=0.3.1,<0.4-dev",
+                "ocramius/proxy-manager": ">=0.3.1,<0.6-dev",
                 "propel/propel1": "1.6.*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -6058,7 +5951,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-04-10 21:38:26"
+            "time": "2014-04-12 14:58:29"
         },
         {
             "name": "twig/extensions",
