@@ -1,3 +1,0 @@
-legemdary_homepage:
-    path:  /hello/{name}
-    defaults: { _controller: LegemdaryBundle:Default:index }

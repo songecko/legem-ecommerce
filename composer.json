@@ -1,87 +1,102 @@
 {
-	"name" : "sylius/sylius-standard",
-	"description" : "Sylius SE, modern e-commerce solution for Symfony2",
-	"keywords" : [
-		"symfony",
-		"symfony2",
-		"sylius",
-		"distribution",
-		"ecommerce",
-		"cart"
-	],
-	"type" : "project",
-	"license" : "MIT",
-	"homepage" : "http://sylius.org",
-	"authors" : [{
-			"name" : "Paweł Jędrzejewski",
-			"homepage" : "http://pjedrzejewski.com"
-		}, {
-			"name" : "Sylius project",
-			"homepage" : "http://sylius.org"
-		}, {
-			"name" : "Community contributions",
-			"homepage" : "http://github.com/Sylius/Sylius/contributors"
-		}
-	],
-	"require" : {
-		"php" : ">=5.3.3",
-		"doctrine/doctrine-bundle" : "~1.3@dev",
-		"doctrine/doctrine-fixtures-bundle" : "2.2.*",
-		"doctrine/orm" : "~2.3",
-		"incenteev/composer-parameter-handler" : "~2.0",
-		"jackalope/jackalope-doctrine-dbal" : "1.0.*",
-		"jms/translation-bundle" : "1.1.*",
-		"sensio/distribution-bundle" : "~2.3",
-		"sensio/framework-extra-bundle" : "~2.3",
-		"sensio/generator-bundle" : "~2.3",
-		"sylius/core-bundle" : "0.9.*",
-		"sylius/installer-bundle" : "0.9.*",
-		"sylius/web-bundle" : "0.9.*",
-		"symfony/assetic-bundle" : "~2.3",
-		"symfony/monolog-bundle" : "~2.3",
-		"symfony/swiftmailer-bundle" : "~2.3",
-		"symfony/symfony" : "~2.3",
-		"twig/extensions" : "1.0.*"
-	},
-	"require-dev" : {
-		"behat/behat" : "~2.4",
-		"behat/symfony2-extension" : "*",
-		"behat/mink-extension" : "*",
-		"behat/mink-browserkit-driver" : "*",
-		"phpspec/phpspec" : "~2.0",
-		"fzaninotto/faker" : "~1.2"
-	},
-	"scripts" : {
-		"post-install-cmd" : [
-			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
-		],
-		"post-update-cmd" : [
-			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
-		]
-	},
-	"autoload" : {
-		"psr-0" : {
-			"" : "src/",
-			"Context" : "features/"
-		}
-	},
-	"minimum-stability" : "dev",
-	"config" : {
-		"bin-dir" : "bin"
-	},
-	"extra" : {
-		"symfony-app-dir" : "app",
-		"symfony-web-dir" : "web",
-		"incenteev-parameters" : {
-			"file" : "app/config/parameters.yml"
-		}
-	}
+    "name":        "sylius/sylius",
+    "type":        "project",
+    "description": "Modern ecommerce for Symfony2",
+    "license":     "MIT",
+    "homepage":    "http://sylius.org",
+    "authors": [
+        {
+            "name":     "Paweł Jędrzejewski",
+            "homepage": "http://pjedrzejewski.com"
+        },
+        {
+            "name":     "Sylius project",
+            "homepage": "http://sylius.org"
+        },
+        {
+            "name":     "Community contributions",
+            "homepage": "http://github.com/Sylius/Sylius/contributors"
+        }
+    ],
+    "require": {
+        "php":                                  ">=5.3.3",
+
+        "doctrine/doctrine-bundle":             "~1.3@dev",
+        "doctrine/doctrine-cache-bundle":       "~1.0",
+        "doctrine/orm":                         "~2.3",
+        "doctrine/migrations":                  "dev-master",
+        "doctrine/doctrine-migrations-bundle":  "dev-master",
+        "friendsofsymfony/rest-bundle":         "~1.0",
+        "friendsofsymfony/user-bundle":         "2.0.*@dev",
+        "hwi/oauth-bundle":                     "0.3.*",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "jackalope/jackalope-doctrine-dbal":    "1.0.*",
+        "jms/serializer-bundle":                "0.12.*",
+        "jms/translation-bundle":               "1.1.*",
+        "knplabs/knp-gaufrette-bundle":         "*@dev",
+        "knplabs/knp-snappy-bundle":            "*@dev",
+        "liip/imagine-bundle":                  "~0.9",
+        "mathiasverraes/money":                 "*@dev",
+        "pagerfanta/pagerfanta":                "1.0.*@dev",
+        "payum/payum":                          "0.8.*",
+        "payum/payum-bundle":                   "0.8.*",
+        "sensio/distribution-bundle":           "2.3.*",
+        "stof/doctrine-extensions-bundle":      "1.1.*",
+        "symfony-cmf/block-bundle":             "1.0.*",
+        "symfony-cmf/content-bundle":           "1.0.*",
+        "symfony-cmf/menu-bundle":              "1.0.*",
+        "symfony-cmf/routing-bundle":           "1.1.*",
+        "symfony/assetic-bundle":               "2.3.*",
+        "symfony/expression-language":          "~2.4",
+        "symfony/intl":                         "~2.3",
+        "symfony/monolog-bundle":               "2.3.*",
+        "symfony/swiftmailer-bundle":           "2.3.*",
+        "symfony/symfony":                      "~2.3",
+        "twig/extensions":                      "1.0.*",
+        "white-october/pagerfanta-bundle":      "1.0.*@dev"
+    },
+    "require-dev": {
+        "behat/behat":                       "~2.4",
+        "behat/mink-browserkit-driver":      "*",
+        "behat/mink-extension":              "*",
+        "behat/mink-goutte-driver":          "*",
+        "behat/mink-selenium2-driver":       "*",
+        "behat/symfony2-extension":          "*",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "fzaninotto/faker":                  "1.2.*",
+        "phpspec/phpspec":                   "~2.0",
+        "phpunit/phpunit":                   "~3.7"
+    },
+    "provide": {
+        "phpcr/phpcr-implementation": "2.1.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "autoload": {
+        "psr-0": { "Sylius\\": "src/" }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        }
+    }
 }

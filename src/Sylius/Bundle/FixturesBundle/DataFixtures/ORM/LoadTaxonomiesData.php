@@ -25,7 +25,7 @@ class LoadTaxonomiesData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        /*$manager->persist($this->createTaxonomy('Category', array(
+        $manager->persist($this->createTaxonomy('Category', array(
             'T-Shirts', 'Stickers', 'Mugs', 'Books'
         )));
 
@@ -33,7 +33,7 @@ class LoadTaxonomiesData extends DataFixture
             'SuperTees', 'Stickypicky', 'Mugland', 'Bookmania'
         )));
 
-        $manager->flush();*/
+        $manager->flush();
     }
 
     /**

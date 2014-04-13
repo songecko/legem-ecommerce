@@ -13,9 +13,8 @@ namespace Sylius\Bundle\FixturesBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
-use Sylius\Bundle\PromotionsBundle\Model\PromotionInterface;
-use Sylius\Bundle\PromotionsBundle\Model\RuleInterface;
-use Sylius\Bundle\PromotionsBundle\Model\ActionInterface;
+use Sylius\Component\Promotion\Model\ActionInterface;
+use Sylius\Component\Promotion\Model\RuleInterface;
 
 /**
  * Default promotion fixtures.
@@ -29,7 +28,7 @@ class LoadPromotionsData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        /*$promotion = $this->createPromotion(
+        $promotion = $this->createPromotion(
             'New Year',
             'New Year Sale for 3 and more items.',
             array($this->createRule(RuleInterface::TYPE_ITEM_COUNT, array('count' => 3, 'equal' => true))),
@@ -56,7 +55,7 @@ class LoadPromotionsData extends DataFixture
 
         $manager->persist($promotion);
 
-        $manager->flush();*/
+        $manager->flush();
     }
 
     /**

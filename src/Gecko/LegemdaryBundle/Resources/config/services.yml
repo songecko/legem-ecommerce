@@ -1,7 +1,0 @@
-parameters:
-#    legemdary.example.class: Gecko\LegemdaryBundle\Example
-
-services:
-#    legemdary.example:
-#        class: %legemdary.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

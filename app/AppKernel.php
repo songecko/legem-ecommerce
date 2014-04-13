@@ -1,20 +1,21 @@
 <?php
 
-use Symfony\Component\ClassLoader\DebugUniversalClassLoader;
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\HttpKernel\Debug\ErrorHandler;
-use Symfony\Component\HttpKernel\Debug\ExceptionHandler;
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 use Sylius\Bundle\CoreBundle\Kernel\SyliusKernel;
 
+/**
+ * Sylius kernel.
+ *
+ * @author Paweł Jędrzejewski <pjedrzejewski@diweb.pl>
+ */
 class AppKernel extends SyliusKernel
 {
-    public function registerBundles()
-    {
-        $bundles = array(
-        	new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle(),
-            new Gecko\LegemdaryBundle\LegemdaryBundle(),
-        );
-
-        return array_merge($bundles, parent::registerBundles());
-    }
 }
