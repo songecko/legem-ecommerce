@@ -28,7 +28,7 @@ class LoadPromotionsData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $promotion = $this->createPromotion(
+        /*$promotion = $this->createPromotion(
             'New Year',
             'New Year Sale for 3 and more items.',
             array($this->createRule(RuleInterface::TYPE_ITEM_COUNT, array('count' => 3, 'equal' => true))),
@@ -53,7 +53,7 @@ class LoadPromotionsData extends DataFixture
             array($this->createAction(ActionInterface::TYPE_FIXED_DISCOUNT, array('amount' => 500)))
         );
 
-        $manager->persist($promotion);
+        $manager->persist($promotion);*/
 
         $manager->flush();
     }

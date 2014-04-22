@@ -47,7 +47,7 @@ class LoadOrdersData extends DataFixture
 
             $this->createShipment($order);
 
-            $order->setCurrency($this->faker->randomElement(array('EUR', 'USD', 'GBP')));
+            $order->setCurrency($this->faker->randomElement(array('USD')));
             $order->setUser($this->getReference('Sylius.User-'.rand(1, 15)));
             $order->setShippingAddress($this->createAddress());
             $order->setBillingAddress($this->createAddress());
@@ -94,7 +94,7 @@ class LoadOrdersData extends DataFixture
     {
         /* @var $payment PaymentInterface */
         $payment = $this->getPaymentRepository()->createNew();
-        $payment->setMethod($this->getReference('Sylius.PaymentMethod.Stripe'));
+        $payment->setMethod($this->getReference('Sylius.PaymentMethod.Paypal Express Checkout'));
         $payment->setAmount($order->getTotal());
         $payment->setCurrency($order->getCurrency());
         $payment->setState($this->getPaymentState());

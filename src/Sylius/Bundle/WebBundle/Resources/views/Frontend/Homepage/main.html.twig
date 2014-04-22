@@ -1,11 +1,154 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1>{{ 'sylius.homepage.splash.headline'|trans }}</h1>
-    <p class="lead">{{ 'sylius.homepage.splash.subheadline'|trans }}</p>
+<div id="hero">
+	<a class="slide-nav prev" href="#">Prev</a>
+	<a class="slide-nav next" href="#">Next</a>
+	<nav>
+		<a class="active" href="#"></a>
+		<a href="#"></a>
+		<a href="#"></a>
+	</nav>
+	<div class="slides">
+		<div class="slide first active">
+			<div class="bg"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 info">
+						<h1 class="hero-text">Best place for diamonds.</h1>
+						<p>
+							LeGEMdary is the best place for diamonds, where you can connect with qualified diamond vendors and source your diamond at the most competitive price.
+						</p>
+						<div class="cta">
+							<a href="#" class="button-outline">
+								BROWSE RINGS
+								<i class="fa fa-chevron-right"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-4 hidden-xs mobiles">
+						<!-- <img src="images/static-hero.png" class="animated fadeInLeft" alt="devices" /> -->
+						<img src="{{ asset('bundles/syliusweb/images/devices3.png') }}" class="animated fadeInLeft img-responsive" alt="devices" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slide second">
+			<div class="bg"></div>
+			<div class="container">
+				<h1 class="hero-text">How it works</h1>
+				<p class="sub-text">
+					Nullam tortor urna, posuere sit amet est vitae, pharetra rhoncus nisi. Cras eget ligula et urna lobortis vehicula. Vestibulum quis varius lorem. 
+				</p>
+				<div class="video-wrapper">
+					<div class="video animated fadeInUp">
+						<img src="{{ asset('bundles/syliusweb/images/player.jpg') }}" id="demo-player" alt="videoplayer" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slide third">
+			<div class="bg"></div>
+			<div class="container">
+				<h1 class="hero-text animated fadeInLeft">
+					Engagement proposal.
+				</h1>
+				<p class="sub-text animated fadeInLeft">
+					Your engagement proposal is a milestone in your life. Make it a "leGEMdary" moment that she won't forget!
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="video-modal">
+		<div class="wrap">
+			<iframe src="//www.youtube.com/embed/PR-zqVl6xKk" frameborder="0" allowfullscreen" width="620" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		</div>
+	</div>
 </div>
 
-{{ render(url('sylius_partial_product_latest', {'limit': 9, 'template': 'SyliusWebBundle:Frontend/Product:latest.html.twig'})) }}
+<div id="features">
+	<div class="container">
+		<div class="row header">
+			<div class="col-md-12">
+				<h2>Latest Ring's models</h2>
+				<p>Lorem impsum sit amet</p>
+			</div>
+		</div>
+		{{ render(url('sylius_partial_product_latest', {'limit': 9, 'template': 'SyliusWebBundle:Frontend/Product:latest.html.twig'})) }}
+	</div>
+</div>
 
+<div id="pricing">
+	<div class="container">
+		<div class="row header">
+			<div class="col-md-12">
+				<h3>How it works</h3>
+			</div>
+		</div>
+		<div id="support">
+			<div id="browse">
+		
+				<div class="row">
+					<div class="col-sm-4 topic">
+						<a href="#">
+							<span class="icon ion-clipboard"></span>
+							<strong>Tasks and Projects</strong>
+						</a>
+						<p>
+							Learn how to change tasks and assign projects to all your teammates.
+						</p>
+					</div>
+					<div class="col-sm-4 topic">
+						<a href="#">
+							<span class="icon ion-gear-a"></span>
+							<strong>Account settings</strong>
+						</a>
+						<p>
+							Learn how to change tasks and assign projects to all your teammates.
+						</p>
+					</div>
+					<div class="col-sm-4 topic">
+						<a href="#">
+							<span class="icon ion-card"></span>
+							<strong>Billing information</strong>
+						</a>
+						<p>
+							Learn how to change tasks and assign projects to all your teammates.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 topic">
+						<a href="#">
+							<span class="icon ion-person-stalker"></span>
+							<strong>Users and coworkers</strong>
+						</a>
+						<p>
+							Learn how to change tasks and assign projects to all your teammates.
+						</p>
+					</div>
+					<div class="col-sm-4 topic">
+						<a href="#">
+							<span class="icon ion-upload"></span>
+							<strong>Advanced options</strong>
+						</a>
+						<p>
+							Learn how to change tasks and assign projects to all your teammates.
+						</p>
+					</div>
+					<div class="col-sm-4 topic">
+						<a href="#">
+							<span class="icon ion-compose"></span>
+							<strong>Customize this template</strong>
+						</a>
+						<p>
+							Learn how to change tasks and assign projects to all your teammates.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

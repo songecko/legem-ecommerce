@@ -1,63 +1,54 @@
 <!DOCTYPE html>
 {% set settings = sylius_settings_all('general') %}
 <html>
-    <head>
-        <title>
-            {% block title %}
-                {{ settings.title|default('sylius.meta.frontend_title'|trans) }}
-            {% endblock %}
-        </title>
-        <meta charset="UTF-8">
-        <meta name="description" content="{{ settings.meta_description|default('sylius.meta.frontend_description'|trans) }}">
-        <meta name="keywords" content="{{ settings.meta_keywords|default('sylius.meta.frontend_keywords'|trans) }}">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<meta name="description" content="{{ settings.meta_description|default('sylius.meta.frontend_description'|trans) }}">
+	<meta name="keywords" content="{{ settings.meta_keywords|default('sylius.meta.frontend_keywords'|trans) }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+	<title>{% block title %}{{ settings.title|default('sylius.meta.frontend_title'|trans) }}{% endblock %}</title>
 
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+	<!-- stylesheets -->
+	{# stylesheets... #}
+	{% block stylesheets %}
+	{% stylesheets output='assets/compiled/frontend.css' filter='cssrewrite'
+		'bundles/syliusweb/css/vendor/font-awesome.min.css'
+		'bundles/syliusweb/css/vendor/ionicons.css'
+		'bundles/syliusweb/css/vendor/entypo.css'
+		'bundles/syliusweb/css/compiled/theme.css'
+		'bundles/syliusweb/css/vendor/animate.css'
+	%}
+	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+	{% endstylesheets %}
+	{% endblock %}
 
-        {# stylesheets... #}
-        {% block stylesheets %}
-            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" type="text/css" />
-            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" type="text/css" />
-            {% stylesheets output='assets/compiled/frontend.css' filter='cssrewrite'
-                'bundles/syliusweb/css/frontend.css'
-                'bundles/syliusweb/css/blueimp-gallery.css'
-            %}
-                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-            {% endstylesheets %}
-        {% endblock %}
-
-        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-        <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <div class="container">
-        {% block header %}
-            <div class="masthead pull-right">
-                {{ knp_menu_render('sylius.frontend.main', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
-            </div>
-            <div class="currency-menu masthead pull-right">
-                {{ knp_menu_render('sylius.frontend.currency', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
-            </div>
-            <h1 class="logo"><a href="{{ path('sylius_homepage') }}" title="{{ 'sylius.logo'|trans }}"><span>{{ 'sylius.logo'|trans }}</span></a></h1>
-        {% endblock %}
-
-        {% block flashes %}
-            {% for type in ['success', 'error', 'fos_user_success'] %}
-                {% for flash in app.session.flashbag.get(type) %}
-                    <div class="alert alert-{{ type == 'fos_user_success' ? 'success' : type == 'error' ? 'danger' : type == 'notice' ? 'warning' : type }}">
-                        <a class="close" data-dismiss="alert" href="#">×</a>
-                        {{ flash|trans }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-        {% endblock %}
-
-        {% block main %}
-        <hr>
-        <div class="row">
-            <div class="col-md-3" id="sidebar">
-                {% block sidebar %}
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body id="home2">
+	<header class="navbar navbar-inverse white" role="banner">
+  		<div class="container">
+		{% block header %}
+    		<div class="navbar-header">
+		      	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
+      			<a href="{{ path('sylius_homepage') }}" class="navbar-brand" title="{{ 'sylius.logo'|trans }}"><span>{{ 'sylius.logo'|trans }}</span></a>
+    		</div>
+    		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+	    		{#<div class="masthead pull-right">
+	                {{ knp_menu_render('sylius.frontend.main', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
+	            </div>
+	            <div class="currency-menu masthead pull-right">
+	                {{ knp_menu_render('sylius.frontend.currency', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
+	            </div>#}
+	            
+	            {#% block sidebar %}
                 <h4>{{ 'sylius.shop_by'|trans }}</h4><br>
                 {{ knp_menu_render('sylius.frontend.taxonomies', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
                 {{ render(url('sylius_partial_product_latest', {'limit': 5, 'template': 'SyliusWebBundle:Frontend/Product:latestSidebar.html.twig'})) }}
@@ -71,53 +62,317 @@
                         </li>
                     {% endfor %}
                     </ul>
-                {% endblock %}
-            </div>
-            <div class="col-md-9">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
-        <hr>
-        <div class="row">
+                {% endblock %#}
+                
+      			<ul class="nav navbar-nav navbar-right">
+      				<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          					Home alts 
+          					<i class="fa fa-chevron-down"></i>
+          				</a>
+          				<ul class="dropdown-menu">
+          					<li><a href="index.html">Home 1 (Static)</a></li>
+							<li><a href="index2.html">Home 2 (Current)</a></li>
+							<li><a href="index3.html">Home 3 (Off-canvas menu)</a></li>
+				        </ul>
+        			</li>
+        			<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          					Showcase 
+          					<i class="fa fa-chevron-down"></i>
+          				</a>
+          				<ul class="dropdown-menu">
+							<li><a href="features.html">Features</a></li>
+							<li><a href="services.html">Services</a></li>
+				        </ul>
+        			</li>
+        			<li class="dropdown">
+          				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          					Pricing 
+          					<i class="fa fa-chevron-down"></i>
+          				</a>
+          				<ul class="dropdown-menu">
+							<li><a href="pricing.html">Pricing charts</a></li>
+							<li><a href="charts.html">Comparison tables</a></li>
+				        </ul>
+        			</li>
+        			<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          					More pages 
+          					<i class="fa fa-chevron-down"></i>
+          				</a>
+          				<ul class="dropdown-menu">
+							<li><a href="aboutus.html">About us</a></li>
+							<li><a href="contactus.html">Contact us</a></li>
+							<li><a href="gallery.html">Gallery</a></li>
+							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="portfolio-item.html">Portfolio Item</a></li>
+							<li><a href="invoice.html">Invoice page</a></li>
+							<li><a href="timeline.html">Timeline Page</a></li>
+							<li><a href="docs.html">API Documentation</a></li>
+							<li><a href="support.html">Support</a></li>
+							<li><a href="coming-soon.html">Coming Soon</a></li>
+							<li><a href="status.html">Status</a></li>
+							<li><a href="signup.html">Sign Up & Sign In</a></li>
+							<li><a href="signup-rotate.html">Sign Up Miscellaneous</a></li>
+							<li><a href="404.html">404 Page</a></li>
+				        </ul>
+        			</li>
+        			<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          					Blog 
+          					<i class="fa fa-chevron-down"></i>
+          				</a>
+          				<ul class="dropdown-menu">
+							<li><a href="blog.html">Blog</a></li>
+							<li><a href="blogpost.html">Blog Post</a></li>
+				        </ul>
+        			</li>
+        			<li>
+          				<a href="signup.html" class="signup visible-md visible-lg">Sign up free</a>
+        			</li>
+      			</ul>
+    		</nav>
+    	{% endblock %}
+  		</div>
+	</header>
+	
+	{% block flashes %}
+		{% for type in ['success', 'error', 'fos_user_success'] %}
+			{% for flash in app.session.flashbag.get(type) %}
+	<div class="alert alert-{{ type == 'fos_user_success' ? 'success' : type == 'error' ? 'danger' : type == 'notice' ? 'warning' : type }}">
+		<a class="close" data-dismiss="alert" href="#">×</a>
+		{{ flash|trans }}
+	</div>
+			{% endfor %}
+		{% endfor %}
+	{% endblock %}
+	
+	{% block main %}
+	{% block content %}
+	{% endblock %}
+	{% endblock %}
+
+	{% block gallery %}
+		{# Gallery modal #}
+		{% include 'SyliusWebBundle::gallery.html.twig' %}
+	{% endblock %}
+
+	{# Confirmation modal #}
+	{% include 'SyliusWebBundle::confirm-modal.html.twig' %}
+        
+	{% block footer %}
+	<div id="footer-white">
+		<div class="container">
+			<div class="row">
             {% for i in 1..3 %}
                 <div class="col-md-4">
                     {{ sonata_block_render({'name': '/cms/blocks/block-' ~ i}) }}
                 </div>
             {% endfor %}
-        </div>
-        <hr>
-        {% endblock %}
+        	</div>
+			<div class="row">
+				<div class="col-sm-3 menu">
+					<h3>Overview</h3>
+					<ul>
+	      				<li>
+	          				<a href="features.html">Features</a>
+	        			</li>
+	        			<li>
+	        				<a href="services.html">Services</a>
+	        			</li>
+	        			<li>
+	          				<a href="pricing.html">Pricing</a>
+	        			</li>
+	        			<li>
+	          				<a href="support.html">Support</a>
+	        			</li>
+	        			<li>
+	          				<a href="blog.html">Blog</a>
+	        			</li>
+	        			<li>
+	          				<a href="blog.html">Coming soon</a>
+	        			</li>
+	      			</ul>
+				</div>
+				<div class="col-sm-3 menu">
+					<h3>Menu</h3>
+					<ul>
+	      				<li>
+	          				<a href="features.html">About us</a>
+	        			</li>
+	        			<li>
+	        				<a href="services.html">Contact us</a>
+	        			</li>
+	        			<li>
+	          				<a href="aboutus.html">Jobs</a>
+	          				<a href="aboutus.html" class="hiring">
+	          					We're hiring!
+	          				</a>
+	        			</li>
+	        			<li>
+	          				<a href="support.html">Portfolio</a>
+	        			</li>
+	        			<li>
+	          				<a href="blog.html">Status</a>
+	        			</li>
+	      			</ul>
+				</div>
+				<div class="col-sm-2 menu">
+					<h3>Social</h3>
+					<ul>
+	      				<li>
+	          				<a href="features.html">Youtube</a>
+	        			</li>
+	        			<li>
+	        				<a href="services.html">Facebook</a>
+	        			</li>
+	        			<li>
+	          				<a href="pricing.html">Twitter</a>
+	        			</li>
+	      			</ul>
+				</div>
+				<div class="col-sm-4 newsletter">
+					<div class="signup clearfix">
+						<p>
+							Sign up for the newsletter and we'll inform you of updates, offers and more.
+						</p>
+						<form>
+							<input type="text" name="email" class="form-control" placeholder="Your email address" />
+							<input type="submit" value="Sign up" />
+						</form>
+					</div>
+					<a href="#">
+						<img src="{{ asset('bundles/syliusweb/images/social/tw.png') }}" alt="twitter" />
+					</a>
+					<a href="#">
+						<img src="{{ asset('bundles/syliusweb/images/social/fb.png') }}" alt="dribbble" />
+					</a>
+				</div>
+			</div>
+			<div class="row credits">
+				<div class="col-md-12">
+					Copyright © {{ 'now'|date('Y') }}. Legemdary.
+				</div>
+				{#{ knp_menu_render('sylius.frontend.social', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }#}
+			</div>
+		</div>
+	</div>
+	{% endblock %}
 
-        {% block gallery %}
-            {# Gallery modal #}
-            {% include 'SyliusWebBundle::gallery.html.twig' %}
-        {% endblock %}
+	<!-- javascript -->
+	{# javascripts... #}
+	{% block javascripts %}
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	{% javascripts output='assets/compiled/frontend.js'
+		'bundles/syliusweb/js/bootstrap/bootstrap.min.js'
+		'bundles/syliusweb/js/theme.js'
+		'bundles/syliusweb/js/frontend.js'
+	%}
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	{% endblock %}
+	<script type="text/javascript">
+		$(function () {
+			var $navDots = $("#hero nav a")
+			var $next = $(".slide-nav.next");
+			var $prev = $(".slide-nav.prev");
+			var $slides = $("#hero .slides .slide");
+			var actualIndex = 0;
+			var swiping = false;
+			var interval;
 
-        {# Confirmation modal #}
-        {% include 'SyliusWebBundle::confirm-modal.html.twig' %}
+			$navDots.click(function (e) {
+				e.preventDefault();
+				if (swiping) { return; }
+				swiping = true;
 
-        {% block footer %}
-            <div class="footer">
-                <p class="text-muted">
-                    &copy; Sylius, 2011 - {{ 'now'|date('Y') }}.
-                </p>
-                {{ knp_menu_render('sylius.frontend.social', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
-            </div>
-        {% endblock %}
-        </div>
+				actualIndex = $navDots.index(this);
+				updateSlides(actualIndex);
+			});
 
-        {# javascripts... #}
-        {% block javascripts %}
-            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-            <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
-        {% javascripts output='assets/compiled/frontend.js'
-            'bundles/syliusweb/js/jquery.blueimp-gallery.min.js'
-            'bundles/syliusweb/js/confirm-modal.js'
-            'bundles/syliusweb/js/frontend.js'
-        %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-        {% endblock %}
-    </body>
+			$next.click(function (e) {
+				e.preventDefault();
+				if (swiping) { return; }
+				swiping = true;
+
+				clearInterval(interval);
+				interval = null;
+
+				actualIndex++;
+				if (actualIndex >= $slides.length) {
+					actualIndex = 0;
+				}
+
+				updateSlides(actualIndex);
+			});
+
+			$prev.click(function (e) {
+				e.preventDefault();
+				if (swiping) { return; }
+				swiping = true;
+
+				clearInterval(interval);
+				interval = null;
+
+				actualIndex--;
+				if (actualIndex < 0) {
+					actualIndex = $slides.length - 1;
+				}
+
+				updateSlides(actualIndex);
+			});
+
+			function updateSlides(index) {
+				// update nav dots
+				$navDots.removeClass("active");
+				$navDots.eq(index).addClass("active");
+
+				// update slides
+				var $activeSlide = $("#hero .slide.active");
+				var $nextSlide = $slides.eq(index);
+
+				$activeSlide.fadeOut();
+				$nextSlide.addClass("next").fadeIn();
+				
+				setTimeout(function () {
+					$slides.removeClass("next").removeClass("active");
+					$nextSlide.addClass("active");
+					$activeSlide.removeAttr('style');
+					swiping = false;
+				}, 1000);
+			}
+
+
+			interval = setInterval(function () {
+				if (swiping) { return; }
+				swiping = true;
+
+				actualIndex++;
+				if (actualIndex >= $slides.length) {
+					actualIndex = 0;
+				}
+
+				updateSlides(actualIndex);
+			}, 5000);
+
+			// demo player
+			var $videoModal = $(".video-modal");
+			$("#demo-player").click(function () {
+				$videoModal.toggleClass("active");
+				clearInterval(interval);
+				interval = null;
+			});
+			$videoModal.click(function () {
+				$videoModal.removeClass("active");
+				setTimeout(function () {
+					$videoModal.find(".wrap").html('<iframe width="560" height="315" src="//www.youtube.com/embed/PR-zqVl6xKk" frameborder="0" allowfullscreen></iframe>');
+				}, 1000);
+			})
+			$videoModal.find(".wrap").click(function (e) {
+				e.stopPropagation();
+			});
+		});
+	</script>
+</body>
 </html>

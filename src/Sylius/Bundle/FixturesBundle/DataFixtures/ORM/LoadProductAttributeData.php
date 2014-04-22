@@ -25,34 +25,19 @@ class LoadProductAttributeData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $attribute = $this->createAttribute('T-Shirt brand', 'Brand');
+        /*$attribute = $this->createAttribute("Diamond's Carat", 'Carat');
         $manager->persist($attribute);
 
-        $attribute = $this->createAttribute('T-Shirt collection', 'Collection');
+        $attribute = $this->createAttribute("Diamond's Color", 'Color');
         $manager->persist($attribute);
 
-        $attribute = $this->createAttribute('T-Shirt material', 'Made of');
+        $attribute = $this->createAttribute("Diamond's Cut", 'Cut');
         $manager->persist($attribute);
 
-        $attribute = $this->createAttribute('Sticker resolution', 'Print resolution');
+        $attribute = $this->createAttribute("Diamond's Clarity", 'Clarity');
         $manager->persist($attribute);
 
-        $attribute = $this->createAttribute('Sticker paper', 'Paper');
-        $manager->persist($attribute);
-
-        $attribute = $this->createAttribute('Mug material', 'Material');
-        $manager->persist($attribute);
-
-        $attribute = $this->createAttribute('Book author', 'Author');
-        $manager->persist($attribute);
-
-        $attribute = $this->createAttribute('Book ISBN', 'ISBN');
-        $manager->persist($attribute);
-
-        $attribute = $this->createAttribute('Book pages', 'Number of pages');
-        $manager->persist($attribute);
-
-        $manager->flush();
+        $manager->flush();*/
     }
 
     /**

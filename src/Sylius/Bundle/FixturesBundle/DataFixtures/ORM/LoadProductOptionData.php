@@ -25,20 +25,13 @@ class LoadProductOptionData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        // T-Shirt size option.
-        $option = $this->createOption('T-Shirt size', 'Size', array('S', 'M', 'L', 'XL', 'XXL'));
+        //$option = $this->createOption('shape', 'Center diamond shape', array('Round', 'Princess'));
+        //$manager->persist($option);
+
+        $option = $this->createOption('metal', 'Ring Metal', array('14k white gold', '14k yellow gold', 'Platinum'));
         $manager->persist($option);
 
-        // T-Shirt color option.
-        $option = $this->createOption('T-Shirt color', 'Color', array('Red', 'Blue', 'Green'));
-        $manager->persist($option);
-
-        // Sticker size option.
-        $option = $this->createOption('Sticker size', 'Size', array('3"','5"','7"'));
-        $manager->persist($option);
-
-        // Mug type option.
-        $option = $this->createOption('Mug type', 'Type', array('Medium mug','Double mug','MONSTER mug'));
+        $option = $this->createOption('size', 'Ring Size', array('5','5.5','6','6.5','7','7.5','8','8.5','9','9.5','10','10.5','11','11.5','12','12.5','13'));
         $manager->persist($option);
 
         $manager->flush();

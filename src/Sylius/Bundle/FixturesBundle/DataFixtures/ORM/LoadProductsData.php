@@ -53,24 +53,24 @@ class LoadProductsData extends DataFixture
     public function load(ObjectManager $manager)
     {
         $this->productAttributeClass = $this->container->getParameter('sylius.model.product_attribute.class');
-
+        
         // T-Shirts...
         for ($i = 1; $i <= 120; $i++) {
             switch (rand(0, 3)) {
                 case 0:
-                    $manager->persist($this->createTShirt($i));
+                    $manager->persist($this->createRing($i, 'Solitaire'));
                 break;
 
                 case 1:
-                    $manager->persist($this->createSticker($i));
+                    $manager->persist($this->createRing($i, 'Side Stones'));
                 break;
 
                 case 2:
-                    $manager->persist($this->createMug($i));
+                    $manager->persist($this->createRing($i, 'Unique Design'));
                 break;
 
                 case 3:
-                    $manager->persist($this->createBook($i));
+                    $manager->persist($this->createRing($i, 'Halo'));
                 break;
             }
 
@@ -97,22 +97,22 @@ class LoadProductsData extends DataFixture
      *
      * @param integer $i
      */
-    protected function createTShirt($i)
+    protected function createRing($i, $taxon)
     {
         $product = $this->createProduct();
 
         $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('T-Shirt "%s"', $this->faker->word));
+        $product->setName(sprintf($taxon.' "%s"', $this->faker->word));
         $product->setDescription($this->faker->paragraph);
         $product->setShortDescription($this->faker->sentence);
-        $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
+        $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_CHOICE);
 
         $this->addMasterVariant($product);
 
-        $this->setTaxons($product, array('T-Shirts', 'SuperTees'));
+        $this->setTaxons($product, array($taxon));
 
         // T-Shirt brand.
-        $randomBrand = $this->faker->randomElement(array('Nike', 'Adidas', 'Puma', 'Potato'));
+        /*$randomBrand = $this->faker->randomElement(array('Nike', 'Adidas', 'Puma', 'Potato'));
         $this->addAttribute($product, 'T-Shirt brand', $randomBrand);
 
         // T-Shirt collection.
@@ -121,110 +121,15 @@ class LoadProductsData extends DataFixture
 
         // T-Shirt material.
         $randomMaterial = $this->faker->randomElement(array('Polyester', 'Wool', 'Polyester 10% / Wool 90%', 'Potato 100%'));
-        $this->addAttribute($product, 'T-Shirt material', $randomMaterial);
+        $this->addAttribute($product, 'T-Shirt material', $randomMaterial);*/
 
-        $product->addOption($this->getReference('Sylius.Option.T-Shirt size'));
-        $product->addOption($this->getReference('Sylius.Option.T-Shirt color'));
+        $product->addOption($this->getReference('Sylius.Option.size'));
+        $product->addOption($this->getReference('Sylius.Option.metal'));
+        $product->addOption($this->getReference('Sylius.Option.shape'));
 
         $this->generateVariants($product);
 
         $this->setReference('Sylius.Product-'.$i, $product);
-
-        return $product;
-    }
-
-    /**
-     * Create sticker product.
-     *
-     * @param integer $i
-     */
-    protected function createSticker($i)
-    {
-        $product = $this->createProduct();
-
-        $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('Sticker "%s"', $this->faker->word));
-        $product->setDescription($this->faker->paragraph);
-        $product->setShortDescription($this->faker->sentence);
-        $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
-
-        $this->addMasterVariant($product);
-
-        $this->setTaxons($product, array('Stickers', 'Stickypicky'));
-
-        // Sticker resolution.
-        $randomResolution = $this->faker->randomElement(array('Waka waka', 'FULL HD', '300DPI', '200DPI'));
-        $this->addAttribute($product, 'Sticker resolution', $randomResolution);
-
-        // Sticker paper.
-        $randomPaper = sprintf('Paper from tree %s', $this->faker->randomElement(array('Wung', 'Yang', 'Lemon-San', 'Me-Gusta')));
-        $this->addAttribute($product, 'Sticker paper', $randomPaper);
-
-        $product->addOption($this->getReference('Sylius.Option.Sticker size'));
-
-        $this->generateVariants($product);
-
-        $this->setReference('Sylius.Product.'.$i, $product);
-
-        return $product;
-    }
-
-    /**
-     * Create mug product.
-     *
-     * @param integer $i
-     */
-    protected function createMug($i)
-    {
-        $product = $this->createProduct();
-
-        $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('Mug "%s"', $this->faker->word));
-        $product->setDescription($this->faker->paragraph);
-        $product->setShortDescription($this->faker->sentence);
-
-        $this->addMasterVariant($product);
-
-        $this->setTaxons($product, array('Mugs', 'Mugland'));
-
-        $randomMugMaterial = $this->faker->randomElement(array('Invisible porcelain', 'Banana skin', 'Porcelain', 'Sand'));
-        $this->addAttribute($product, 'Mug material', $randomMugMaterial);
-
-        $product->addOption($this->getReference('Sylius.Option.Mug type'));
-
-        $this->generateVariants($product);
-
-        $this->setReference('Sylius.Product.'.$i, $product);
-
-        return $product;
-    }
-
-    /**
-     * Create book product.
-     *
-     * @param integer $i
-     */
-    protected function createBook($i)
-    {
-        $product = $this->createProduct();
-
-        $author = $this->faker->name;
-        $isbn = $this->getUniqueISBN();
-
-        $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('Book "%s" by "%s"', ucfirst($this->faker->word), $author));
-        $product->setDescription($this->faker->paragraph);
-        $product->setShortDescription($this->faker->sentence);
-
-        $this->addMasterVariant($product, $isbn);
-
-        $this->setTaxons($product, array('Books', 'Bookmania'));
-
-        $this->addAttribute($product, 'Book author', $author);
-        $this->addAttribute($product, 'Book ISBN', $isbn);
-        $this->addAttribute($product, 'Book pages', $this->faker->randomNumber(3));
-
-        $this->setReference('Sylius.Product.'.$i, $product);
 
         return $product;
     }
@@ -271,7 +176,7 @@ class LoadProductsData extends DataFixture
         $variant->setAvailableOn($this->faker->dateTimeThisYear);
         $variant->setOnHand($this->faker->randomNumber(1));
 
-        $productName = explode(' ', $product->getName());
+        $productName = explode(' "', $product->getName());
         $image = clone $this->getReference(
             'Sylius.Image.'.strtolower($productName[0])
         );
