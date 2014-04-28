@@ -55,7 +55,7 @@ class LoadProductsData extends DataFixture
         $this->productAttributeClass = $this->container->getParameter('sylius.model.product_attribute.class');
         
         // T-Shirts...
-        for ($i = 1; $i <= 120; $i++) {
+        for ($i = 1; $i <= 30; $i++) {
             switch (rand(0, 3)) {
                 case 0:
                     $manager->persist($this->createRing($i, 'Solitaire'));
