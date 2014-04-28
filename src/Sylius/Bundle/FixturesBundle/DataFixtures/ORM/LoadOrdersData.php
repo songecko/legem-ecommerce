@@ -29,7 +29,7 @@ class LoadOrdersData extends DataFixture
         $orderRepository = $this->getOrderRepository();
         $orderItemRepository = $this->getOrderItemRepository();
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             /* @var $order OrderInterface */
             $order = $orderRepository->createNew();
 
