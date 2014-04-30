@@ -25,7 +25,7 @@ liip_imagine:
                 thumbnail: { size: [120, 90], mode: outbound }
         sylius_medium:
             filters:
-                thumbnail: { size: [240, 180], mode: outbound }
+                thumbnail: { size: [586, 436], mode: outbound }
         sylius_large:
             filters:
                 thumbnail: { size: [640, 480], mode: outbound }

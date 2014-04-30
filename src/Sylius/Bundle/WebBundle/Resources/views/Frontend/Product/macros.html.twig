@@ -15,6 +15,8 @@
 
 {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
 
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
 <div class="row">
     {% for product in products %}
         <div class="col-md-{{ 12 / size }}">
@@ -29,6 +31,8 @@
             {{ alerts.info('sylius.product.no_results'|trans) }}
         </div>
     {% endfor %}
+</div>
+</div>
 </div>
 
 {% endmacro %}
