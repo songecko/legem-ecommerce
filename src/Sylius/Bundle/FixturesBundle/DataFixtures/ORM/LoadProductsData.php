@@ -127,9 +127,9 @@ class LoadProductsData extends DataFixture
         $product->addOption($this->getReference('Sylius.Option.metal'));
         $product->addOption($this->getReference('Sylius.Option.size'));
         $product->addOption($this->getReference('Sylius.Option.carat'));
-      	$product->addOption($this->getReference('Sylius.Option.color'));
-        $product->addOption($this->getReference('Sylius.Option.cut'));
-        $product->addOption($this->getReference('Sylius.Option.clarity'));
+      	//$product->addOption($this->getReference('Sylius.Option.color'));
+        //$product->addOption($this->getReference('Sylius.Option.cut'));
+        //$product->addOption($this->getReference('Sylius.Option.clarity'));
 
         $this->generateVariants($product);
 
