@@ -9,3 +9,96 @@
 #support #browse .topic p {
 	color: #FFFFFF;
 }
+
+.centerTitle {	
+	font-family: "Lato", "Helvetica Neue", Arial;
+	font-size: 25px;
+	color: #555;
+	line-height: 25px;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+.niceButton {
+	border: 1px solid #CED7DF;
+	border-radius: 5px;
+	padding: 8px 11px;
+	font-size: 13px;
+	color: #333;
+	margin-left: 20px;
+}
+
+.wizard > .steps {
+    margin-top: 35px; 
+}
+
+.wizard > .steps > ul {
+	padding-left: 20px;
+	text-align: left;
+	border-bottom: 2px solid #EDEDED; 
+}
+
+@media (max-width: 767px) {
+	.wizard > .steps > ul {
+		display: none; 
+	} 
+}
+
+.wizard > .steps > ul li {
+	list-style-type: none;
+	display: inline-block;
+	margin: 0px 8px; 
+}
+
+.wizard > .steps > ul li:first-child {
+	margin-left: 0px;
+}
+
+.wizard > .steps > ul li a {
+	color: #888;
+	font-weight: 400;
+	border: 0px;
+	padding: 10px 22px;
+	font-size: 16px;
+	position: relative;
+	-webkit-transition: color 0.25s linear;
+	-moz-transition: color 0.25s linear;
+	-ms-transition: color 0.25s linear;
+	-o-transition: color 0.25s linear;
+	transition: color 0.25s linear; 
+}
+
+.wizard > .steps > ul li a label {
+	cursor: pointer;
+}
+
+.wizard > .steps > ul li.disabled a {
+	color: #888 !important;
+}
+
+.wizard > .steps > ul li.disabled a label {
+	cursor: default;
+}
+          
+.wizard > .steps > ul li.current a {
+	color: #2B69A2;
+	font-weight: 400;
+	border-bottom: 0px;
+	display: inline-block; 
+}
+
+.wizard > .steps > ul li.current a:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: auto;
+	border-bottom: 2px solid #7BA3C9;
+	left: 1px;
+	bottom: -2px; 
+}
+          
+.wizard > .steps > ul li a:hover {
+	color: #2B69A2;
+	background: none;
+	text-decoration: none; 
+}

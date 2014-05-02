@@ -18,6 +18,7 @@
 		'bundles/syliusweb/css/vendor/ionicons.css'
 		'bundles/syliusweb/css/vendor/entypo.css'
 		'bundles/syliusweb/css/bootstrap/bootstrap.min.css'
+		'bundles/syliusweb/css/vendor/jquery.steps.css'
 		'bundles/syliusweb/css/compiled/theme.css'
 		'bundles/syliusweb/css/vendor/animate.css'
 		'bundles/syliusweb/css/main.css'
@@ -193,6 +194,7 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	{% javascripts output='assets/compiled/frontend.js'
 		'bundles/syliusweb/js/bootstrap/bootstrap.min.js'
+		'bundles/syliusweb/js/vendor/jquery.steps.min.js'
 		'bundles/syliusweb/js/theme.js'
 		'bundles/syliusweb/js/frontend.js'
 	%}
@@ -209,6 +211,26 @@
 			var swiping = false;
 			var interval;
 
+			$(".customizable").steps({
+				transitionEffect: "slideLeft",
+				enableCancelButton: false,
+				transitionEffectSpeed: 500,
+                onStepChanging: function (event, currentIndex, newIndex)
+                {
+                    //$(this).prev('form').validate().settings.ignore = ":disabled,:hidden";
+                    return true;//$(this).prev('form').valid();
+                },
+                onFinishing: function (event, currentIndex)
+                {
+                	//$('#productForm').settings.ignore = ":disabled";
+                    return true;//$('#productForm').valid();
+                },
+                onFinished: function (event, currentIndex)
+                {
+                    $('#productForm').submit();
+                } 
+			});
+			
 			$navDots.click(function (e) {
 				e.preventDefault();
 				if (swiping) { return; }

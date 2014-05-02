@@ -29,11 +29,11 @@ class LoadUsersData extends DataFixture
 
         $user->setFirstname($this->faker->firstName);
         $user->setLastname($this->faker->lastName);
-        $user->setEmail('sylius@example.com');
-        $user->setPlainPassword('sylius');
+        $user->setEmail('legemdary1@gmail.com');
+        $user->setPlainPassword('123456');
         $user->setEnabled(true);
         $user->setRoles(array('ROLE_SYLIUS_ADMIN'));
-        $user->setCurrency('EUR');
+        $user->setCurrency('USD');
 
         $manager->persist($user);
         $manager->flush();

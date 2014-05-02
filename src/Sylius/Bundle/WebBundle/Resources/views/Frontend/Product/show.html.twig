@@ -3,117 +3,100 @@
 {% set form = sylius_cart_form({'product': product}) %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-3">
-        <a href="{{ path('sylius_product_show', {'slug': product.slug}) }}" class="thumbnail">
-            <img src="{{ product.image ? product.image.path|imagine_filter('sylius_medium') : 'http://placehold.it/200x200' }}" alt="{{ product.name }}" />
-        </a>
-    </div>
-    <div class="col-md-9">
-        <a href="{{ path('sylius_product_show', {'slug': product.slug}) }}" class="btn btn-link"><h3>{{ product.name }}</h3></a>
-        <p>{{ product.shortDescription|default('sylius.product.no_description')|trans|raw }}</p>
-    </div>
-</div>
-{% if product.images|length > 0 %}
-<hr>
-<div id="gallery">
-    {% for image in product.images %}
-        <a href="{{ image.path|imagine_filter('sylius_large') }}" title="{{ product.name }}">
-            <img class="img-rounded" src="{{ image.path|imagine_filter('sylius_small') }}" alt="{{ product.name }}" />
-        </a>
-    {% endfor %}
-</div>
-{% endif %}
-<hr>
-<div class="row">
-    <div class="col-md-6">
-        {% if product.attributes|length > 0 %}
-        <table class="table table-condensed">
-            <thead>
-                <tr>
-                    <th colspan="2">{{ 'sylius.product.attributes'|trans }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for attribute in product.attributes %}
-                <tr>
-                    <td>{{ attribute.presentation }}</td>
-                    <td>{{ attribute.value }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% endif %}
-    </div>
-    <div class="col-md-6">
-        <h4>{{ 'sylius.product.description'|trans }}</h4>
-        <p>{{ product.description|default('sylius.product.no_description')|trans|raw }}</p>
-    </div>
-</div>
-<hr>
-<div class="row">
-    <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" class="clearfix form-horizontal">
-    {% if product.hasVariants %}
-        <div class="col-md-6">
-            {% if product.isVariantSelectionMethodChoice %}
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>{{ 'sylius.variant.price'|trans }}</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for variant in product.variants if variant.available %}
-                    <tr>
-                        <td>
-                            {% if variant.presentation is empty %}
-                            <ul class="unstyled">
-                                {% for option in variant.options %}
-                                <li><strong>{{ option.presentation }}</strong>: {{ option.value }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% else %}
-                                {{ variant.presentation }}
-                            {% endif %}
-                        </td>
-                        <td>
-                            <span class="label label-success">{{ sylius_calculate_price(variant)|sylius_price }}</span>
-                        </td>
-                        <td>
-                        {% if sylius_inventory_is_available(variant) %}
-                            {{ form_widget(form.variant[loop.index0]) }}
-                        {% else %}
-                            <span class="label label-warning">{{ 'sylius.out_of_stock'|trans }}</span>
-                        {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-                <div class="well clearfix">
-                    {{ form_widget(form.variant) }}
-                </div>
-            {% endif %}
-        </div>
-    {% endif %}
-    <div class="col-md-6 pull-right">
-        {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
-            <span class="label label-warning">{{ 'sylius.out_of_stock'|trans }}</span>
-        {% else %}
-            {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
-            {{ form_widget(form._token) }}
-            <br>
-            <br>
-            {% if sylius_is_restricted(product) %}
-            <button disabled="disabled" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.product_not_available_in_zone'|trans }}</button>
-            {% else %}
-                <button type="submit" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.add_to_cart'|trans }}</button>
-            {% endif %}
-        {% endif %}
-    </div>
-</form>
+<div id="portfolio-item">
+	<div id="showcase">
+		<div class="container">
+			<div class="row header">
+				<div class="col-md-12">
+					<a href="#"><h3>« Back to browse rings</h3></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="project">
+						<h1>{{ product.name }}</h1>
+						<div class="col-md-7 screens">
+							{% for image in product.images %}
+            				<img src="{{ image.path|imagine_filter('sylius_medium') }}" alt="{{ product.name }}" class="img-responsive" />
+    						{% endfor %}
+						</div>
+						<div class="col-md-4 col-md-offset-1 description">
+							<div class="info">
+								<p>
+									<strong>{{ 'sylius.product.description'|trans }}:</strong>
+									{{ product.description|default('sylius.product.no_description')|trans|raw }}
+								</p>
+								{% if product.attributes|length > 0 %}
+								{% for attribute in product.attributes %}
+								<p>
+									<strong>{{ attribute.presentation }}:</strong>
+									{{ attribute.value }}
+								</p>
+								{% endfor %}
+								{% endif %}
+								<a href="#" class="tweet-it">
+									<span class="ion-social-twitter"></span> Share this ring
+								</a>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="centerTitle">Customize it!</h3>
+				</div>
+			</div>
+			<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" class="row" id="productForm">
+			{% if product.hasVariants %}
+				{% if not product.isVariantSelectionMethodChoice %}
+				<div class="customizable">
+					{% for variantOption in form.variant %}
+			    	<h1>{{ form_label(variantOption, null, {'attr': {'class': 'aa'}, 'label_attr': {'class': 'sas'}}) }}</h1>
+    				<div>{{ form_widget(variantOption) }}</div>
+    				{% endfor %}
+				</div>
+				<div class="hide">
+            		{{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+            		{{ form_widget(form._token) }}
+					<br>
+	                <button type="submit" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.add_to_cart'|trans }}</button>
+				</div>
+				{% endif %}
+			{% endif %}
+			</form>
+			{# <div class="row">
+    			<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" class="clearfix form-horizontal">
+    				{% if product.hasVariants %}
+        			<div class="col-md-6">
+            			{% if product.isVariantSelectionMethodChoice %}
+            			
+            			{% else %}
+                		<div class="well clearfix">
+                    		{{ form_widget(form.variant) }}
+                		</div>
+            			{% endif %}
+        			</div>
+    				{% endif %}
+    			
+    				<div class="col-md-6 pull-right">
+        				{% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
+            			<span class="label label-warning">{{ 'sylius.out_of_stock'|trans }}</span>
+        				{% else %}
+            			{{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+            			{{ form_widget(form._token) }}
+            			<br>
+            			<br>
+	            			{% if sylius_is_restricted(product) %}
+	            		<button disabled="disabled" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.product_not_available_in_zone'|trans }}</button>
+	            			{% else %}
+	                	<button type="submit" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.add_to_cart'|trans }}</button>
+	            			{% endif %}
+        				{% endif %}
+    				</div>
+				</form>
+			</div>#}
+		</div>
+	</div>
 </div>
 {% endblock %}

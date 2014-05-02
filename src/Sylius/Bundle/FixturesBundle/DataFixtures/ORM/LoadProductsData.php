@@ -105,7 +105,7 @@ class LoadProductsData extends DataFixture
         $product->setName(sprintf($taxon.' "%s"', $this->faker->word));
         $product->setDescription($this->faker->paragraph);
         $product->setShortDescription($this->faker->sentence);
-        $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_CHOICE);
+        $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
 
         $this->addMasterVariant($product);
 
@@ -123,9 +123,13 @@ class LoadProductsData extends DataFixture
         $randomMaterial = $this->faker->randomElement(array('Polyester', 'Wool', 'Polyester 10% / Wool 90%', 'Potato 100%'));
         $this->addAttribute($product, 'T-Shirt material', $randomMaterial);*/
 
-        $product->addOption($this->getReference('Sylius.Option.size'));
-        $product->addOption($this->getReference('Sylius.Option.metal'));
         //$product->addOption($this->getReference('Sylius.Option.shape'));
+        $product->addOption($this->getReference('Sylius.Option.metal'));
+        $product->addOption($this->getReference('Sylius.Option.size'));
+        $product->addOption($this->getReference('Sylius.Option.carat'));
+      	$product->addOption($this->getReference('Sylius.Option.color'));
+        $product->addOption($this->getReference('Sylius.Option.cut'));
+        $product->addOption($this->getReference('Sylius.Option.clarity'));
 
         $this->generateVariants($product);
 
