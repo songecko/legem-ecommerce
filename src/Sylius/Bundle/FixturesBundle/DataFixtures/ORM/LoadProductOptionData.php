@@ -31,19 +31,19 @@ class LoadProductOptionData extends DataFixture
         $option = $this->createOption('metal', 'Ring Metal', array('14k white gold', '14k yellow gold', 'Platinum'));
         $manager->persist($option);
 
-        $option = $this->createOption('size', 'Ring Size', array('5','5.5','6','6.5','7','7.5','8','8.5','9','9.5','10','10.5','11','11.5','12','12.5','13'));
+        $option = $this->createOption('size', 'Ring Size', array('5','6','7','8','9','10'));
         $manager->persist($option);
         
-        $option = $this->createOption("carat", "Diamond's Carat", array('0.3', '0.4', '0.5', '0.6', '0.7'));
+        $option = $this->createOption("carat", "Diamond's Carat", array('0.4', '0.5', '0.6'));
         $manager->persist($option);
         
-        $option = $this->createOption("color", "Diamond's Color", array('D', 'E', 'F', 'G', 'H', 'I', 'J'));
+        $option = $this->createOption("color", "Diamond's Color", array('D', 'E', 'F', 'G'));
         $manager->persist($option);
         
         $option = $this->createOption("cut", "Diamond's Cut", array('IDEAL', 'EXCELENT', 'VERY GOOD', 'GOOD', 'FAIR'));
         $manager->persist($option);
         
-        $option = $this->createOption("clarity", "Diamond's Clarity", array('IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2'));
+        $option = $this->createOption("clarity", "Diamond's Clarity", array('IF', 'VVS1', 'VS2', 'SI1'));
         $manager->persist($option);
 
         $manager->flush();
