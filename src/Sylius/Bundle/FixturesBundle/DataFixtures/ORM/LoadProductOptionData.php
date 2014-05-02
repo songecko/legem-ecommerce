@@ -31,7 +31,7 @@ class LoadProductOptionData extends DataFixture
         $option = $this->createOption('metal', 'Ring Metal', array('14k white gold', '14k yellow gold', 'Platinum'));
         $manager->persist($option);
 
-        $option = $this->createOption('size', 'Ring Size', array('5','6','7','8','9','10'));
+        $option = $this->createOption('size', 'Ring Size', array('7','8','9','10'));
         $manager->persist($option);
         
         $option = $this->createOption("carat", "Diamond's Carat", array('0.4', '0.5', '0.6'));
@@ -40,7 +40,7 @@ class LoadProductOptionData extends DataFixture
         $option = $this->createOption("color", "Diamond's Color", array('D', 'E', 'F', 'G'));
         $manager->persist($option);
         
-        $option = $this->createOption("cut", "Diamond's Cut", array('IDEAL', 'EXCELENT', 'VERY GOOD', 'GOOD', 'FAIR'));
+        $option = $this->createOption("cut", "Diamond's Cut", array('EXCELENT', 'GOOD', 'FAIR'));
         $manager->persist($option);
         
         $option = $this->createOption("clarity", "Diamond's Clarity", array('IF', 'VVS1', 'VS2', 'SI1'));
