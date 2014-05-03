@@ -52,7 +52,7 @@
 				{% if not product.isVariantSelectionMethodChoice %}
 				<div class="customizable">
 					{% for variantOption in form.variant %}
-			    	<h1>{{ form_label(variantOption, null, {'attr': {'class': 'aa'}, 'label_attr': {'class': 'sas'}}) }}</h1>
+			    	<h1>{{ form_label(variantOption, null, {'override_attr': 'true'}) }}</h1>
     				<div>{{ form_widget(variantOption) }}</div>
     				{% endfor %}
 				</div>

@@ -24,7 +24,11 @@
 
 {% block form_label %}
 {% spaceless %}
-    {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ ''}) %}
+	{% if override_attr is defined %}
+	{% set label_attr = label_attr %}
+    {% else %}
+    {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ ' control-label col-lg-2'}) %}
+    {% endif %}
     {{ parent() }}
 {% endspaceless %}
 {% endblock form_label %}
