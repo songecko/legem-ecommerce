@@ -18,9 +18,10 @@
 		'bundles/syliusweb/css/vendor/ionicons.css'
 		'bundles/syliusweb/css/vendor/entypo.css'
 		'bundles/syliusweb/css/bootstrap/bootstrap.min.css'
-		'bundles/syliusweb/css/vendor/jquery.steps.css'
-		'bundles/syliusweb/css/compiled/theme.css'
 		'bundles/syliusweb/css/vendor/animate.css'
+		'bundles/syliusweb/css/vendor/jquery.steps.css'
+		'bundles/syliusweb/css/vendor/isotope.css'
+		'bundles/syliusweb/css/compiled/theme.css'
 		'bundles/syliusweb/css/main.css'
 	%}
 	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
@@ -41,16 +42,13 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-      			<a href="{{ path('sylius_homepage') }}" class="navbar-brand" title="Legemdary"><span>Legemdary</span></a>
+      			<a href="{{ path('sylius_homepage') }}" class="navbar-brand" title="Legemdary">
+      				<img src="{{ asset('bundles/syliusweb/images/logo-inverted.png') }}" alt="Legemdary" class="hidden-xs">
+      				<img src="{{ asset('bundles/syliusweb/images/logo.png') }}" alt="Legemdary" class="img-responsive visible-xs">      				
+      			</a>
     		</div>
     		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-	    		{#<div class="masthead pull-right">
-	                {{ knp_menu_render('sylius.frontend.main', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
-	            </div>
-	            <div class="currency-menu masthead pull-right">
-	                {{ knp_menu_render('sylius.frontend.currency', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
-	            </div>#}
-	            
+	    		{#
 	            {#% block sidebar %}
                 <h4>{{ 'sylius.shop_by'|trans }}</h4><br>
                 {{ knp_menu_render('sylius.frontend.taxonomies', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
@@ -66,35 +64,9 @@
                     {% endfor %}
                     </ul>
                 {% endblock %#}
-                
-      			<ul class="nav navbar-nav navbar-right">
-      				<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          					Browse Rings
-          					<i class="fa fa-chevron-down"></i>
-          				</a>
-          				<ul class="dropdown-menu">
-          					<li><a href="#">Ring category 1</a></li>
-							<li><a href="#">Ring category 2</a></li>
-							<li><a href="#">Ring category 3</a></li>
-				        </ul>
-        			</li>
-        			<li class="dropdown">
-        				<a href="#">How it works</a>
-        			</li>
-        			<li class="dropdown">
-        				<a href="#">Diamond education</a>
-        			</li>
-        			<li>
-          				<a href="#" class="signup visible-md visible-lg">My account</a>
-        			</li>
-        			<li>
-          				<a href="#" class="signup visible-md visible-lg">Sign up free</a>
-        			</li>
-        			<li>
-          				<a href="#" class="signup visible-md visible-lg">Go to cart</a>
-        			</li>
-      			</ul>
+      			{{ knp_menu_render('sylius.frontend.account', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
+      			{#{ knp_menu_render('sylius.frontend.currency', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }#}
+      			{{ knp_menu_render('sylius.frontend.main', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
     		</nav>
     	{% endblock %}
   		</div>
@@ -112,13 +84,10 @@
 	{% endblock %}
 	
 	{% block main %}
-	{% block content %}
-	{% endblock %}
-	{% endblock %}
-
-	{% block gallery %}
-		{# Gallery modal #}
-		{% include 'SyliusWebBundle::gallery.html.twig' %}
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
 	{% endblock %}
 
 	{# Confirmation modal #}
@@ -195,6 +164,7 @@
 	{% javascripts output='assets/compiled/frontend.js'
 		'bundles/syliusweb/js/bootstrap/bootstrap.min.js'
 		'bundles/syliusweb/js/vendor/jquery.steps.min.js'
+		'bundles/syliusweb/js/vendor/jquery.isotope.min.js'
 		'bundles/syliusweb/js/theme.js'
 		'bundles/syliusweb/js/frontend.js'
 	%}
@@ -321,6 +291,30 @@
 			$videoModal.find(".wrap").click(function (e) {
 				e.stopPropagation();
 			});
+
+
+        	// Initialize Isotope plugin for filtering
+            var $container = $('.isotope_container'),
+                  $filters = $("#filters a");
+        
+            $container.imagesLoaded( function(){
+                $container.isotope({
+                    itemSelector : '.col-md-4',
+                    masonry: {
+                        columnWidth: 323
+                    }
+                });
+            });
+
+            // filter items when filter link is clicked
+            $filters.click(function() {
+                $filters.removeClass("active");
+                $(this).addClass("active");
+                var selector = $(this).data('filter');
+                $container.isotope({ filter: selector });
+                return false;
+            });
+	    
 		});
 	</script>
 </body>

@@ -1,11 +1,3 @@
 <div class="product-box">
-	<a class="pic" href="{{ path('sylius_product_show', {'slug': product.slug}) }}">
-		<div class="fluidbox-wrap">
-			<div class="layer">
-				<p><span class="fa fa-eye"></span> {{ product.name|truncate(25) }}</p>
-			</div>
-			<img src="{{ product.image ? product.image.path|imagine_filter('sylius_medium') : 'http://placehold.it/262x255' }}" class="img-responsive" alt="{{ product.name }}" style="opacity: 1;">
-			<div class="fluidbox-ghost" style="width: 293px; height: 218px; top: 0px; left: 0px;"></div>
-		</div>
-	</a>
+	{% include 'SyliusWebBundle:Frontend/Product:_single.html.twig' %}
 </div>

@@ -11,6 +11,7 @@ sylius_currency:
 
 sylius_product:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/product.yml
+    prefix: /rings
 
 sylius_page:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/page.yml

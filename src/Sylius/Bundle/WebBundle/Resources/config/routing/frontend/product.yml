@@ -1,6 +1,14 @@
 # This file is part of the Sylius package.
 # (c) Paweł Jędrzejewski
 
+sylius_product_index:
+    pattern: /
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig
+            paginate: false
+            
 sylius_product_index_by_taxon:
     pattern: /t/{permalink}
     requirements:

@@ -2,12 +2,32 @@
 
 {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
 
-{% for product in products %}
-{% include 'SyliusWebBundle:Frontend/Product:_single.html.twig' %}
-{% if not loop.last %}<hr>{% endif %}
-{% else %}
-{{ alerts.info('sylius.product.no_results'|trans) }}
-{% endfor %}
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
+<div class="container">
+	<div class="row header">
+		<div class="col-md-12 filtering">
+			<ul id="filters">
+				<li><a href="#" data-filter="*" class="active">All</a></li>
+				<li><a href="#" data-filter=".solitaire" class="">Solitaire</a></li>
+				<li><a href="#" data-filter=".halo">Halo</a></li>
+				<li><a href="#" data-filter=".side-stones">Side Stones</a></li>
+				<li><a href="#" data-filter=".unique-design">Unique Design</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row isotope_container isotope" style="position: relative; overflow: hidden; height: 778px;">
+		{% for product in products %}
+		<div class="col-md-4 product-box isotope-item{% for taxon in product.taxons %} {{ taxon.slug }}{% endfor %}" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); opacity: 1;">
+			{% include 'SyliusWebBundle:Frontend/Product:_single.html.twig' %}
+		</div>
+		{% else %}
+		{{ alerts.info('sylius.product.no_results'|trans) }}
+		{% endfor %}
+	</div>
+</div>
+</div>
+</div>
 
 {% endmacro %}
 
@@ -20,7 +40,7 @@
 <div class="row">
     {% for product in products %}
         <div class="col-md-{{ 12 / size }}">
-            {% include 'SyliusWebBundle:Frontend/Product:_singleBox.html.twig' %}
+            {% include 'SyliusWebBundle:Frontend/Product:_single.html.twig' %}
         </div>
         {% if 0 == loop.index % size %}
             </div>

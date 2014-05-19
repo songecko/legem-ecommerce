@@ -12,7 +12,7 @@
 {% if not cart.empty %}
 {{ form_errors(form) }}
 
-<form action="{{ path('sylius_cart_save') }}" method="post" novalidate class="container">
+<form action="{{ path('sylius_cart_save') }}" method="post" novalidate>
 <table class="table">
     <thead>
         <tr>

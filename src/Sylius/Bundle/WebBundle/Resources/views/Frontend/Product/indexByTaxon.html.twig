@@ -4,13 +4,13 @@
 {% from 'SyliusWebBundle:Frontend/Macros:misc.html.twig' import pagination %}
 {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import list %}
 
-{% block content %}
-<div class="page-header">
-    <h1>{{ 'sylius.product.index_by_taxon_header'|trans({'%taxon%': taxon.name})|raw }}</h1>
+{% block main %}
+<div class="page-header" style="margin: 0;width: 100%;">
+    <img src="{{ asset('bundles/syliusweb/images/titleImage.jpg') }}" class="img-responsive">
 </div>
 
-{{ pagination(products) }}
+{#{ pagination(products) }#}
 {{ list(products) }}
-{{ pagination(products) }}
+{#{ pagination(products) }#}
 
 {% endblock %}

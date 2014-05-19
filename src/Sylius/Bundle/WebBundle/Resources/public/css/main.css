@@ -1,3 +1,45 @@
+header, header .navbar-header {
+	min-height: 100px;
+}
+
+header .navbar-brand {
+	padding: 0;
+	line-height: 100px;
+}
+
+header .navbar-brand img {
+	display: block;
+}
+
+.navbar.white .navbar-collapse .navbar-nav.nav-account > li > a {
+	padding: 5px 15px 5px 15px;
+	margin: 10px 0;
+}
+
+.navbar.white .navbar-collapse .navbar-nav > li > a {
+	padding: 10px 20px 20px 20px;
+}
+
+@media (max-width: 767px)
+{
+	header, header .navbar-header {
+		min-height: 70px;
+	}
+	
+	header.navbar.white .navbar-header  .navbar-brand {
+		max-width: 60%;
+		margin-left: 20px;
+		padding-top: 16px;
+	}
+}
+
+@media (min-width: 768px) {
+    .navbar.white .navbar-collapse .navbar-nav {
+		padding-left: 50px;
+	} 
+}
+
+/** THEME CUSTOMIZATIONS **/
 #support #browse .topic .icon {
 	color: #FFFFFF;
 }
@@ -28,6 +70,9 @@
 	margin-left: 20px;
 }
 
+.page-header {
+	padding-bottom: 0;
+}
 .wizard > .steps {
     margin-top: 35px; 
 }
@@ -101,4 +146,27 @@
 	color: #2B69A2;
 	background: none;
 	text-decoration: none; 
+}
+
+/** PRODUCT LIST **/
+#gallery #showcase .product-box {
+	margin-bottom: 25px;
+}
+
+#gallery #showcase .product-box .pic {
+	margin-bottom: 0;
+}
+
+#gallery #showcase .product-box .details h5 {
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	padding: 5px 0 0;
+	color: rgb(60, 97, 151);
+}
+
+#gallery #showcase .product-box .details .price {
+	text-align: center;
+	margin: 0;
+	color: rgb(150, 149, 149);
 }

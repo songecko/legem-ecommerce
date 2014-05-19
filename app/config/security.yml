@@ -52,7 +52,8 @@ security:
                 failure_path: /connect
                 oauth_user_provider:
                     service: sylius.oauth.user_provider
-            logout: true
+            logout: 
+                invalidate_session: false
             anonymous: true
 
         dev:
