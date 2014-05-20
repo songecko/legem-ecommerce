@@ -110,7 +110,7 @@ class FrontendMenuBuilder extends MenuBuilder
         $taxonomies = $this->taxonomyRepository->findAll();        
         foreach ($taxonomies as $taxonomy) {
         	$child = $menu->addChild("Browse Rings", array(
-        		'uri' => '#',
+        		'uri' => 'sylius_product_index',
         		'attributes' => array('class' => 'dropdown'),
         		'childrenAttributes' => array('class' => 'dropdown-menu'),
         		'linkAttributes'    => array(
