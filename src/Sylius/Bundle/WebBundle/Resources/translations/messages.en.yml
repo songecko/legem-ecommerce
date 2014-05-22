@@ -322,7 +322,7 @@ sylius:
     logo: Sylius
     manage: Manage
     meta:
-        backend_title: Sylius Dashboard
+        backend_title: Legemdary Dashboard
         frontend_description: Sylius is modern ecommerce solution for PHP, based on the Symfony2 framework.
         frontend_keywords: sylius, ecommerce, symfony2, shop, cart, webshop
         frontend_title: Sylius, modern ecommerce for Symfony2
