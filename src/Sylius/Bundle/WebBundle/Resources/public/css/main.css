@@ -170,3 +170,21 @@ header .navbar-brand img {
 	margin: 0;
 	color: rgb(150, 149, 149);
 }
+
+#portfolio-item #showcase {
+	margin-top: 20px;
+}
+
+#portfolio-item #showcase .header {
+	margin-bottom: 15px;
+}
+
+#portfolio-item #showcase .project .screens .thumb {
+	border: 2px solid #999;
+	display: block;
+	margin-bottom: 5px;
+}
+
+#portfolio-item #showcase .project .screens img {
+	margin: 0;
+}

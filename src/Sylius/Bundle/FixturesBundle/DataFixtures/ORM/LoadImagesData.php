@@ -25,21 +25,30 @@ class LoadImagesData extends DataFixture
 {
     public function load(ObjectManager $manager)
     {
-        $finder = new Finder();
         $uploader = $this->get('sylius.image_uploader');
 
-        $path = __DIR__.'/../../Resources/fixtures';
-        foreach ($finder->files()->in($path) as $img) {
-            $image = new ProductVariantImage();
-            $image->setFile(new UploadedFile($img->getRealPath(), $img->getFilename()));
-            $uploader->upload($image);
+        $imageTypes = array('solitaire', 'side_stones', 'halo', 'unique_design');
+        
+        foreach ($imageTypes as $imageType)
+        {
+        	$finder = new Finder();
+	        $path = __DIR__.'/../../Resources/fixtures/'.$imageType;
+	        
+	        $i = 1;
+	        foreach ($finder->files()->in($path) as $img) 
+	        {
+	            $image = new ProductVariantImage();
+	            $image->setFile(new UploadedFile($img->getRealPath(), $img->getFilename()));
+	            $uploader->upload($image);
+	
+	            $manager->persist($image);
+	
+	            $this->setReference('Sylius.Image.'.$imageType.'.'.$i, $image);
+	            $i++;
+	        }
 
-            $manager->persist($image);
-
-            $this->setReference('Sylius.Image.'.$img->getBasename('.jpg'), $image);
+        	$manager->flush();
         }
-
-        $manager->flush();
     }
 
     public function getOrder()

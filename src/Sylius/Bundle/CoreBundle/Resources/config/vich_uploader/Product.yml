@@ -1,0 +1,4 @@
+Sylius\Component\Core\Model\Product:
+    videoFile:
+        mapping:           page_video
+        filename_property: video

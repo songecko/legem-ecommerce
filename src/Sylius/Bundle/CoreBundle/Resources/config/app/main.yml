@@ -8,27 +8,46 @@ doctrine_cache:
         sylius_settings: %sylius.cache%
 
 knp_gaufrette:
+    stream_wrapper: ~
     adapters:
         sylius_image:
             local:
                 directory:  %kernel.root_dir%/../web/media/image
                 create:     true
+        sylius_video:
+            local:
+                directory:  %kernel.root_dir%/../web/media/videos
+                create:     true
     filesystems:
         sylius_image:
             adapter: sylius_image
+        sylius_video:
+            adapter: sylius_video            
 
+vich_uploader:
+    db_driver: orm # or mongodb
+    gaufrette: true
+    storage:   vich_uploader.storage.gaufrette
+    mappings:
+        video:
+            uri_prefix:         /images/videos
+            upload_destination: sylius_video
+            delete_on_remove:   true
+            delete_on_update:   true
+            namer:              vich_uploader.namer_uniqid
+            
 liip_imagine:
     data_root: %kernel.root_dir%/../web/media/image
     filter_sets:
         sylius_small:
             filters:
-                thumbnail: { size: [120, 90], mode: outbound }
+                thumbnail: { size: [120, 120], mode: outbound }
         sylius_medium:
             filters:
-                thumbnail: { size: [586, 436], mode: outbound }
+                thumbnail: { size: [640, 640], mode: outbound }
         sylius_large:
             filters:
-                thumbnail: { size: [640, 480], mode: outbound }
+                thumbnail: { size: [1024, 1024], mode: outbound }
 
 knp_snappy:
     pdf:

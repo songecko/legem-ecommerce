@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\ProductInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Default assortment products to play with Sylius.
@@ -54,8 +55,12 @@ class LoadProductsData extends DataFixture
     {
         $this->productAttributeClass = $this->container->getParameter('sylius.model.product_attribute.class');
         
-        // T-Shirts...
-        for ($i = 1; $i <= 10; $i++) {
+        $manager->persist($this->createRing(1, 'Solitaire'));
+        $manager->persist($this->createRing(2, 'Side Stones'));
+        $manager->persist($this->createRing(3, 'Unique Design'));
+        $manager->persist($this->createRing(4, 'Halo'));
+        
+        for ($i = 5; $i <= 20; $i++) {
             switch (rand(0, 3)) {
                 case 0:
                     $manager->persist($this->createRing($i, 'Solitaire'));
@@ -107,8 +112,18 @@ class LoadProductsData extends DataFixture
         $product->setShortDescription($this->faker->sentence);
         $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
 
+        $productName = explode(' "', $product->getName());
+        $taxonName = strtolower(str_replace(' ', '_', $productName[0]));
+        
+        echo $taxonName;
+        if($this->hasReference('Sylius.Product.Video.'.$taxonName))
+        {
+        	echo "entra";
+        	$product->setVideoFile($this->getReference('Sylius.Product.Video.'.$taxonName));
+        }
+        
         $this->addMasterVariant($product);
-
+        
         $this->setTaxons($product, array($taxon));
 
         // T-Shirt brand.
@@ -181,10 +196,16 @@ class LoadProductsData extends DataFixture
         $variant->setOnHand($this->faker->randomNumber(1));
 
         $productName = explode(' "', $product->getName());
-        $image = clone $this->getReference(
-            'Sylius.Image.'.strtolower($productName[0])
-        );
-        $variant->addImage($image);
+        $taxonName = strtolower(str_replace(' ', '_', $productName[0]));
+        
+        for ($i=1; $i<=3; $i++)
+        {        	
+	        $image = clone $this->getReference(
+	            'Sylius.Image.'.$taxonName.'.'.$i
+	        );
+	        
+        	$variant->addImage($image);
+        }
 
         $this->setReference('Sylius.Variant-'.$this->totalVariants, $variant);
         $this->totalVariants++;

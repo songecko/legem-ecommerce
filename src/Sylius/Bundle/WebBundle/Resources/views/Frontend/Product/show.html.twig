@@ -15,12 +15,17 @@
 				<div class="col-md-12">
 					<div class="project">
 						<h1>{{ product.name }}</h1>
-						<div class="col-md-7 screens">
-							{% for image in product.images %}
-            				<img src="{{ image.path|imagine_filter('sylius_medium') }}" alt="{{ product.name }}" class="img-responsive" />
-    						{% endfor %}
+						<div class="col-md-8 screens">
+							<div class="col-md-3">
+								{% for image in product.images %}
+            					<a href="#" class="thumb" data-image="{{ image.path|imagine_filter('sylius_medium') }}"><img src="{{ image.path|imagine_filter('sylius_small') }}" alt="{{ product.name }}" class="img-responsive" /></a>
+    							{% endfor %}
+							</div>
+							<div class="col-md-9 mainPicture">
+            					<img src="{{ product.image.path|imagine_filter('sylius_medium') }}" alt="{{ product.name }}" class="img-responsive" />
+							</div>														
 						</div>
-						<div class="col-md-4 col-md-offset-1 description">
+						<div class="col-md-4 description">
 							<div class="info">
 								<p>
 									<strong>{{ 'sylius.product.description'|trans }}:</strong>
