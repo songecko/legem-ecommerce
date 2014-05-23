@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\ProductInterface;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -115,11 +116,15 @@ class LoadProductsData extends DataFixture
         $productName = explode(' "', $product->getName());
         $taxonName = strtolower(str_replace(' ', '_', $productName[0]));
         
-        echo $taxonName;
-        if($this->hasReference('Sylius.Product.Video.'.$taxonName))
+        $finder = new Finder();
+        $path = __DIR__.'/../../Resources/fixtures/videos';
+        foreach ($finder->files()->in($path) as $img)
         {
-        	echo "entra";
-        	$product->setVideoFile($this->getReference('Sylius.Product.Video.'.$taxonName));
+        	if($taxonName == $img->getBasename('.mp4'))
+        	{
+	        	$uploadedFile = new UploadedFile($img->getRealPath(), $img->getFilename());
+	        	$product->setVideoFile($uploadedFile);
+        	}
         }
         
         $this->addMasterVariant($product);
@@ -141,7 +146,7 @@ class LoadProductsData extends DataFixture
         //$product->addOption($this->getReference('Sylius.Option.shape'));
         $product->addOption($this->getReference('Sylius.Option.metal'));
         $product->addOption($this->getReference('Sylius.Option.size'));
-        $product->addOption($this->getReference('Sylius.Option.carat'));
+        //$product->addOption($this->getReference('Sylius.Option.carat'));
       	//$product->addOption($this->getReference('Sylius.Option.color'));
         //$product->addOption($this->getReference('Sylius.Option.cut'));
         //$product->addOption($this->getReference('Sylius.Option.clarity'));

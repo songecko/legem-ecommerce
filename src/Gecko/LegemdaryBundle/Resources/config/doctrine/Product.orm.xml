@@ -1,0 +1,10 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Gecko\LegemdaryBundle\Entity\Product" table="sylius_product">
+        <field name="video" column="video" type="string" nullable="true" />
+    </entity>
+
+</doctrine-mapping>

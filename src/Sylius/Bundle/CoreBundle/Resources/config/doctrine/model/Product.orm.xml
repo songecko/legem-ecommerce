@@ -22,8 +22,6 @@
             <gedmo:versioned />
         </field>
         
-        <field name="video" column="video" type="string" nullable="true" />
-        
         <field name="variantSelectionMethod" column="variant_selection_method" type="string" nullable="false" />
 
         <many-to-one field="taxCategory" target-entity="Sylius\Component\Taxation\Model\TaxCategoryInterface">

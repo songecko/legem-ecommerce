@@ -188,3 +188,16 @@ header .navbar-brand img {
 #portfolio-item #showcase .project .screens img {
 	margin: 0;
 }
+
+#portfolio-item #showcase .project .screens .mainPicture {
+	min-height: 420px;
+}
+
+#portfolio-item #showcase .project .screens .mainPicture video {
+	width: 100%;
+}
+
+#portfolio-item #showcase .project form .button {
+	width: 100%;
+	text-transform: uppercase;
+}

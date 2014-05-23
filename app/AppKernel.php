@@ -18,4 +18,14 @@ use Sylius\Bundle\CoreBundle\Kernel\SyliusKernel;
  */
 class AppKernel extends SyliusKernel
 {
+	/**
+	 * {@inheritdoc}
+	 */
+	public function registerBundles()
+	{
+		return array_merge(parent::registerBundles(), array(
+			new \Gecko\LegemdaryBundle\GeckoLegemdaryBundle(),
+		));
+	}
+	
 }

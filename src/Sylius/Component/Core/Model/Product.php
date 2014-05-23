@@ -17,8 +17,6 @@ use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Product\Model\Product as BaseProduct;
 use Sylius\Component\Shipping\Model\ShippingCategoryInterface;
 use Sylius\Component\Taxation\Model\TaxCategoryInterface;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Sylius core product entity.
@@ -45,14 +43,6 @@ class Product extends BaseProduct implements ProductInterface
      * @var string
      */
     protected $shortDescription;
-
-    /**
-     * Video description
-     *
-     * @var string
-     */
-    protected $videoFile;
-    protected $video;
     
     /**
      * Variant selection method.
@@ -212,37 +202,6 @@ class Product extends BaseProduct implements ProductInterface
         $this->shortDescription = $shortDescription;
 
         return $this;
-    }
-
-    public function hasVideoFile()
-    {
-    	return null !== $this->videoFile;
-    }
-    
-    public function getVideoFile()
-    {
-    	return $this->videoFile;
-    }
-    
-    public function setVideoFile(File $videoFile)
-    {
-    	$this->videoFile = $videoFile;
-    
-    	if ($this->video) {
-    		$this->setUpdatedAt(new \DateTime('now'));
-    	}
-    }
-    
-    public function getVideo()
-    {
-    	return $this->video;
-    }
-    
-    public function setVideo($video)
-    {
-    	$this->video = $video;
-    
-    	return $this;
     }
     
     /**

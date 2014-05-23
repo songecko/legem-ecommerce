@@ -20,6 +20,9 @@
 								{% for image in product.images %}
             					<a href="#" class="thumb" data-image="{{ image.path|imagine_filter('sylius_medium') }}"><img src="{{ image.path|imagine_filter('sylius_small') }}" alt="{{ product.name }}" class="img-responsive" /></a>
     							{% endfor %}
+    							{% if(product.video) %}
+    							<a href="#" class="thumb" data-video="{{ asset('media/video/'~product.video) }}"><img src="{{ asset('bundles/syliusweb/images/playerPreview.png') }}" class="img-responsive" /></a>
+    							{% endif %}
 							</div>
 							<div class="col-md-9 mainPicture">
             					<img src="{{ product.image.path|imagine_filter('sylius_medium') }}" alt="{{ product.name }}" class="img-responsive" />
@@ -39,37 +42,34 @@
 								</p>
 								{% endfor %}
 								{% endif %}
-								<a href="#" class="tweet-it">
-									<span class="ion-social-twitter"></span> Share this ring
-								</a>
-							</div>							
+							</div>
+							<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" id="productForm">
+							{% if product.hasVariants %}
+								{% if not product.isVariantSelectionMethodChoice %}
+								{% for variantOption in form.variant %}
+								<div class="form-group">
+    								{{ form_label(variantOption, null, {'override_attr': 'true'}) }}
+    								{{ form_widget(variantOption) }}
+  								</div>
+			    				{% endfor %}
+								{% endif %}
+								<div class="hide">
+				            		{{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+				            		{{ form_widget(form._token) }}
+								</div>
+							{% endif %}
+				                <button type="submit" class="button">Choose this ring</button>
+							</form>					
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h3 class="centerTitle">Customize it!</h3>
-				</div>
+			<div class="customizable">
+		    	<h1>Choose your diamond's carat</h1>
+    			<div>
+    				
+    			</div>
 			</div>
-			<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" class="row" id="productForm">
-			{% if product.hasVariants %}
-				{% if not product.isVariantSelectionMethodChoice %}
-				<div class="customizable">
-					{% for variantOption in form.variant %}
-			    	<h1>{{ form_label(variantOption, null, {'override_attr': 'true'}) }}</h1>
-    				<div>{{ form_widget(variantOption) }}</div>
-    				{% endfor %}
-				</div>
-				<div class="hide">
-            		{{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
-            		{{ form_widget(form._token) }}
-					<br>
-	                <button type="submit" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.add_to_cart'|trans }}</button>
-				</div>
-				{% endif %}
-			{% endif %}
-			</form>
 			{# <div class="row">
     			<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" class="clearfix form-horizontal">
     				{% if product.hasVariants %}

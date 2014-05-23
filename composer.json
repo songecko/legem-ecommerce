@@ -85,7 +85,8 @@
 	},
 	"autoload" : {
 		"psr-0" : {
-			"Sylius\\" : "src/"
+			"Sylius\\" : "src/",
+			"Gecko\\" : "src/"
 		}
 	},
 	"config" : {

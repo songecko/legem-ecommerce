@@ -13,8 +13,16 @@ $(document).ready(function()
 	{
 		e.preventDefault();
 		
-		var imageSrc = $(this).data('image');		
-		$('.project .screens .mainPicture img').attr('src', imageSrc);
+		var imageSrc = $(this).data('image');
+		var videoSrc = $(this).data('video');
+		
+		if(imageSrc)
+		{
+			$('.project .screens .mainPicture').html('<img src="'+imageSrc+'" class="img-responsive">');
+		}else if(videoSrc)
+		{
+			$('.project .screens .mainPicture').html('<video controls><source src="'+videoSrc+'" type="video/mp4"></video>');
+		}	
 	});
 	
 	$(".customizable").steps({

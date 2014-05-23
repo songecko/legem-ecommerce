@@ -16,7 +16,7 @@ knp_gaufrette:
                 create:     true
         sylius_video:
             local:
-                directory:  %kernel.root_dir%/../web/media/videos
+                directory:  %kernel.root_dir%/../web/media/video
                 create:     true
     filesystems:
         sylius_image:
@@ -30,7 +30,7 @@ vich_uploader:
     storage:   vich_uploader.storage.gaufrette
     mappings:
         video:
-            uri_prefix:         /images/videos
+            uri_prefix:         /videos
             upload_destination: sylius_video
             delete_on_remove:   true
             delete_on_update:   true
