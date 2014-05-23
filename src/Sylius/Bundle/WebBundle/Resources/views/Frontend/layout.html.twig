@@ -15,6 +15,7 @@
 	{% block stylesheets %}
 	{% stylesheets output='assets/compiled/frontend.css' filter='cssrewrite'
 		'bundles/syliusweb/css/vendor/font-awesome.min.css'
+		'bundles/syliusweb/css/vendor/ui-lightness/jquery-ui-1.10.4.min.css'
 		'bundles/syliusweb/css/vendor/ionicons.css'
 		'bundles/syliusweb/css/vendor/entypo.css'
 		'bundles/syliusweb/css/bootstrap/bootstrap.min.css'
@@ -162,6 +163,7 @@
 	{% block javascripts %}
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	{% javascripts output='assets/compiled/frontend.js'
+		'bundles/syliusweb/js/vendor/jquery-ui-1.10.4.min.js'
 		'bundles/syliusweb/js/bootstrap/bootstrap.min.js'
 		'bundles/syliusweb/js/vendor/jquery.steps.min.js'
 		'bundles/syliusweb/js/vendor/jquery.isotope.min.js'

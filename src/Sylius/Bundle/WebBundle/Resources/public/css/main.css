@@ -78,7 +78,6 @@ header .navbar-brand img {
 }
 
 .wizard > .steps > ul {
-	padding-left: 20px;
 	text-align: left;
 	border-bottom: 2px solid #EDEDED; 
 }
@@ -97,6 +96,7 @@ header .navbar-brand img {
 
 .wizard > .steps > ul li:first-child {
 	margin-left: 0px;
+	width: 100%;
 }
 
 .wizard > .steps > ul li a {
@@ -126,10 +126,12 @@ header .navbar-brand img {
 }
           
 .wizard > .steps > ul li.current a {
-	color: #2B69A2;
+	display: inline-block;
+	width: 100%;
+	color: white; 
 	font-weight: 400;
-	border-bottom: 0px;
-	display: inline-block; 
+	border: none;
+	text-align: center;
 }
 
 .wizard > .steps > ul li.current a:after {
@@ -147,6 +149,15 @@ header .navbar-brand img {
 	background: none;
 	text-decoration: none; 
 }
+
+.wizard > .content {
+	background: white;
+}
+
+.wizard > .actions {
+	background: white;
+}
+
 
 /** PRODUCT LIST **/
 #gallery #showcase .product-box {

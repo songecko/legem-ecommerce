@@ -7,7 +7,7 @@ $(document).ready(function()
 	var actualIndex = 0;
 	var swiping = false;
 	var interval;
-
+	
 	//Customize steps
 	$('.project .screens .thumb').click(function(e)
 	{
@@ -24,6 +24,15 @@ $(document).ready(function()
 			$('.project .screens .mainPicture').html('<video controls><source src="'+videoSrc+'" type="video/mp4"></video>');
 		}	
 	});
+	
+	$('#productForm').submit(function(e)
+	{
+		e.preventDefault();
+		
+		$(".customizable").modal('show');
+	});
+	
+	$(".customizable #caratSlider").slider();
 	
 	$(".customizable").steps({
 		transitionEffect: "slideLeft",
