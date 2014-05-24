@@ -25,23 +25,36 @@ $(document).ready(function()
 		}	
 	});
 	
+	
+	/*** PRODUCT FORM AND CUSTOMIZATION ***/
+	
 	$('#productForm').submit(function(e)
 	{
 		e.preventDefault();
 		
-		$(".customizable").modal('show');
+		$("#wizardModal").modal('show');
 	});
-	
-	$(".customizable #caratSlider").slider();
 	
 	$(".customizable").steps({
 		transitionEffect: "slideLeft",
+		enableKeyNavigation: false,
 		enableCancelButton: false,
 		transitionEffectSpeed: 500,
+		titleTemplate: '#title#',
         onStepChanging: function (event, currentIndex, newIndex)
         {
             //$(this).prev('form').validate().settings.ignore = ":disabled,:hidden";
             return true;//$(this).prev('form').valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) 
+        { 
+        	if(currentIndex == 3)
+        	{
+        		$('.wizard > .actions a[href="#finish"]').css('display', 'block');
+        	}else
+        	{
+        		$('.wizard > .actions a[href="#finish"]').hide();
+        	}
         },
         onFinishing: function (event, currentIndex)
         {
@@ -50,9 +63,26 @@ $(document).ready(function()
         },
         onFinished: function (event, currentIndex)
         {
-            $('#productForm').submit();
+            $('#productForm').get(0).submit();
         } 
 	});
+	
+	$(".customizable #caratSlider").slider({ 
+		min: 0.4,
+		max: 3,
+		step: 0.1,
+		change: function(event, ui) 
+		{
+			$(".customizable .selection h4 span.ctSelection").html(ui.value);
+		}
+	});
+	
+	$(".wizard > .content .selection .selectionContent.choice div").click(function(e)
+	{
+		$(this).siblings().removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
 	
 	function updateSlides(index) {
 		// update nav dots
@@ -134,7 +164,8 @@ $(document).ready(function()
 		clearInterval(interval);
 		interval = null;
 	});
-	$videoModal.click(function () {
+	$videoModal.click(function () 
+	{
 		$videoModal.removeClass("active");
 		setTimeout(function () {
 			$videoModal.find(".wrap").html('<iframe width="560" height="315" src="//www.youtube.com/embed/PR-zqVl6xKk" frameborder="0" allowfullscreen></iframe>');

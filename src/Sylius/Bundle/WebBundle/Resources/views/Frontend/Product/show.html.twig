@@ -2,7 +2,7 @@
 
 {% set form = sylius_cart_form({'product': product}) %}
 
-{% block content %}
+{% block main %}
 <div id="portfolio-item">
 	<div id="showcase">
 		<div class="container">
@@ -64,43 +64,148 @@
 					</div>
 				</div>
 			</div>
-			<div class="customizable modal fade">
-		    	<h1>Choose your diamond's carat</h1>
-    			<div>
-    				<div id="caratSlider"></div>
-    			</div>
+			<div id="wizardModal" class="modal fade">
+				<div class="customizable" style="background: #FFFFFF url({{ product.image.path|imagine_filter('sylius_medium') }}) no-repeat center top; background-size: contain;">
+			    	<h1>Choose Your Diamond's Carat</h1>
+	    			<div>
+	    				<div class="col-md-6 selection caratSelection">
+	    					<h4>Diamond Carat: <span class="ctSelection">0.4</span></h4>
+		    				<div class="selectionContent clearfix">
+		    					<span>0.4 ct</span>
+			    				<div id="caratSlider"></div>
+			    				<span>3.00 ct</span>
+		    				</div>
+	    				</div>
+	    				<div class="col-md-6 explanation">
+	    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin cursus augue sit amet mollis. Fusce vestibulum egestas augue, in dignissim odio elementum eget. Vivamus in convallis nunc. Ut fermentum placerat nisi sit amet accumsan. Aenean eget tortor nulla. Maecenas a ultricies enim, ac condimentum nisi. In gravida ligula nec ullamcorper vulputate. Donec rhoncus nibh lectus, ut venenatis turpis facilisis nec. Ut pharetra, nisi nec rutrum vehicula, risus mauris volutpat tortor, eu mollis sem lacus id est. Etiam laoreet feugiat nisi tempor consequat. Nam consectetur viverra vehicula.</p>
+	    				</div>
+	    			</div>
+	    			<h1>Choose Your Diamond's Color</h1>
+	    			<div>
+	    				<div class="col-md-6 selection colorSelection">
+	    					<h4>Diamond Color:</h4>
+		    				<div class="selectionContent choice clearfix">
+			    				<div>D</div>
+			    				<div>E</div>
+			    				<div>F</div>
+			    				<div>G</div>
+			    				<div>H</div>
+			    				<div>I</div>
+			    				<div>J</div>
+		    				</div>
+	    				</div>
+	    				<div class="col-md-6 explanation">
+	    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin cursus augue sit amet mollis. Fusce vestibulum egestas augue, in dignissim odio elementum eget. Vivamus in convallis nunc. Ut fermentum placerat nisi sit amet accumsan. Aenean eget tortor nulla. Maecenas a ultricies enim, ac condimentum nisi. In gravida ligula nec ullamcorper vulputate. Donec rhoncus nibh lectus, ut venenatis turpis facilisis nec. Ut pharetra, nisi nec rutrum vehicula, risus mauris volutpat tortor, eu mollis sem lacus id est. Etiam laoreet feugiat nisi tempor consequat. Nam consectetur viverra vehicula.</p>
+	    				</div>
+	    			</div>
+	    			<h1>Choose Your Diamond's Clarity</h1>
+	    			<div>
+	    				<div class="col-md-6 selection claritySelection">
+	    					<h4>Diamond Clarity:</h4>
+		    				<div class="selectionContent choice clearfix">
+			    				<div>IF</div>
+			    				<div>VVS1</div>
+			    				<div>VVS2</div>
+			    				<div>VS1</div>
+			    				<div>VS2</div>
+			    				<div>S1</div>
+			    				<div>S2</div>
+		    				</div>
+	    				</div>
+	    				<div class="col-md-6 explanation">
+	    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin cursus augue sit amet mollis. Fusce vestibulum egestas augue, in dignissim odio elementum eget. Vivamus in convallis nunc. Ut fermentum placerat nisi sit amet accumsan. Aenean eget tortor nulla. Maecenas a ultricies enim, ac condimentum nisi. In gravida ligula nec ullamcorper vulputate. Donec rhoncus nibh lectus, ut venenatis turpis facilisis nec. Ut pharetra, nisi nec rutrum vehicula, risus mauris volutpat tortor, eu mollis sem lacus id est. Etiam laoreet feugiat nisi tempor consequat. Nam consectetur viverra vehicula.</p>
+	    				</div>
+	    			</div>
+	    			<h1>Choose Your Diamond's Cut</h1>
+	    			<div>
+	    				<div class="col-md-6 selection cutSelection">
+	    					<h4>Diamond Cut:</h4>
+		    				<div class="selectionContent choice clearfix">
+			    				<div>IDEAL</div>
+			    				<div>EXCELLENT</div>
+			    				<div>VERY GOOD</div>
+			    				<div>GOOD</div>
+			    				<div>FAIR</div>
+		    				</div>
+	    				</div>
+	    				<div class="col-md-6 explanation">
+	    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin cursus augue sit amet mollis. Fusce vestibulum egestas augue, in dignissim odio elementum eget. Vivamus in convallis nunc. Ut fermentum placerat nisi sit amet accumsan. Aenean eget tortor nulla. Maecenas a ultricies enim, ac condimentum nisi. In gravida ligula nec ullamcorper vulputate. Donec rhoncus nibh lectus, ut venenatis turpis facilisis nec. Ut pharetra, nisi nec rutrum vehicula, risus mauris volutpat tortor, eu mollis sem lacus id est. Etiam laoreet feugiat nisi tempor consequat. Nam consectetur viverra vehicula.</p>
+	    				</div>
+	    			</div>
+				</div>
 			</div>
-			{# <div class="row">
-    			<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" class="clearfix form-horizontal">
-    				{% if product.hasVariants %}
-        			<div class="col-md-6">
-            			{% if product.isVariantSelectionMethodChoice %}
-            			
-            			{% else %}
-                		<div class="well clearfix">
-                    		{{ form_widget(form.variant) }}
-                		</div>
-            			{% endif %}
-        			</div>
-    				{% endif %}
-    			
-    				<div class="col-md-6 pull-right">
-        				{% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
-            			<span class="label label-warning">{{ 'sylius.out_of_stock'|trans }}</span>
-        				{% else %}
-            			{{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
-            			{{ form_widget(form._token) }}
-            			<br>
-            			<br>
-	            			{% if sylius_is_restricted(product) %}
-	            		<button disabled="disabled" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.product_not_available_in_zone'|trans }}</button>
-	            			{% else %}
-	                	<button type="submit" class="btn btn-success btn-lg btn-block"><i class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.add_to_cart'|trans }}</button>
-	            			{% endif %}
-        				{% endif %}
-    				</div>
-				</form>
-			</div>#}
+		</div>
+		
+		<div id="pricing">
+			<div class="container">
+				<div class="row header">
+					<div class="col-md-12">
+						<h3 class="centerHeader">Example value points</h3>
+					</div>
+				</div>
+				<div id="support">
+					<div id="browse">
+						<div class="row">
+							<div class="col-sm-4 topic">
+								<a href="#">
+									<span class="icon ion-clipboard"></span>
+									<strong>Free shipping</strong>
+								</a>
+								<p>
+									Request bids for Your diamond selection. Vendors compete for your business.
+								</p>
+							</div>
+							<div class="col-sm-4 topic">
+								<a href="#">
+									<span class="icon ion-gear-a"></span>
+									<strong>Risk Free</strong>
+								</a>
+								<p>
+									Our streamlined, process makes it easy to create a ring and get bids.
+								</p>
+							</div>
+							<div class="col-sm-4 topic">
+								<a href="#">
+									<span class="icon ion-card"></span>
+									<strong>30 Days Returns</strong>
+								</a>
+								<p>
+									Learn how to change tasks and assign projects to all your teammates.
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 topic">
+								<a href="#">
+									<span class="icon ion-person-stalker"></span>
+									<strong>Risk free buying</strong>
+								</a>
+								<p>
+									30 Days Full Refund Returns and Free Shipping.
+								</p>
+							</div>
+							<div class="col-sm-4 topic">
+								<a href="#">
+									<span class="icon ion-upload"></span>
+									<strong>24/7 professional support</strong>
+								</a>
+								<p>
+									Speak with a Professional Geomologist with years of industry experience
+								</p>
+							</div>
+							<div class="col-sm-4 topic">
+								<a href="#">
+									<span class="icon ion-compose"></span>
+									<strong>Lorem ipsum sit amet</strong>
+								</a>
+								<p>
+									Learn how to change tasks and assign projects to all your teammates.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

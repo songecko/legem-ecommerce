@@ -1732,12 +1732,16 @@ a:focus, button:focus {
     @media (max-width: 991px) {
       #home2 #pricing .header {
         margin-bottom: 25px; } }
-    #home2 #pricing .header h3 {
+    #home2 #pricing .header h3, #home2 #pricing .header h3.centerHeader {
       font-size: 29px;
       color: #fff;
       line-height: 25px;
       font-weight: 400;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+      #home2 #pricing .header h3.centerHeader {
+      	display: block;
+      	text-align: center;
+      }
     #home2 #pricing .header p {
       font-size: 16px;
       color: #f7f7f7;
