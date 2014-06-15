@@ -5,8 +5,7 @@
 {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import list %}
 
 {% block main %}
-<div class="page-header" style="margin: 0;width: 100%;">
-    <img src="{{ asset('bundles/syliusweb/images/titleImage.jpg') }}" class="img-responsive">
+<div class="page-header" style="margin: 0;width: 100%;background: url({{ asset('bundles/syliusweb/images/titleImage.jpg') }}) no-repeat center 12% background-size: cover;">
 </div>
 
 {#{ pagination(products) }#}

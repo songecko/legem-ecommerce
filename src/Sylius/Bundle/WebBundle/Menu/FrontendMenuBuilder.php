@@ -107,7 +107,7 @@ class FrontendMenuBuilder extends MenuBuilder
             )
         ));
         
-        $taxonomies = $this->taxonomyRepository->findAll();        
+        /*$taxonomies = $this->taxonomyRepository->findAll();        
         foreach ($taxonomies as $taxonomy) {
         	$child = $menu->addChild("Browse Rings", array(
         		'uri' => 'sylius_product_index',
@@ -123,8 +123,12 @@ class FrontendMenuBuilder extends MenuBuilder
         	));
         
         	$this->createTaxonomiesMenuNode($child, $taxonomy->getRoot());
-        }
+        }*/
 
+        $menu->addChild("Browse Rings", array(
+        		'route' => 'sylius_product_index'
+        ));
+        
         $menu->addChild('How it works', array(
         		/*'route' => 'fos_user_security_login',*/
         		'uri' => '#'
@@ -288,6 +292,10 @@ class FrontendMenuBuilder extends MenuBuilder
 
         //$child = $menu->addChild($this->translate('sylius.account.title'), $childOptions);
 
+        $menu->addChild('phone_number', array(
+        	'labelAttributes'    => array('class' => 'phoneNumber')
+        ))->setLabel("1-888-332-1714");
+        
         if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_USER')) 
         {		
 			$menu->addChild('account', array(

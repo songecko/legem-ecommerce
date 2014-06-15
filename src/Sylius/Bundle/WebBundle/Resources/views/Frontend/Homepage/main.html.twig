@@ -68,14 +68,70 @@
 </div>
 
 <div id="features">
+<div id="showcase" class="showcase">
 	<div class="container">
-		<div class="row header">
-			<div class="col-md-12">
-				<h2>Latest Ring's models</h2>
-				<p>Lorem impsum sit amet</p>
+		<div class="row">
+			<div class="col-md-12 pics">
+				<a class="pic" href="#">
+					<img src="{{ asset('bundles/syliusweb/images/blog1.png') }}" alt="blog1">
+					<div class="bg">
+						<p>How to survive in the big city</p>
+					</div>
+				</a>
+				<a class="pic" href="#">
+					<img src="{{ asset('bundles/syliusweb/images/blog2.png') }}" alt="blog2">
+					<div class="bg">
+						<p>How to develop scalable Rails apps</p>
+					</div>
+				</a>
+				<a class="pic" href="#">
+					<img src="{{ asset('bundles/syliusweb/images/blog3.png') }}" alt="blog3">
+					<div class="bg">
+						<p>Enjoy your life at the beach</p>
+					</div>
+				</a>
 			</div>
 		</div>
-		{{ render(url('sylius_partial_product_latest', {'limit': 9, 'template': 'SyliusWebBundle:Frontend/Product:latest.html.twig'})) }}
+	</div>
+</div>
+</div>
+
+<div id="testimonials" class="testimonials">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="testimonial pull-right">
+					<div class="quote">
+						I am just quoting some stuff but I am seriously happy about this product. It's just so much fun!
+						<div class="arrow-down">
+			                <div class="arrow"></div>
+			                <div class="arrow-border"></div>
+			            </div>
+					</div>
+					<div class="author">
+						<img src="{{ asset('bundles/syliusweb/images/testimonials/testimonial1.jpg') }}" class="pic" alt="testimonial1">
+						<div class="name">Erick Alvarez</div>
+						<div class="company">Microsoft</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="testimonial">
+					<div class="quote">
+						This thing is one of those tools that everybody should be using. You can kickstart your projects and apps and just focus on your business!
+						<div class="arrow-down">
+			                <div class="arrow"></div>
+			                <div class="arrow-border"></div>
+			            </div>
+					</div>
+					<div class="author">
+						<img src="{{ asset('bundles/syliusweb/images/testimonials/testimonial2.jpg') }}" class="pic" alt="testimonial2">
+						<div class="name">Karen Jones</div>
+						<div class="company">Pixar Co.</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

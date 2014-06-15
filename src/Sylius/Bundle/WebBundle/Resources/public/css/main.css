@@ -20,6 +20,10 @@ header .navbar-brand img {
 	padding: 10px 20px 20px 20px;
 }
 
+.navbar.white .navbar-collapse .navbar-nav .phoneNumber {
+	margin-right: 50px;
+}
+
 @media (max-width: 767px)
 {
 	header, header .navbar-header {
@@ -37,9 +41,46 @@ header .navbar-brand img {
     .navbar.white .navbar-collapse .navbar-nav {
 		padding-left: 50px;
 	} 
+	.navbar.white .navbar-collapse .navbar-nav:last-child {
+		min-width: 500px;
+	}
 }
 
 /** THEME CUSTOMIZATIONS **/
+#home2 #hero .slides .slide.first .bg {
+	background: url(../images/slider/slider_1.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#home2 #hero .slides .slide.second .bg {
+	background: url(../images/slider/slider_2.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#home2 #hero .slides .slide.third .bg {
+	background: url(../images/slider/slider_3.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#features #showcase.showcase {
+	margin-bottom: 60px;	
+}
+
+#home2 #testimonials.testimonials {
+	margin-top: 30px;
+}
+
+#home2 #testimonials.testimonials .testimonial {
+	width: 80%;
+}
+
+#gallery #showcase .header h3 {
+	font-size: 25px;
+	color: #444;
+	font-weight: 300;
+	text-align: center;	
+}
+
 #support #browse .topic .icon {
 	color: #FFFFFF;
 }
