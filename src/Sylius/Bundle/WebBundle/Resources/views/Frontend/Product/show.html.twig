@@ -44,12 +44,13 @@
 								{% endif %}
 							</div>
 							<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" id="productForm">
-							{% if product.hasVariants %}
+								{% if product.hasVariants %}
 								{% if not product.isVariantSelectionMethodChoice %}
 								{% for variantOption in form.variant %}
 								<div class="form-group">
     								{{ form_label(variantOption, null, {'override_attr': 'true'}) }}
     								{{ form_widget(variantOption) }}
+    								<p>{#{ variantOption.price }#}</p>
   								</div>
 			    				{% endfor %}
 								{% endif %}
@@ -57,21 +58,42 @@
 				            		{{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
 				            		{{ form_widget(form._token) }}
 								</div>
-							{% endif %}
-				                <button type="submit" class="button">Choose this ring</button>
+								{% endif %}
+							
+								<div class="hide">
+								{% set metalIndex = 0 %}
+								{% set lastMetalValueId = 0 %}
+								{% for variant in product.variants if variant.available %}
+	                            	{% for option in variant.options if option.name == 'metal' %}
+	                                	{% if(option.name=='metal' and lastMetalValueId != option.id) %}
+	                                	<span id="metal_price_{{ metalIndex }}" data-price="{{ sylius_calculate_price(variant)|sylius_price }}"></span>
+	                                	{%  set metalIndex = metalIndex+1 %}
+	                                	{%  set lastMetalValueId = option.id %}
+	                                	{% endif %}
+	                            	{% endfor %}
+	                    		{% endfor %}
+								</div>
+								
+								<p id="productPrice"><strong>Price: </strong><span class="price">$0</span></p>
+                    		
+                    			<button class="button chooseRingButton">Choose this ring</button>
+				                <button type="submit" class="button submitButton">Define Your Diamond</button>
 							</form>					
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div id="wizardModal" class="modal fade">
+				<button class="backButton" data-dismiss="modal">« Back to {{ product.name }}</button>
+				
 				<div class="customizable" style="background: #FFFFFF url({{ product.image.path|imagine_filter('sylius_medium') }}) no-repeat center 30px; background-size: contain;">
 			    	<h1>Choose Your Diamond's Carat</h1>
 	    			<div>
 	    				<div class="col-md-6 selection caratSelection">
-	    					<h4>Diamond Carat: <span class="ctSelection">0.4</span></h4>
+	    					<h4>Diamond Carat: <span class="ctSelection">0.40</span></h4>
 		    				<div class="selectionContent clearfix">
-		    					<span>0.4 ct</span>
+		    					<span>0.40 ct</span>
 			    				<div id="caratSlider"></div>
 			    				<span>3.00 ct</span>
 		    				</div>
@@ -125,7 +147,6 @@
 			    				<div>EXCELLENT</div>
 			    				<div>VERY GOOD</div>
 			    				<div>GOOD</div>
-			    				<div>FAIR</div>
 		    				</div>
 	    				</div>
 	    				<div class="col-md-5 col-md-offset-1 explanation">

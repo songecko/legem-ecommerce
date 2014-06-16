@@ -58,7 +58,7 @@ header .navbar-brand img {
 }
 
 #home2 #hero .slides .slide.third .bg {
-	background: url(../images/slider/slider_3.jpg) no-repeat center;
+	background: url(../images/slider/slider_3.jpg) no-repeat center 26%;
 	background-size: cover;
 }
 
@@ -114,6 +114,28 @@ header .navbar-brand img {
 .page-header {
 	padding-bottom: 0;
 }
+
+#wizardModal {
+	background: #979797;	
+}
+
+#wizardModal .backButton {
+	display: inline-block;
+	font-size: 17px;
+	font-family: Myriad Pro, Lato, Helvetica Neue, Arial;
+	color: #53A6DA;
+	margin-top: 0px;
+	line-height: 25px;
+	font-weight: 500;
+	margin-bottom: 5px;
+	cursor: pointer;
+	background: none;
+	border: none;
+	position: absolute;
+	top: 23px;
+	z-index: 99999;
+}
+
 .wizard > .steps {
     background: #FFFFFF; 
 }
@@ -209,7 +231,7 @@ header .navbar-brand img {
 .wizard > .content .selection .selectionContent {
 	padding: 20px;
 	width: 80%;
-	background: #888888;
+	background: #505050;
 }
 
 .wizard > .content .selection .selectionContent.choice div {
@@ -257,6 +279,13 @@ header .navbar-brand img {
 	font-size: 12px;
 }
 
+.wizard > .content .caratSelection .ctSelection {
+	background: #5EABDF;
+	padding: 12px;
+	margin-left: 15px;
+	font-size: 26px;
+}
+
 .wizard > .content .selection #caratSlider {
 	float: left;
 	width: 75%;
@@ -264,7 +293,7 @@ header .navbar-brand img {
 }
 
 .wizard > .content .explanation p {
-	background: #888888;
+	background: #505050;
 	padding: 20px;
 	width: 80%;
 	color: #FFFFFF;
@@ -361,4 +390,13 @@ header .navbar-brand img {
 #portfolio-item #showcase .project form .button {
 	width: 100%;
 	text-transform: uppercase;
+}
+
+#portfolio-item #showcase .project form .button.submitButton {
+	display:none;
+}
+
+#portfolio-item #showcase .project form #productPrice {
+	color: #4589E3;
+	margin-bottom: 30px;
 }

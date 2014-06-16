@@ -1,10 +1,38 @@
+var refreshProductPrice = function()
+{
+	var variantOptionIndex = $('#sylius_cart_item_variant_metal').val();
+	var variantOption = $('#metal_price_'+variantOptionIndex);
+	
+	if(variantOption)
+	{
+		var price = variantOption.data('price');
+		$('#productPrice .price').html(price);
+	}
+};
+
 $(document).ready(function()
 {	
+	//Init
+	refreshProductPrice();
+	
+	$('#productForm .chooseRingButton').click(function(e)
+	{
+		e.preventDefault();
+		
+		$(this).hide();
+		$('#productForm .submitButton').show();
+	});
+	
 	$('#productForm').submit(function(e)
 	{
 		e.preventDefault();
 		
 		$("#wizardModal").modal('show');
+	});
+	
+	$('#sylius_cart_item_variant_metal').change(function(e)
+	{
+		refreshProductPrice();
 	});
 	
 	$(".customizable").steps({
@@ -45,7 +73,7 @@ $(document).ready(function()
 		step: 0.1,
 		change: function(event, ui) 
 		{
-			$(".customizable .selection h4 span.ctSelection").html(ui.value);
+			$(".customizable .selection h4 span.ctSelection").html(ui.value+'0');
 		}
 	});
 	
