@@ -119,6 +119,14 @@ header .navbar-brand img {
 	background: #979797;	
 }
 
+#wizardModal .wizard {
+	height: 100%;
+}
+
+#wizardModal .wizard .content {
+	height: 100%;
+}
+
 #wizardModal .backButton {
 	display: inline-block;
 	font-size: 17px;
@@ -134,6 +142,10 @@ header .navbar-brand img {
 	position: absolute;
 	top: 23px;
 	z-index: 99999;
+}
+
+#wizardModal > .carousel-indicators {
+	bottom: 55px;
 }
 
 .wizard > .steps {
@@ -236,14 +248,14 @@ header .navbar-brand img {
 
 .wizard > .content .selection .selectionContent.choice div {
 	float: left;
-	width: 45px;
+	width: 54px;
 	height: 60px;
 	line-height: 60px;
 	background: #FFFFFF;
 	font-size: 18px;
 	text-align: center;
 	border: 1px solid #000000;
-	margin-right: 15px;
+	margin-right: 5px;
 	cursor: pointer;
 }
 
@@ -271,12 +283,12 @@ header .navbar-brand img {
 }
 
 .wizard > .content .selection.claritySelection .selectionContent.choice div {
-	width: 52px;
+	width: 62px;
 }
 
 .wizard > .content .selection.cutSelection .selectionContent.choice div {
-	width: 80px;
-	font-size: 12px;
+	width: 114px;
+	font-size: 14px;
 }
 
 .wizard > .content .caratSelection .ctSelection {
@@ -290,6 +302,27 @@ header .navbar-brand img {
 	float: left;
 	width: 75%;
 	margin-top: 5px;
+}
+
+.wizard > .content .review > div {
+	margin-bottom: 10px;	
+}
+
+.wizard > .content .review .label {
+	float: left;
+	font-size: 18px;
+	width: 32%;
+	text-align: left;
+	line-height: 59px;
+	padding: 0 0 0 25px;
+}
+
+.wizard > .content .review .value {
+	float: left;
+	font-size: 18px;
+	background: white;
+	padding: 12px;
+	border: 5px solid #818181;
 }
 
 .wizard > .content .explanation p {
@@ -309,7 +342,10 @@ header .navbar-brand img {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F333333, endColorstr=#7F333333)";
 	text-align: center;
 	border: none;
-	padding: 8px 0 15px 0;
+	padding: 8px 0;
+	position: absolute;
+	bottom: 0;
+	height: 52px;
 }
 
 .wizard > .actions a, .wizard > .actions a:hover, .wizard > .actions a:active {
