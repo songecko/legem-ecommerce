@@ -98,6 +98,7 @@ class LoadOrdersData extends DataFixture
         $payment->setAmount($order->getTotal());
         $payment->setCurrency($order->getCurrency());
         $payment->setState($this->getPaymentState());
+        $payment->setDetails($this->faker->creditCardDetails());
 
         $order->setPayment($payment);
 
