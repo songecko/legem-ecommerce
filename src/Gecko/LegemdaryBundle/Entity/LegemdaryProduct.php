@@ -5,7 +5,7 @@ namespace Gecko\LegemdaryBundle\Entity;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 use Symfony\Component\HttpFoundation\File\File;
 
-class Product extends BaseProduct
+class LegemdaryProduct extends BaseProduct
 {
     /**
      * Video description

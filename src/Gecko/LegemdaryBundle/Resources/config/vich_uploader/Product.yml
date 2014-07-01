@@ -1,4 +1,0 @@
-Gecko\LegemdaryBundle\Entity\Product:
-    videoFile:
-        mapping:           video
-        filename_property: video

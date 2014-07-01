@@ -27,7 +27,12 @@ class HomepageController extends Controller
      * @return Response
      */
     public function mainAction()
-    {
+    { 
         return $this->render('SyliusWebBundle:Frontend/Homepage:main.html.twig');
+    }
+    
+    public function comingSoonAction()
+    {
+    	return $this->render('SyliusWebBundle:Frontend/Homepage:comingSoon.html.twig');
     }
 }

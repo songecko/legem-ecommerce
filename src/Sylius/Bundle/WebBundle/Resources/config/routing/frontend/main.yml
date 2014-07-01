@@ -2,9 +2,13 @@
 # (c) Paweł Jędrzejewski
 
 sylius_homepage:
-    pattern: /
+    pattern: /home
     defaults: { _controller: sylius.controller.frontend.homepage:mainAction }
 
+sylius_coming_soon:
+    pattern: /
+    defaults: { _controller: sylius.controller.frontend.homepage:comingSoonAction }
+    
 sylius_currency:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/currency.yml
     prefix: /currency
