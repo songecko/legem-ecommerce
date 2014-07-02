@@ -1,0 +1,4 @@
+Gecko\LegemdaryBundle\Entity\LegemdaryPost:
+    file:
+        mapping:           video
+        filename_property: image
