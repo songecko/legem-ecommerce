@@ -9,6 +9,14 @@ sylius_coming_soon:
     pattern: /
     defaults: { _controller: sylius.controller.frontend.homepage:comingSoonAction }
     
+legemdary_blog:
+    pattern: /blog
+    defaults: { _controller: sylius.controller.frontend.homepage:blogAction }
+    
+legemdary_blog_post:
+    pattern: /blog/post/{id}
+    defaults: { _controller: sylius.controller.frontend.homepage:blogPostAction }
+    
 sylius_currency:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/currency.yml
     prefix: /currency

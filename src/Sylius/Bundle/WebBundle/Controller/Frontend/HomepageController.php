@@ -13,6 +13,7 @@ namespace Sylius\Bundle\WebBundle\Controller\Frontend;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Frontend homepage controller.
@@ -34,5 +35,15 @@ class HomepageController extends Controller
     public function comingSoonAction()
     {
     	return $this->render('SyliusWebBundle:Frontend/Homepage:comingSoon.html.twig');
+    }
+    
+    public function blogAction()
+    {
+    	return $this->render('SyliusWebBundle:Frontend/Blog:blog.html.twig');
+    }
+    
+    public function blogPostAction(Request $request)
+    {
+    	return $this->render('SyliusWebBundle:Frontend/Blog:blogPost.html.twig');
     }
 }

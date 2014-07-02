@@ -129,6 +129,10 @@ class FrontendMenuBuilder extends MenuBuilder
         		'route' => 'sylius_product_index'
         ));
         
+        $menu->addChild('Blog', array(
+        		'route' => 'legemdary_blog'
+        ));
+        
         $menu->addChild('How it works', array(
         		/*'route' => 'fos_user_security_login',*/
         		'uri' => '#'
