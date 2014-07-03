@@ -14,6 +14,7 @@ namespace Sylius\Bundle\WebBundle\Controller\Frontend;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Gecko\LegemdaryBundle\Entity\LegemdaryPost;
 
 /**
  * Frontend homepage controller.
@@ -39,11 +40,23 @@ class HomepageController extends Controller
     
     public function blogAction()
     {
-    	return $this->render('SyliusWebBundle:Frontend/Blog:blog.html.twig');
+    	$repository = $this->getDoctrine()->getRepository('GeckoLegemdaryBundle:LegemdaryPost');
+    	
+    	$posts = $repository->findAll();
+    	
+    	return $this->render('SyliusWebBundle:Frontend/Blog:blog.html.twig', array(
+    		'posts' => $posts
+    	));
     }
     
-    public function blogPostAction(Request $request)
+    public function blogPostAction($id)
     {
-    	return $this->render('SyliusWebBundle:Frontend/Blog:blogPost.html.twig');
+    	$repository = $this->getDoctrine()->getRepository('GeckoLegemdaryBundle:LegemdaryPost');
+    	 
+    	$post = $repository->find($id);
+    	
+    	return $this->render('SyliusWebBundle:Frontend/Blog:blogPost.html.twig', array(
+    		'post' => $post
+    	));
     }
 }

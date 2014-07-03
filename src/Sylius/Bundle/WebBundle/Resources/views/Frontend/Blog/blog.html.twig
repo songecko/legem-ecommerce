@@ -6,27 +6,27 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
+			{% for post in posts %}
 				<div class="post">
-					<a href="blogpost.html" class="pic">
-						<img src="images/blogpost1.png" class="img-responsive" alt="blogpost" />
+					<a href="{{ path('legemdary_blog_post', {'id': post.id}) }}" class="pic">
+						<img src="{{ post.image ? asset('media/video/'~post.image) : 'http://placehold.it/120x120' }}" class="img-responsive" alt="blogpost" />
 					</a>
 
 					<div class="title">
-						<a href="blogpost.html">A brief history of climate science</a>
+						<a href="blogpost.html">{{ post.title }}</a>
 					</div>
 					
 					<div class="author">
-						October 03, 2013
+						{{ post.createdAt|localizeddate('long', 'none', null, null, "MMMM dd, yyyy") }}
 					</div>
 					
 					<p class="intro">
-						By Ed Hawkins, University of Reading. Climate change is often seen as a recent phenomenon, but its roots are actually far older — the stuff that is currently happening is beyond my understanding.
-						<br />
-						Some people say design is about solving problems. Obviously designers solve problems but so do dentists. Design is about cultural invention.
+						{{ post.text }}
 					</p>
 					
-					<a href="blogpost.html" class="continue-reading">Continue reading this post</a>
+					<a href="{{ path('legemdary_blog_post', {'id': post.id}) }}" class="continue-reading">Continue reading this post</a>
 				</div>
+			{% endfor %}
 
 				<div class="pages">
 					<ul class="pagination">
