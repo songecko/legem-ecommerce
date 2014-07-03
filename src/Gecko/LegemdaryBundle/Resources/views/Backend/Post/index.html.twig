@@ -1,0 +1,26 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'GeckoLegemdaryBundle:Backend/Post:macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+    <li>{{ 'legemdary.backend.breadcrumb.post.index'|trans }}</a></li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.create(path('gecko_legemdary_backend_post_create'), 'legemdary.backend.create'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-th-list"></i> {{ 'legemdary.backend.post.index_header'|trans|raw }}</h1>
+</div>
+
+{{ pagination(posts) }}
+{{ list(posts) }}
+{{ pagination(posts) }}
+
+{% endblock %}

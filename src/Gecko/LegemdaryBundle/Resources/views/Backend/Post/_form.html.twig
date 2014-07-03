@@ -1,0 +1,7 @@
+{{ form_errors(form)  }}
+<div>
+    {{ form_row(form.title, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.text, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.file) }}
+</div>
+{{ form_rest(form) }}

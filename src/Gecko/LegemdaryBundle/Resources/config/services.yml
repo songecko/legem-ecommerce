@@ -1,6 +1,12 @@
 parameters:
+    sylius.menu_builder.backend.class: Gecko\LegemdaryBundle\Menu\BackendMenuBuilder
 
 services:
+    legemdary.form.type.post:
+        class: Gecko\LegemdaryBundle\Form\Type\LegemdaryPostType
+        tags:
+            - { name: form.type, alias: legemdary_post }
+    
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:

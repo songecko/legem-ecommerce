@@ -104,3 +104,10 @@ hwi_oauth:
             client_id:     %sylius.oauth.google.clientid%
             client_secret: %sylius.oauth.google.clientsecret%
             scope:         "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            
+sylius_resource:
+    resources:
+        legemdary.post:
+            driver: doctrine/orm
+            classes:
+                model: Gecko\LegemdaryBundle\Entity\LegemdaryPost

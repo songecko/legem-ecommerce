@@ -1,0 +1,34 @@
+gecko_legemdary_backend_post_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: legemdary.controller.post:indexAction
+        _sylius:
+            template: GeckoLegemdaryBundle:Backend/Post:index.html.twig
+            paginate: 100
+            
+gecko_legemdary_backend_post_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: legemdary.controller.post:createAction
+        _sylius:
+            template: GeckoLegemdaryBundle:Backend/Post:create.html.twig
+            redirect: gecko_legemdary_backend_post_update
+
+gecko_legemdary_backend_post_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT, POST]
+    defaults:
+        _controller: legemdary.controller.post:updateAction
+        _sylius:
+            template: GeckoLegemdaryBundle:Backend/Post:update.html.twig
+            redirect: gecko_legemdary_backend_post_update
+
+gecko_legemdary_backend_post_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: legemdary.controller.post:deleteAction
+        _sylius:
+            redirect: gecko_legemdary_backend_post_index

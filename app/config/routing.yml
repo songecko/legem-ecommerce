@@ -45,3 +45,7 @@ facebook_login:
 
 google_login:
     pattern: /login/check-google
+    
+gecko_legemdary_backend:
+    resource: @GeckoLegemdaryBundle/Resources/config/routing/backend/legemdaryPost.yml
+    prefix: /administration/post
