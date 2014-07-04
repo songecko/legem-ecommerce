@@ -35,6 +35,12 @@ vich_uploader:
             delete_on_remove:   true
             delete_on_update:   true
             namer:              vich_uploader.namer_uniqid
+        image:
+            uri_prefix:         /images
+            upload_destination: sylius_image
+            delete_on_remove:   true
+            delete_on_update:   true
+            namer:              vich_uploader.namer_uniqid
             
 liip_imagine:
     data_root: %kernel.root_dir%/../web/media/image

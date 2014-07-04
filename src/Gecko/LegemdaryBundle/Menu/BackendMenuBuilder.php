@@ -14,6 +14,6 @@ class BackendMenuBuilder extends Menu
 		$menu->addChild('post', array(
 				'route' => 'gecko_legemdary_backend_post_index',
 				'labelAttributes' => array('icon' => 'glyphicon glyphicon-folder-close'),
-		))->setLabel('Posts');
+		))->setLabel('Blog');
 	}
 }

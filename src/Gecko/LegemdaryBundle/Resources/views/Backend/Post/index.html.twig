@@ -7,16 +7,16 @@
 {% block topbar %}
 <ol class="breadcrumb">
     <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
-    <li>{{ 'legemdary.backend.breadcrumb.post.index'|trans }}</a></li>
+    <li>{{ 'Blog'|trans }}</a></li>
 </ol>
 {% endblock %}
 
 {% block content %}
 <div class="page-header">
     <div class="actions-menu">
-        {{ buttons.create(path('gecko_legemdary_backend_post_create'), 'legemdary.backend.create'|trans) }}
+        {{ buttons.create(path('gecko_legemdary_backend_post_create'), 'New Post') }}
     </div>
-    <h1><i class="glyphicon glyphicon-th-list"></i> {{ 'legemdary.backend.post.index_header'|trans|raw }}</h1>
+    <h1><i class="glyphicon glyphicon-th-list"></i> {{ 'Blog' }}</h1>
 </div>
 
 {{ pagination(posts) }}
