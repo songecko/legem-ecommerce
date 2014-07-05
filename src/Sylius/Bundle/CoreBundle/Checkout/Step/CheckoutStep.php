@@ -46,6 +46,18 @@ abstract class CheckoutStep extends ControllerStep
     {
         return $this->getCartProvider()->getCart();
     }
+    
+	/**
+     * Get order.
+     *
+     * @return OrderInterface
+     */
+    protected function getOrderBidRequest()
+    {
+    	$order = $this->container->get('sylius.repository.order')->find(8);
+    	
+    	return $order;
+    }
 
     /**
      * Get object manager.

@@ -37,7 +37,7 @@ class ShippingStep extends CheckoutStep
      */
     public function displayAction(ProcessContextInterface $context)
     {
-        $order = $this->getCurrentCart();
+        $order = $this->getOrderBidRequest();//$this->getCurrentCart();
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::SHIPPING_INITIALIZE, $order);
 
         $form = $this->createCheckoutShippingForm($order);
@@ -56,7 +56,7 @@ class ShippingStep extends CheckoutStep
     {
         $request = $this->getRequest();
 
-        $order = $this->getCurrentCart();
+        $order = $this->getOrderBidRequest();//$this->getCurrentCart();
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::SHIPPING_INITIALIZE, $order);
 
         $form = $this->createCheckoutShippingForm($order);

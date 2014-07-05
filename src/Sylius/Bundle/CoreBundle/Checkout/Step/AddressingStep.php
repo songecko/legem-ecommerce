@@ -29,7 +29,7 @@ class AddressingStep extends CheckoutStep
      */
     public function displayAction(ProcessContextInterface $context)
     {
-        $order = $this->getCurrentCart();
+        $order = $this->getOrderBidRequest();//$this->getCurrentCart();
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::ADDRESSING_INITIALIZE, $order);
 
         $form = $this->createCheckoutAddressingForm($order);
@@ -44,7 +44,7 @@ class AddressingStep extends CheckoutStep
     {
         $request = $this->getRequest();
 
-        $order = $this->getCurrentCart();
+        $order = $this->getOrderBidRequest();//$this->getCurrentCart();
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::ADDRESSING_INITIALIZE, $order);
 
         $form = $this->createCheckoutAddressingForm($order);

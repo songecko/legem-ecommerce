@@ -131,6 +131,7 @@
         <!-- checkout -->
         <service id="sylius.checkout_scenario" class="%sylius.checkout_scenario.class%">
             <argument type="service" id="sylius.cart_provider" />
+            <argument type="service" id="service_container" />
             <tag name="sylius.process.scenario" alias="sylius_checkout" />
         </service>
 

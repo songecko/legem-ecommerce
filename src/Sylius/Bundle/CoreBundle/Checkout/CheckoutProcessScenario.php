@@ -15,6 +15,7 @@ use Sylius\Bundle\FlowBundle\Process\Builder\ProcessBuilderInterface;
 use Sylius\Bundle\FlowBundle\Process\Scenario\ProcessScenarioInterface;
 use Sylius\Component\Cart\Provider\CartProviderInterface;
 use Sylius\Component\Core\Model\OrderInterface;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Sylius checkout process.
@@ -29,15 +30,17 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
      * @var CartProviderInterface
      */
     protected $cartProvider;
+    private $container;
 
     /**
      * Constructor.
      *
      * @param CartProviderInterface $cartProvider
      */
-    public function __construct(CartProviderInterface $cartProvider)
+    public function __construct(CartProviderInterface $cartProvider, Container $container)
     {
         $this->cartProvider = $cartProvider;
+        $this->container = $container;
     }
 
     /**
@@ -45,7 +48,7 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
      */
     public function build(ProcessBuilderInterface $builder)
     {
-        $cart = $this->getCurrentCart();
+        $cart = $this->getOrder();//$this->getCurrentCart();
 
         $builder
             ->add('security', 'sylius_checkout_security')
@@ -74,5 +77,17 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
     protected function getCurrentCart()
     {
         return $this->cartProvider->getCart();
+    }
+    
+    /**
+     * Get order.
+     *
+     * @return OrderInterface
+     */
+    protected function getOrderBidRequest()
+    {
+    	$order = $this->container->get('sylius.repository.order')->find(8);
+    	
+    	return $order;
     }
 }

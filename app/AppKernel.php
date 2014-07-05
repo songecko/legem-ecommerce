@@ -25,6 +25,7 @@ class AppKernel extends SyliusKernel
 	{
 		return array_merge(parent::registerBundles(), array(
 			new \Gecko\LegemdaryBundle\GeckoLegemdaryBundle(),
+			new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
 		));
 	}
 	

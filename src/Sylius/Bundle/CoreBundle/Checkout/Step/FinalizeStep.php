@@ -28,7 +28,7 @@ class FinalizeStep extends CheckoutStep
      */
     public function displayAction(ProcessContextInterface $context)
     {
-        $order = $this->getCurrentCart();
+        $order = $this->getOrderBidRequest();//$this->getCurrentCart();
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::FINALIZE_INITIALIZE, $order);
 
         return $this->renderStep($context, $order);
@@ -39,7 +39,7 @@ class FinalizeStep extends CheckoutStep
      */
     public function forwardAction(ProcessContextInterface $context)
     {
-        $order = $this->getCurrentCart();
+        $order = $this->getOrderBidRequest();//$this->getCurrentCart();
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::FINALIZE_INITIALIZE, $order);
 
         $order->setUser($this->getUser());

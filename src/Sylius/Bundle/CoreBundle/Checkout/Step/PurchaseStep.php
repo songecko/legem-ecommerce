@@ -30,7 +30,7 @@ class PurchaseStep extends CheckoutStep
      */
     public function displayAction(ProcessContextInterface $context)
     {
-        $order = $this->getCurrentCart();
+        $order = $this->getOrderBidRequest();//$this->getCurrentCart();
 
         $captureToken = $this->getTokenFactory()->createCaptureToken(
             $order->getPayment()->getMethod()->getGateway(),
