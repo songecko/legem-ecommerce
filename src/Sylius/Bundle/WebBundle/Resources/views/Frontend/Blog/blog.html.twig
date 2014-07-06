@@ -9,7 +9,7 @@
 			{% for post in posts %}
 				<div class="post">
 					<a href="{{ path('legemdary_blog_post', {'id': post.id}) }}" class="pic">
-						<img src="{{ post.image ? asset('media/image/'~post.image) : 'http://placehold.it/120x120' }}" class="img-responsive" alt="blogpost" />
+						<img src="{{ post.image|imagine_filter('sylius_small') }}" class="img-responsive" alt="blogpost" />
 					</a>
 
 					<div class="title">

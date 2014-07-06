@@ -7,7 +7,7 @@
 		<div class="row">
 				<div class="col-md-12">
 					<div class="main-pic">
-						<img src="{{ post.image ? asset('media/image/'~post.image) : 'http://placehold.it/120x120' }}" class="img-responsive" alt="blogpost" />
+						<img src="{{ post.image|imagine_filter('sylius_medium')  }}" class="img-responsive" alt="blogpost" />
 					</div>					
 				</div>
 			</div>
