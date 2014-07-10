@@ -15,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Gecko\LegemdaryBundle\Entity\LegemdaryPost;
+use Sylius\Bundle\CartBundle\Event\CartEvent;
+use Sylius\Component\Cart\SyliusCartEvents;
 
 /**
  * Frontend homepage controller.
@@ -36,6 +38,15 @@ class HomepageController extends Controller
     public function comingSoonAction()
     {
     	return $this->render('SyliusWebBundle:Frontend/Homepage:comingSoon.html.twig');
+    }
+    
+    public function bidRequestAction()
+    {
+    	$currentCart = $this->container->get('sylius.cart_provider')->getCart();
+    	$eventDispatcher = $this->container->get('event_dispatcher');
+    	$eventDispatcher->dispatch(SyliusCartEvents::CART_CLEAR_INITIALIZE, new CartEvent($currentCart));
+    	
+    	return $this->render('SyliusWebBundle:Frontend/Homepage:bidRequest.html.twig');
     }
     
     public function blogAction()
