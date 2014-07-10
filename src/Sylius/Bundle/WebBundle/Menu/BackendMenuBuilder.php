@@ -205,13 +205,13 @@ class BackendMenuBuilder extends MenuBuilder
     {
         $child = $menu
             ->addChild('sales', $childOptions)
-            ->setLabel($this->translate(sprintf('sylius.backend.menu.%s.sales', $section)))
+            ->setLabel("Orders and Bids")
         ;
 
         $child->addChild('orders', array(
             'route' => 'sylius_backend_order_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.orders', $section)));
+        ))->setLabel("Bids Request");
         $child->addChild('shipments', array(
             'route' => 'sylius_backend_shipment_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-plane'),

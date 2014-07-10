@@ -1,3 +1,4 @@
+{% if address is not null %}
 <address>
     <strong>{{ address.firstName }} {{ address.lastName }}</strong><br/>
     {% if address.company %}
@@ -10,3 +11,4 @@
     {% endif %}
     {{ address.country|upper }} {{ address.postcode }}
 </address>
+{% endif %}
