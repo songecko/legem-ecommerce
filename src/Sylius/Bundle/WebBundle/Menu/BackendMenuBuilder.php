@@ -87,10 +87,14 @@ class BackendMenuBuilder extends MenuBuilder
         );
 
         $this->addAssortmentMenu($menu, $childOptions, 'sidebar');
-        $this->addSalesMenu($menu, $childOptions, 'sidebar');
-        $this->addCustomersMenu($menu, $childOptions, 'sidebar');
-        $this->addContentMenu($menu, $childOptions, 'sidebar');
-        $this->addConfigurationMenu($menu, $childOptions, 'sidebar');
+        
+        if($this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
+        {
+	        $this->addSalesMenu($menu, $childOptions, 'sidebar');
+	        $this->addCustomersMenu($menu, $childOptions, 'sidebar');
+	        $this->addContentMenu($menu, $childOptions, 'sidebar');
+	        $this->addConfigurationMenu($menu, $childOptions, 'sidebar');
+        }
 
         $this->eventDispatcher->dispatch(MenuBuilderEvent::BACKEND_SIDEBAR, new MenuBuilderEvent($this->factory, $menu));
 

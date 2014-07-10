@@ -8,6 +8,7 @@
     <h1><i class="glyphicon glyphicon-dashboard"></i> {{ 'sylius.backend.dashboard.header'|trans }} <small>{{ 'sylius.backend.dashboard.subheader'|trans }}</small></h1>
 </div>
 
+{% if is_granted('ROLE_SYLIUS_ADMIN') %}
 <div class="row">
     <div class="col-md-6">
         <ul class="nav nav-pills nav-justified">
@@ -45,15 +46,17 @@
         </table>
     </div>
 </div>
-
+{% endif %}
 <div class="row">
     <div class="col-md-6">
         {{ list_orders(orders) }}
         <a href="{{ path('sylius_backend_order_index') }}" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-shopping-cart"></i> {{ 'sylius.show_all'|trans }}</a>
     </div>
+    {% if is_granted('ROLE_SYLIUS_ADMIN') %}
     <div class="col-md-6">
         {{ list_users(users) }}
         <a href="{{ path('sylius_backend_user_index') }}" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-user"></i> {{ 'sylius.show_all'|trans }}</a>
     </div>
+    {% endif %}
 </div>
 {% endblock %}
