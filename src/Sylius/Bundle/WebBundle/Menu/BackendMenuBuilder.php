@@ -88,9 +88,10 @@ class BackendMenuBuilder extends MenuBuilder
 
         $this->addAssortmentMenu($menu, $childOptions, 'sidebar');
         
+	    $this->addSalesMenu($menu, $childOptions, 'sidebar');
+	    
         if($this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
         {
-	        $this->addSalesMenu($menu, $childOptions, 'sidebar');
 	        $this->addCustomersMenu($menu, $childOptions, 'sidebar');
 	        $this->addContentMenu($menu, $childOptions, 'sidebar');
 	        $this->addConfigurationMenu($menu, $childOptions, 'sidebar');
@@ -203,37 +204,44 @@ class BackendMenuBuilder extends MenuBuilder
      */
     protected function addSalesMenu(ItemInterface $menu, array $childOptions, $section)
     {
-        $child = $menu
-            ->addChild('sales', $childOptions)
-            ->setLabel("Orders and Bids")
-        ;
-
-        $child->addChild('orders', array(
-            'route' => 'sylius_backend_order_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
-        ))->setLabel("Bids Request");
-        $child->addChild('shipments', array(
-            'route' => 'sylius_backend_shipment_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plane'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipments', $section)));
-
-        /*$child->addChild('new_order', array(
-            'route' => 'sylius_backend_order_create',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plus-sign'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_order', $section)));*/
-        $child->addChild('payments', array(
-            'route' => 'sylius_backend_payment_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-credit-card'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.payments', $section)));
-
-        $child->addChild('promotions', array(
-            'route' => 'sylius_backend_promotion_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-bullhorn'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.promotions', $section)));
-        $child->addChild('new_promotion', array(
-            'route' => 'sylius_backend_promotion_create',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plus-sign'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_promotion', $section)));
+    	if($this->securityContext->isGranted('ROLE_SYLIUS_VENDOR') || $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
+    	{
+	        $child = $menu
+	            ->addChild('sales', $childOptions)
+	            ->setLabel("Orders and Bids")
+	        ;
+	
+	        $child->addChild('orders', array(
+	            'route' => 'sylius_backend_order_index',
+	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
+	        ))->setLabel("Bids Request");
+    	}
+    	
+    	if($this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
+    	{
+	        $child->addChild('shipments', array(
+	            'route' => 'sylius_backend_shipment_index',
+	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plane'),
+	        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipments', $section)));
+	
+	        /*$child->addChild('new_order', array(
+	            'route' => 'sylius_backend_order_create',
+	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plus-sign'),
+	        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_order', $section)));*/
+	        $child->addChild('payments', array(
+	            'route' => 'sylius_backend_payment_index',
+	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-credit-card'),
+	        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.payments', $section)));
+	
+	        $child->addChild('promotions', array(
+	            'route' => 'sylius_backend_promotion_index',
+	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-bullhorn'),
+	        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.promotions', $section)));
+	        $child->addChild('new_promotion', array(
+	            'route' => 'sylius_backend_promotion_create',
+	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plus-sign'),
+	        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_promotion', $section)));
+    	}
     }
 
     /**

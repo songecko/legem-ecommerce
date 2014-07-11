@@ -18,13 +18,5 @@ class BackendMenuBuilder extends Menu
 					'labelAttributes' => array('icon' => 'glyphicon glyphicon-folder-close'),
 			))->setLabel('Blog');
 		}
-		
-		if($this->securityContext->isGranted('ROLE_SYLIUS_VENDOR') || $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
-		{
-			$menu->addChild('bid_request', array(
-					'route' => 'sylius_backend_order_index',
-					'labelAttributes' => array('icon' => 'glyphicon glyphicon-folder-close'),
-			))->setLabel('Bid Request');
-		}
 	}
 }
