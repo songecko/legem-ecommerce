@@ -70,6 +70,14 @@ class OrderItem implements OrderItemInterface
      */
     protected $total = 0;
 
+    /** Diamond values **/
+    
+    protected $diamondCarat = 0.4;
+    protected $diamondColor = "D";
+    protected $diamondClarity = "IF";
+    protected $diamondCut = "IDEAL";
+    protected $diamondPrice = 0;
+    
     /**
      * Constructor.
      */

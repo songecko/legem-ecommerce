@@ -1,5 +1,5 @@
 # Bootstrap
-app/bootstrap*
+/app/bootstrap*
 
 # Symfony directories
 /vendor/*
@@ -13,7 +13,7 @@ web/uploads/*
 web/bundles/*
 web/assets/compiled/*
 web/media/*
-/composer.lock
+composer.lock
 
 
 # Configuration files
