@@ -125,19 +125,15 @@ $(document).ready(function()
 		titleTemplate: '#title#',
         onStepChanging: function (event, currentIndex, newIndex)
         {
-        	if(currentIndex == 1 && getSelectionValue('color') == '-')
+        	//If going forward
+        	if(newIndex > currentIndex)
         	{
-        		return false;
-        	}
-        	
-        	if(currentIndex == 2 && getSelectionValue('clarity') == '-')
-        	{
-        		return false;
-        	}
-        	
-        	if(currentIndex == 3 && getSelectionValue('cut') == '-')
-        	{
-        		return false;
+	        	if(currentIndex == 1 && getSelectionValue('color') == '-')
+	        		return false;
+	        	if(currentIndex == 2 && getSelectionValue('clarity') == '-')
+	        		return false;
+	        	if(currentIndex == 3 && getSelectionValue('cut') == '-')
+	        		return false;
         	}
         	
             //$(this).prev('form').validate().settings.ignore = ":disabled,:hidden";
