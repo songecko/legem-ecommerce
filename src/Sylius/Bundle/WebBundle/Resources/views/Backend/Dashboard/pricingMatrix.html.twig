@@ -1,0 +1,41 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="glyphicon glyphicon-usd"></i> Pricing Matrix</h1>
+</div>
+
+<div class="pricingMatrix">
+	<form action="{{ path('sylius_backend_pricing_matrix') }}" method="post">
+	{% for caratKey, carat in pricingMatrix %}
+	<h4 class="rapaport">RAPAPORT: ({{ caratRanges[caratKey] }})</p>
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>IF</th>
+				<th>VVS1</th>
+				<th>VVS2</th>
+				<th>VS1</th>
+				<th>VS2</th>
+				<th>S1</th>
+				<th>S2</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for colorKey, color in carat %}
+			<tr>
+				<th>{{ colorKey }}</th>
+				{% for clarityKey, priceGuidance in color %}			
+				<td><input type="text" name="pricingMatrix[{{ caratKey }}][{{ colorKey }}][{{ clarityKey }}]" value="{{ priceGuidance }}"></td>
+				{% endfor %}	
+			</tr>
+			{% endfor %}		
+		</tbody>
+	</table>
+	{% endfor %}
+	
+	<button type="submit" class="btn btn-primary btn-lg"><i class="icon-save"></i> Save changes</button>
+</div>
+
+{% endblock %}

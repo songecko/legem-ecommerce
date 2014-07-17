@@ -13,6 +13,7 @@ namespace Sylius\Bundle\WebBundle\Controller\Backend;
 
 use Sylius\Component\Order\Model\OrderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Backend dashboard controller.
@@ -37,5 +38,55 @@ class DashboardController extends Controller
             'sales'               => $orderRepository->revenueBetweenDates(new \DateTime('1 month ago'), new \DateTime()),
             'sales_confirmed'     => $orderRepository->revenueBetweenDates(new \DateTime('1 month ago'), new \DateTime(), OrderInterface::STATE_CONFIRMED),
         ));
+    }
+    
+    public function pricingMatrixAction(Request $request)
+    {
+    	$updatedPricingMatrix = null;
+    	if($request->isMethod('POST'))
+    	{
+    		$updatedPricingMatrix = $request->get('pricingMatrix');
+    	}
+    	
+    	$repository = $this->getDoctrine()->getRepository('GeckoLegemdaryBundle:DiamondPrice');
+    	$prices = $repository->findAll();
+    	
+    	$pricingMatrix = array();
+    	foreach($prices as $price)
+    	{
+    		$ctKey = $price->getCaratTable();
+    		$clKey = $price->getClarity();
+    		$coKey = $price->getColor();
+    		
+    		if(!isset($pricingMatrix[$ctKey]))
+    			$pricingMatrix[$ctKey] = array();
+    		
+    		if(!isset($pricingMatrix[$ctKey][$coKey]))
+    			$pricingMatrix[$ctKey][$coKey] = array();
+    		
+    		if($updatedPricingMatrix && $updatedPricingMatrix[$ctKey][$coKey][$clKey] != $price->getPriceGuidance())
+    		{
+    			$price->setPriceGuidance($updatedPricingMatrix[$ctKey][$coKey][$clKey]);
+    		}
+    		
+    		$pricingMatrix[$ctKey][$coKey][$clKey] = $price->getPriceGuidance();
+    	}
+    	
+    	if($updatedPricingMatrix)
+    	{
+    		$this->getDoctrine()->getManager()->flush();
+    		return $this->redirect($this->generateUrl('sylius_backend_pricing_matrix'));
+    	}
+    	
+    	$caratRanges = array(
+    		1 => '.40 - .49 CT.', 2 => '.50 - .69 CT.', 3 => '.70 - .89 CT.',
+			4 => '.90 - .99 CT.', 5 => '1.00 - 1.49 CT.', 6 => '1.50 - 1.99 CT.',
+			7 => '2.00 - 3.00 CT.'
+    	);
+    	
+    	return $this->render('SyliusWebBundle:Backend/Dashboard:pricingMatrix.html.twig', array(
+    		'pricingMatrix' => $pricingMatrix,
+    		'caratRanges' => $caratRanges
+    	));
     }
 }

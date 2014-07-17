@@ -12,6 +12,10 @@ sylius_backend_dashboard:
     pattern: /dashboard
     defaults: { _controller: sylius.controller.backend.dashboard:mainAction }
 
+sylius_backend_pricing_matrix:
+    pattern: /pricing-matrix
+    defaults: { _controller: sylius.controller.backend.dashboard:pricingMatrixAction }
+    
 sylius_backend_user:
     resource: @SyliusWebBundle/Resources/config/routing/backend/user.yml
     prefix: /users

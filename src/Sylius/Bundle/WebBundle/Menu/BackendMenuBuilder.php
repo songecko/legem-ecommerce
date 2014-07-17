@@ -263,6 +263,11 @@ class BackendMenuBuilder extends MenuBuilder
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-info-sign'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.general_settings', $section)));
 
+        $child->addChild('pricing_matrix', array(
+        		'route' => 'sylius_backend_pricing_matrix',
+        		'labelAttributes' => array('icon' => 'glyphicon glyphicon-usd'),
+        ))->setLabel("Pricing matrix");
+        
         $child->addChild('locales', array(
             'route' => 'sylius_backend_locale_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-flag'),

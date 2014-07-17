@@ -1,3 +1,7 @@
+.button.disabled {
+	background: #7D8186 !important;
+}
+
 header, header .navbar-header {
 	min-height: 100px;
 }
@@ -141,6 +145,17 @@ header .navbar-brand img {
 	border: none;
 	position: absolute;
 	top: 23px;
+	z-index: 99999;
+}
+
+#wizardModal .approxPrice {
+	font-family: Myriad Pro, Lato, Helvetica Neue, Arial;
+	font-size: 17px;
+	color: #53A6DA;
+	line-height: 25px;
+	position: absolute;
+	top: 25px;
+	right: 20px;
 	z-index: 99999;
 }
 
@@ -426,6 +441,7 @@ header .navbar-brand img {
 #portfolio-item #showcase .project form .button {
 	width: 100%;
 	text-transform: uppercase;
+	text-align: center;
 }
 
 #portfolio-item #showcase .project form .button.submitButton {

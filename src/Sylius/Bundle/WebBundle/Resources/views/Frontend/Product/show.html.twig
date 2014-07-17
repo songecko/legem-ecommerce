@@ -76,7 +76,7 @@
 								
 								<p id="productPrice"><strong>Price: </strong><span class="price">$0</span></p>
                     		
-                    			<button class="button chooseRingButton">Choose this ring</button>
+                    			<a href="#" class="button chooseRingButton" data-pricing-matrix-url="{{ path('sylius_get_pricing_matrix') }}">Choose this ring</a>
 				                <button type="submit" class="button submitButton">Define Your Diamond</button>
 							</form>					
 						</div>
@@ -86,6 +86,7 @@
 			
 			<div id="wizardModal" class="modal fade">
 				<button class="backButton" data-dismiss="modal">« Back to {{ product.name }}</button>
+				<p class="approxPrice">Approx. Diamond Price: <span class="range"></span></p>
 				
 				<div class="customizable" style="background: #FFFFFF url({{ product.image.path|imagine_filter('sylius_medium') }}) no-repeat center 30px; background-size: contain;">
 			    	<h1>Choose Your Diamond's Carat</h1>
@@ -164,15 +165,15 @@
 			    				</div>
 			    				<div class="color clearfix">
 			    					<div class="label">Color</div>
-			    					<div class="value">G</div>
+			    					<div class="value">-</div>
 			    				</div>
 			    				<div class="clarity clearfix">
 			    					<div class="label">Clarity</div>
-			    					<div class="value">VS2</div>
+			    					<div class="value">-</div>
 			    				</div>
 			    				<div class="cut clearfix">
 			    					<div class="label">Cut</div>
-			    					<div class="value">EXCELENT</div>
+			    					<div class="value">-</div>
 			    				</div>
 		    				</div>
 	    				</div>

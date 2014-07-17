@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Gecko\LegemdaryBundle\Entity\LegemdaryPost;
 use Sylius\Bundle\CartBundle\Event\CartEvent;
 use Sylius\Component\Cart\SyliusCartEvents;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Frontend homepage controller.
@@ -47,6 +48,30 @@ class HomepageController extends Controller
     	$eventDispatcher->dispatch(SyliusCartEvents::CART_CLEAR_INITIALIZE, new CartEvent($currentCart));
     	
     	return $this->render('SyliusWebBundle:Frontend/Homepage:bidRequest.html.twig');
+    }
+    
+    public function getPricingMatrixAction()
+    {
+    	$repository = $this->getDoctrine()->getRepository('GeckoLegemdaryBundle:DiamondPrice');
+    	$prices = $repository->findAll();
+    	
+    	$pricingMatrix = array();
+    	foreach($prices as $price)
+    	{
+    		$ctKey = 'ct'.$price->getCaratTable();
+    		$clKey = $price->getClarity();
+    		$coKey = $price->getColor();
+    		
+    		if(!isset($pricingMatrix[$ctKey]))
+    			$pricingMatrix[$ctKey] = array();
+    		
+    		if(!isset($pricingMatrix[$ctKey][$clKey]))
+    			$pricingMatrix[$ctKey][$clKey] = array();
+    		
+    		$pricingMatrix[$ctKey][$clKey][$coKey] = $price->getPriceGuidance();
+    	}
+    	
+    	return JsonResponse::create($pricingMatrix);
     }
     
     public function blogAction()

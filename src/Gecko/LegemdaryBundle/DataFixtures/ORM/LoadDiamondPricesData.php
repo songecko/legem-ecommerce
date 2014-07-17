@@ -10,9 +10,9 @@ class LoadDiamondPricesData extends DataFixture
 {	
     public function load(ObjectManager $manager)
     {
-    	$caratTables = array(1, 2, 3, 4, 5, 6);
+    	$caratTables = array(1, 2, 3, 4, 5, 6, 7);
     	$colors = array('D', 'E', 'F', 'G', 'H', 'I', 'J');
-    	$claritys = array('IF', 'VVS1', 'VVS2', 'VS1', 'VS2');
+    	$claritys = array('IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'S1', 'S2');
     	
     	foreach ($caratTables as $caratTable)
     	{
