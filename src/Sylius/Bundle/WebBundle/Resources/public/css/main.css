@@ -2,6 +2,10 @@
 	background: #7D8186 !important;
 }
 
+.list-unstyled {
+	margin: 0;
+}
+
 header, header .navbar-header {
 	min-height: 100px;
 }
@@ -307,6 +311,8 @@ header .navbar-brand img {
 }
 
 .wizard > .content .caratSelection .ctSelection {
+	width: 104px;
+    display: inline;
 	background: #5EABDF;
 	padding: 12px;
 	margin-left: 15px;

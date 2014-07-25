@@ -86,7 +86,10 @@ class BackendMenuBuilder extends MenuBuilder
             'labelAttributes'    => array('class' => 'nav-header')
         );
 
-        $this->addAssortmentMenu($menu, $childOptions, 'sidebar');
+        if($this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
+        {
+        	$this->addAssortmentMenu($menu, $childOptions, 'sidebar');
+        }
         
 	    $this->addSalesMenu($menu, $childOptions, 'sidebar');
 	    

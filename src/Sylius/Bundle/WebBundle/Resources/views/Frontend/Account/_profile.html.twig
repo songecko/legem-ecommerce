@@ -1,12 +1,23 @@
-<h4>{{ 'sylius.account.home.welcome'|trans }}</h4>
-<br>
+{% block content %}
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
+<div class="container">
+	<div class="row header">
+		<h3>Your Account</h3>
+	</div>
 
-<div class="row">
-    {#<div class="col-md-7">{{ 'sylius.account.home.outline'|trans }} </div>#}
-    <div class="col-md-12">
-        <strong>{{ app.user.lastName|upper }} {{ app.user.firstName }}</strong><br><br>
-        {{ 'sylius.account.home.id'|trans }} {{ app.user.id }} <br>
-        {{ 'sylius.account.home.email'|trans }} {{ app.user.email }}<br>
-        {{ 'sylius.account.home.since'|trans }} {{ app.user.createdAt|date() }}
-    </div>
+	<br>
+
+	<div class="row">
+	    {#<div class="col-md-7">{{ 'sylius.account.home.outline'|trans }} </div>#}
+	    <div class="col-md-12">
+	        <strong>{{ app.user.lastName|upper }} {{ app.user.firstName }}</strong><br><br>
+	        {{ 'sylius.account.home.id'|trans }} {{ app.user.id }} <br>
+	        {{ 'sylius.account.home.email'|trans }} {{ app.user.email }}<br>
+	        {{ 'sylius.account.home.since'|trans }} {{ app.user.createdAt|date() }}
+	    </div>
+	</div>
 </div>
+</div>
+</div>
+{% endblock %}

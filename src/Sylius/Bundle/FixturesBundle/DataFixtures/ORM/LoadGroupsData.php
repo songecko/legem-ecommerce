@@ -26,6 +26,7 @@ class LoadGroupsData extends DataFixture
     public function load(ObjectManager $manager)
     {
         $manager->persist($this->createGroup('Administrators', array('ROLE_SYLIUS_ADMIN')));
+        $manager->persist($this->createGroup('Vendors', array('ROLE_SYLIUS_VENDOR')));
         $manager->persist($this->createGroup('Customers'));
 
         $manager->flush();

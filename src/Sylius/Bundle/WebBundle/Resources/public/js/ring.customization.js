@@ -77,6 +77,27 @@ var calculateApproxPrice = function()
 	$('#wizardModal .approxPrice .range').html('$'+Math.round(minPrice)+' - $'+Math.round(maxPrice));
 };
 
+var refreshCaratValue = function(value)
+{
+	if($(".customizable #caratSlider").slider("value") != value)
+	{
+			$(".customizable #caratSlider").slider("value", value);
+	}
+	
+	var decimals = ((+value).toFixed(2)).replace(/^-?\d*\.?|0+$/g, '').length;
+	
+	if(decimals == 0)
+	{
+		value = value+'.00';
+	}else if(decimals == 1)
+	{
+		value = value+'0';
+	}
+	
+	$(".customizable .selection .review .carat .value").html(value);
+	$(".customizable .caratSelection .ctSelection").val(value);
+};
+
 $(document).ready(function()
 {	
 	//Init
@@ -86,21 +107,32 @@ $(document).ready(function()
 	{
 		e.preventDefault();
 		
-		if(!$(this).hasClass('disabled'))
+		var ringMetalValue = $('#sylius_cart_item_variant_metal').val();
+		var ringSizeValue = $('#sylius_cart_item_variant_size').val();
+		if(!ringMetalValue || !ringSizeValue)
 		{
-			$(this).addClass('disabled');
-			
-			$.ajax({
-				url:   $(this).data('pricingMatrixUrl'),
-	            type:  'get',
-	            success: function (data, textStatus, jqXHR) 
-	            {
-	            	pricingMatrix = data;
-	            	
-	            	$('#productForm .chooseRingButton').hide();
-	        		$('#productForm .submitButton').show();
-	            }
-			});
+			if(!ringMetalValue)
+				$('#sylius_cart_item_variant_metal').parent('.form-group').tooltip('show');
+			if(!ringSizeValue)
+				$('#sylius_cart_item_variant_size').parent('.form-group').tooltip('show');
+		}else
+		{	
+			if(!$(this).hasClass('disabled'))
+			{
+				$(this).addClass('disabled');
+				
+				$.ajax({
+					url:   $(this).data('pricingMatrixUrl'),
+		            type:  'get',
+		            success: function (data, textStatus, jqXHR) 
+		            {
+		            	pricingMatrix = data;
+		            	
+		            	$('#productForm .chooseRingButton').hide();
+		        		$('#productForm .submitButton').show();
+		            }
+				});
+			}
 		}
 	});
 	
@@ -164,30 +196,34 @@ $(document).ready(function()
         },
         onFinished: function (event, currentIndex)
         {
+        	$('input[name="diamond[carat]"]').val(getSelectionValue('carat'));
+        	$('input[name="diamond[color]"]').val(getSelectionValue('color'));
+        	$('input[name="diamond[clarity]"]').val(getSelectionValue('clarity'));
+        	$('input[name="diamond[cut]"]').val(getSelectionValue('cut'));
+        	
             $('#productForm').get(0).submit();
-        } 
+        },
+        /* Labels */
+        labels: {
+            finish: "Get Bids",
+        }
 	});
 	
 	//-- Diamond attribute selections --//
+	$(".customizable .caratSelection .ctSelection").change(function()
+	{
+		var value = $(this).val();
+		refreshCaratValue(value);
+	});
+	
 	$(".customizable #caratSlider").slider({ 
 		min: 0.4,
 		max: 3,
-		step: 0.05,
+		step: 0.01,
 		change: function(event, ui) 
 		{
 			var value = ui.value;
-			var decimals = ((+value).toFixed(2)).replace(/^-?\d*\.?|0+$/g, '').length;
-			
-			if(decimals == 0)
-			{
-				value = value+'.00';
-			}else if(decimals == 1)
-			{
-				value = value+'0';
-			}
-			
-			$(".customizable .selection h4 span.ctSelection").html(value);
-			$(".customizable .selection .review .carat .value").html(value);
+			refreshCaratValue(value);			
 		}
 	});
 	

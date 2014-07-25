@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% set settings = sylius_settings_all('general') %}
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<meta name="description" content="{{ settings.meta_description|default('sylius.meta.frontend_description'|trans) }}">
+	<meta name="keywords" content="{{ settings.meta_keywords|default('sylius.meta.frontend_keywords'|trans) }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+	<title>{% block title %}{{ settings.title|default('sylius.meta.frontend_title'|trans) }}{% endblock %}</title>
+
+	<!-- stylesheets -->
+	{# stylesheets... #}
+	{% block stylesheets %}
+	{% stylesheets output='assets/compiled/frontend.css' filter='cssrewrite'
+		'bundles/syliusweb/css/vendor/font-awesome.min.css'
+		'bundles/syliusweb/css/ui-lightness/jquery-ui-1.10.4.min.css'
+		'bundles/syliusweb/css/vendor/ionicons.css'
+		'bundles/syliusweb/css/vendor/entypo.css'
+		'bundles/syliusweb/css/bootstrap/bootstrap.min.css'
+		'bundles/syliusweb/css/vendor/animate.css'
+		'bundles/syliusweb/css/vendor/jquery.steps.css'
+		'bundles/syliusweb/css/vendor/isotope.css'
+		'bundles/syliusweb/css/compiled/theme.css'
+		'bundles/syliusweb/css/main.css'
+	%}
+	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+	{% endstylesheets %}
+	{% endblock %}
+
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body id="signup">
+	{% block content %}
+	
+	{% endblock %}
+
+	<!-- javascript -->
+	{# javascripts... #}
+	{% block javascripts %}
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	{% javascripts output='assets/compiled/frontend.js'
+		'bundles/syliusweb/js/jquery-ui-1.10.4.min.js'
+		'bundles/syliusweb/js/bootstrap/bootstrap.min.js'
+		'bundles/syliusweb/js/vendor/jquery.steps.min.js'
+		'bundles/syliusweb/js/vendor/jquery.isotope.min.js'
+		'bundles/syliusweb/js/theme.js'
+		'bundles/syliusweb/js/frontend.js'
+		'bundles/syliusweb/js/ring.customization.js'
+		'bundles/syliusweb/js/main.js'
+	%}
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	{% endblock %}
+</body>
+</html>

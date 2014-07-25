@@ -2,7 +2,12 @@
 {% extends 'SyliusWebBundle:Frontend/Account:layout.html.twig' %}
 
 {% block content %}
-    <h4>{{ 'sylius.account.order.list'|trans }}</h4>
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
+<div class="container">
+	<div class="row header">
+		<h3>Your bids requests</h3>
+	</div>
 
     <div class="row">
         {% if orders is not empty %}
@@ -46,7 +51,10 @@
             </tbody>
         </table>
         {% else %}
-            <p>{{ 'sylius.account.order.empty'|trans }}</p>
+            <p>You have placed no bids approved yet.</p>
         {% endif %}
     </div>
+</div>
+</div>
+</div>
 {% endblock %}

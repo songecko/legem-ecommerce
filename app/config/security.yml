@@ -43,19 +43,34 @@ security:
                 lifetime: 31536000
                 always_remember_me: true
                 remember_me_parameter: _remember_me
-            oauth:
-                resource_owners:
-                    amazon:   "/login/check-amazon"
-                    facebook: "/login/check-facebook"
-                    google:   "/login/check-google"
-                login_path:   /connect
-                failure_path: /connect
-                oauth_user_provider:
-                    service: sylius.oauth.user_provider
             logout: 
                 invalidate_session: false
             anonymous: true
 
+        secured_area:
+            pattern:    ^/sinexistir/
+            form_login:
+                login_path:  /sinexistir/login
+                check_path:  /sinexistir/login_check
+                default_target_path: /sinexistir/
+                always_use_default_target_path: true
+            logout:
+                path:   /sinexistir/logout
+                target: /sinexistir/
+            anonymous: ~
+            http_basic:
+                realm: "Secured Demo Area"
+            oauth:
+                resource_owners:
+                    amazon:   "/sinexistir/login/check-amazon"
+                    facebook: "/sinexistir/login/check-facebook"
+                    google:   "/sinexistir/login/check-google"
+                login_path:   /sinexistir/connect
+                check_path:  /sinexistir/login_check
+                failure_path: /sinexistir/connect
+                oauth_user_provider:
+                    service: sylius.oauth.user_provider
+                
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -70,6 +85,7 @@ security:
         - { path: ^/administration/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: "/administration.*", role: [ROLE_SYLIUS_ADMIN, ROLE_SYLIUS_VENDOR] }
 
+        - { path: "/cart.*", role: ROLE_USER }
         - { path: "/account.*", role: ROLE_USER }
 
         - { path: "/_partial.*", ip: 127.0.0.1 }

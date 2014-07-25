@@ -12,7 +12,7 @@ class LoadDiamondPricesData extends DataFixture
     {
     	$caratTables = array(1, 2, 3, 4, 5, 6, 7);
     	$colors = array('D', 'E', 'F', 'G', 'H', 'I', 'J');
-    	$claritys = array('IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'S1', 'S2');
+    	$claritys = array('IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2');
     	
     	foreach ($caratTables as $caratTable)
     	{

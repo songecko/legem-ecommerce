@@ -76,8 +76,8 @@ class OrderItem implements OrderItemInterface
     protected $diamondColor = "D";
     protected $diamondClarity = "IF";
     protected $diamondCut = "IDEAL";
-    protected $diamondPrice = 0;
     
+        
     /**
      * Constructor.
      */
@@ -86,6 +86,50 @@ class OrderItem implements OrderItemInterface
         $this->adjustments = new ArrayCollection();
     }
 
+    public function setDiamondCarat($diamondCarat)
+    {
+    	$this->diamondCarat = $diamondCarat;
+    
+    	return $this;
+    }
+    public function getDiamondCarat()
+    {
+    	return $this->diamondCarat;
+    }
+    
+    public function setDiamondColor($diamondColor)
+    {
+    	$this->diamondColor = $diamondColor;
+    
+    	return $this;
+    }
+    public function getDiamondColor()
+    {
+    	return $this->diamondColor;
+    }
+    
+    public function setDiamondClarity($diamondClarity)
+    {
+    	$this->diamondClarity = $diamondClarity;
+    
+    	return $this;
+    }
+    public function getDiamondClarity()
+    {
+    	return $this->diamondClarity;
+    }
+    
+    public function setDiamondCut($diamondCut)
+    {
+    	$this->diamondCut = $diamondCut;
+    
+    	return $this;
+    }
+    public function getDiamondCut()
+    {
+    	return $this->diamondCut;
+    }
+    
     /**
      * {@inheritdoc}
      */

@@ -32,6 +32,11 @@
             </cascade>
         </one-to-many>
 
+        <field name="diamondCarat" column="diamond_carat" type="string" nullable="true" />
+        <field name="diamondColor" column="diamond_color" type="string" nullable="true" />
+        <field name="diamondClarity" column="diamond_clarity" type="string" nullable="true" />
+        <field name="diamondCut" column="diamond_cut" type="string" nullable="true" />
+        
         <field name="quantity" column="quantity" type="integer" />
         <field name="unitPrice" column="unit_price" type="integer" />
         <field name="adjustmentsTotal" column="adjustments_total" type="integer" />

@@ -47,9 +47,9 @@
 								{% if product.hasVariants %}
 								{% if not product.isVariantSelectionMethodChoice %}
 								{% for variantOption in form.variant %}
-								<div class="form-group">
+								<div class="form-group" data-title="You must select a {{ variantOption.vars.label }}" data-trigger="monual" data-placement="left">
     								{{ form_label(variantOption, null, {'override_attr': 'true'}) }}
-    								{{ form_widget(variantOption) }}
+    								{{ form_widget(variantOption, {'empty_value': 'Select a ' ~ variantOption.vars.label}) }}
     								<p>{#{ variantOption.price }#}</p>
   								</div>
 			    				{% endfor %}
@@ -74,6 +74,11 @@
 	                    		{% endfor %}
 								</div>
 								
+								<input type="hidden" name="diamond[carat]" value="0.4">
+		    					<input type="hidden" name="diamond[color]" value="">
+		    					<input type="hidden" name="diamond[clarity]" value="">
+		    					<input type="hidden" name="diamond[cut]" value="">
+		    					
 								<p id="productPrice"><strong>Price: </strong><span class="price">$0</span></p>
                     		
                     			<a href="#" class="button chooseRingButton" data-pricing-matrix-url="{{ path('sylius_get_pricing_matrix') }}">Choose this ring</a>
@@ -92,7 +97,9 @@
 			    	<h1>Choose Your Diamond's Carat</h1>
 	    			<div>
 	    				<div class="col-md-6 selection caratSelection">
-	    					<h4>Diamond Carat: <span class="ctSelection">0.40</span></h4>
+	    					<h4>Diamond Carat: 
+	    						<input type="number" class="ctSelection" min="0.4" max="3" step="0.01" value="0.40">
+	    					</h4>
 		    				<div class="selectionContent clearfix">
 		    					<span>0.40 ct</span>
 			    				<div id="caratSlider"></div>
@@ -131,8 +138,8 @@
 			    				<div>VVS2</div>
 			    				<div>VS1</div>
 			    				<div>VS2</div>
-			    				<div>S1</div>
-			    				<div>S2</div>
+			    				<div>SI1</div>
+			    				<div>SI2</div>
 		    				</div>
 	    				</div>
 	    				<div class="col-md-5 col-md-offset-1 explanation">
@@ -158,7 +165,7 @@
 	    			<div>
 	    				<div class="col-md-6 selection reviewDiamond">
 	    					<h4>Your Diamond Selection</h4>
-		    				<div class="selectionContent review">
+		    				<div class="selectionContent review">	
 			    				<div class="carat clearfix">
 			    					<div class="label">Carat</div>
 			    					<div class="value">0.40</div>

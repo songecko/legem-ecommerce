@@ -95,7 +95,7 @@ fos_user:
             type: sylius_user_registration
 
 hwi_oauth:
-    firewall_name: main
+    firewall_name: secured_area
     resource_owners:
         amazon:
             type:          amazon

@@ -36,10 +36,24 @@ class LoadUsersData extends DataFixture
         $user->setCurrency('USD');
 
         $manager->persist($user);
-        $manager->flush();
 
         $this->setReference('User-Administrator', $user);
-
+        
+        //Vendor
+        $vendor = $this->getUserRepository()->createNew();
+        $vendor->setFirstname($this->faker->firstName);
+        $vendor->setLastname($this->faker->lastName);
+        $vendor->setEmail('vendor@legemdary.com');
+        $vendor->setPlainPassword('123456');
+        $vendor->setEnabled(true);
+        $vendor->setRoles(array('ROLE_SYLIUS_VENDOR'));
+        $vendor->setCurrency('USD');
+        
+        $manager->persist($user);
+        $manager->persist($vendor);
+        
+        $manager->flush();
+        
         for ($i = 1; $i <= 15; $i++) {
             $user = $this->getUserRepository()->createNew();
 
