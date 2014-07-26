@@ -108,7 +108,7 @@ class ItemResolver implements ItemResolverInterface
     public function resolve(CartItemInterface $item, $data)
     {
         $id = $this->resolveItemIdentifier($data);
-
+        
         /* @var $product ProductInterface */
         if (!$product = $this->productRepository->find($id)) {
             throw new ItemResolvingException('Requested product was not found.');
@@ -128,9 +128,10 @@ class ItemResolver implements ItemResolverInterface
 
         $variant = $item->getVariant();
 
+        //ldd($item);
         // If all is ok with form, quantity and other stuff, simply return the item.
         if (!$form->isValid() || null === $variant) {
-            throw new ItemResolvingException('Submitted form is invalid.');
+           // throw new ItemResolvingException('Submitted form is invalid.');
         }
 
         $item->setUnitPrice(
@@ -146,7 +147,7 @@ class ItemResolver implements ItemResolverInterface
         }
         
         //Set the diamonds values
-        $diamond = $data->request->get('diamond');
+        $diamond = $data->query->get('diamond');
         $item->setDiamondCarat($diamond['carat']);
         $item->setDiamondColor($diamond['color']);
         $item->setDiamondClarity($diamond['clarity']);
@@ -179,7 +180,7 @@ class ItemResolver implements ItemResolverInterface
         }
 
         if (!$request->isMethod('POST') && !$request->isMethod('PUT')) {
-            throw new ItemResolvingException('Invalid request method.');
+            //throw new ItemResolvingException('Invalid request method.');
         }
 
         /*

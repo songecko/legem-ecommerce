@@ -93,23 +93,6 @@ fos_user:
     registration:
         form:
             type: sylius_user_registration
-
-hwi_oauth:
-    firewall_name: secured_area
-    resource_owners:
-        amazon:
-            type:          amazon
-            client_id:     %sylius.oauth.amazon.clientid%
-            client_secret: %sylius.oauth.amazon.clientsecret%
-        facebook:
-            type:          facebook
-            client_id:     %sylius.oauth.facebook.clientid%
-            client_secret: %sylius.oauth.facebook.clientsecret%
-        google:
-            type:          google
-            client_id:     %sylius.oauth.google.clientid%
-            client_secret: %sylius.oauth.google.clientsecret%
-            scope:         "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
             
 sylius_resource:
     resources:

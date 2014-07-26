@@ -43,7 +43,7 @@
 								{% endfor %}
 								{% endif %}
 							</div>
-							<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" id="productForm">
+							<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="get" id="productForm">
 								{% if product.hasVariants %}
 								{% if not product.isVariantSelectionMethodChoice %}
 								{% for variantOption in form.variant %}

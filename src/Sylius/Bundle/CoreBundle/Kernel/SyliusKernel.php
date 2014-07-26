@@ -74,7 +74,7 @@ abstract class SyliusKernel extends Kernel
             new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
         	new \Vich\UploaderBundle\VichUploaderBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle(),
-            new \HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+           // new \HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new \FOS\RestBundle\FOSRestBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),

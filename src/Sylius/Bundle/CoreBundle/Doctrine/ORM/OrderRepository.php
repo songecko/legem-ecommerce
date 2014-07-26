@@ -114,7 +114,9 @@ class OrderRepository extends CartRepository
     public function createFilterPaginator($criteria = array(), $sorting = array(), $deleted = false)
     {
         $queryBuilder = parent::getCollectionQueryBuilder();
+        // To show bids request
         $queryBuilder->andWhere($queryBuilder->expr()->isNull('o.completedAt'));
+        $queryBuilder->andWhere($queryBuilder->expr()->isNotNull('o.user'));
 
         if ($deleted) {
             $this->_em->getFilters()->disable('softdeleteable');
