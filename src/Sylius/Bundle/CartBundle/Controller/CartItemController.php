@@ -19,6 +19,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sylius\Component\Order\Model\OrderInterface;
 
 /**
  * Cart item controller.
@@ -59,11 +60,13 @@ class CartItemController extends Controller
             $item = $this->getResolver()->resolve($emptyItem, $request);
         } catch (ItemResolvingException $exception) {
             // Write flash message
-            $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_ERROR, new FlashEvent($exception->getMessage()));
+            //$eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_ERROR, new FlashEvent($exception->getMessage()));
 
             return $this->redirectAfterAdd($request);
         }
 
+        $cart->setState(OrderInterface::STATE_CONFIRMED);
+        
         $event = new CartItemEvent($cart, $item);
         $event->isFresh(true);
 
@@ -73,11 +76,16 @@ class CartItemController extends Controller
         $eventDispatcher->dispatch(SyliusCartEvents::CART_SAVE_INITIALIZE, $event);
 
         // Write flash message
-        $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_COMPLETED, new FlashEvent());
-
-        return $this->redirectAfterAdd($request);
+        //$eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_COMPLETED, new FlashEvent());
+		
+        return $this->redirectToBidRequested($request);
     }
 
+    protected function redirectToBidRequested()
+    {
+    	return $this->redirect($this->generateUrl('sylius_bid_request'));
+    }
+    
     /**
      * Redirect to specific URL or to cart.
      *

@@ -28,7 +28,7 @@ sylius_backend_order_update:
         _controller: sylius.controller.order:updateAction
         _sylius:
             template: SyliusWebBundle:Backend/Order:update.html.twig
-            redirect: sylius_backend_order_show
+            redirect: sylius_backend_order_index
 
 sylius_backend_order_delete:
     pattern: /{id}

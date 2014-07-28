@@ -61,7 +61,7 @@ security:
         - { path: ^/administration/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: "/administration.*", role: [ROLE_SYLIUS_ADMIN, ROLE_SYLIUS_VENDOR] }
 
-        - { path: ^/cart, role: ROLE_USER }
+        - { path: "^/cart.*", role: ROLE_USER }
         - { path: "/account.*", role: ROLE_USER }
 
         - { path: "/_partial.*", ip: 127.0.0.1 }
