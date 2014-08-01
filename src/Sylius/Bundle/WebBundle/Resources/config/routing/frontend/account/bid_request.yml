@@ -1,0 +1,11 @@
+sylius_account_bids_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.frontend.account.bid_request:indexAction
+
+sylius_account_bids_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults: 
+        _controller: sylius.controller.frontend.account.bid_request:showAction

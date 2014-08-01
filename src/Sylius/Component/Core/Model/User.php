@@ -35,12 +35,14 @@ class User extends BaseUser implements UserInterface
     protected $billingAddress;
     protected $shippingAddress;
     protected $addresses;
+    protected $diamondBids;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->orders    = new ArrayCollection();
         $this->addresses = new ArrayCollection();
+        $this->diamondBids = new ArrayCollection();
 
         parent::__construct();
     }
@@ -348,5 +350,10 @@ class User extends BaseUser implements UserInterface
         $this->setUsernameCanonical($emailCanonical);
 
         return $this;
+    }
+    
+    public function getDiamondBids()
+    {
+    	return $this->diamondBids;
     }
 }

@@ -1,0 +1,53 @@
+{% macro list(bidRequests, user) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+{% import 'SyliusWebBundle:Backend/Macros:misc.html.twig' as misc %}
+
+{% set router_paramters = user is not null ? {'id' : user.id} : {} %}
+
+{% if bidRequests|length > 0 %}
+<table id="orders" class="table">
+    <thead>
+        <tr>
+            <th>Created at</th>
+            <th>Carat</th>
+            <th>Color</th>
+            <th>Clarity</th>
+            <th>Cut</th>
+            <th>Bids</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bidRequest in bidRequests %}
+        <tr id="{{ bidRequest.id }}">
+            <td>{{ bidRequest.createdAt|date }}</td>
+            <td>{{ bidRequest.carat }}</td>
+            <td>{{ bidRequest.color }}</td>
+            <td>{{ bidRequest.clarity }}</td>
+            <td>{{ bidRequest.cut }}</td>
+            <td>{{ bidRequest.diamondBids|length }}</td>
+            <td>
+                <div class="pull-right">
+    	            <a href="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': bidRequest.id}) }}" class="btn btn-primary">
+    					<i class="glyphicon glyphicon-pencil"></i><span>Make a bid</span>
+					</a>
+                {#{ buttons.show(path('sylius_backend_order_show', {'id': order.id})) }#}
+                {#{ buttons.edit(path('sylius_backend_bids_update', {'id': bidRequest.id})) }#}
+                {#{ buttons.delete(path('sylius_backend_order_delete', {'id': bidRequest.id})) }#}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    {% if user is not null %}
+        {{ alerts.info('sylius.user.order.no_results'|trans) }}
+    {% else %}
+        {{ alerts.info('sylius.order.no_results'|trans) }}
+    {% endif %}
+{% endif %}
+
+{% endmacro %}

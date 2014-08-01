@@ -70,7 +70,12 @@
                 <cascade-all />
             </cascade>
         </many-to-many>
-
+		
+		<one-to-many field="diamondBids" target-entity="Gecko\LegemdaryBundle\Entity\DiamondBid" mapped-by="vendor" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
 
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>

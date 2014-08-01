@@ -1,0 +1,38 @@
+sylius_backend_bids_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: legemdary.controller.diamond_bid_request:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bids:index.html.twig
+            method: createFilterPaginator
+            arguments: [$criteria, $sorting, $deleted]
+            paginate: 20
+
+sylius_backend_bids_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: legemdary.controller.diamond_bid_request:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bids:update.html.twig
+            redirect: sylius_backend_bids_index
+
+sylius_backend_bids_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: legemdary.controller.diamond_bid_request:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: sylius_backend_bids_index
+
+sylius_backend_bids_make:
+    pattern: /{diamond_bid_request_id}/make
+    methods: [GET, PUT]
+    defaults:
+        _controller: legemdary.controller.diamond_bid:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bids:make.html.twig
+            redirect: sylius_backend_bids_index
+            

@@ -119,8 +119,6 @@ class Order implements OrderInterface
      * @var integer
      */
     protected $state = OrderInterface::STATE_CART;
-    
-    protected $diamondPrice = 0;
 
     /**
      * Constructor.
@@ -138,18 +136,6 @@ class Order implements OrderInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getDiamondPrice()
-    {
-    	return $this->diamondPrice;
-    }
-    
-    public function setDiamondPrice($diamondPrice)
-    {
-    	$this->diamondPrice = $diamondPrice;
-    
-    	return $this;
     }
     
     /**

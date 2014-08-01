@@ -23,6 +23,7 @@ use Sylius\Component\Inventory\Checker\AvailabilityCheckerInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Gecko\LegemdaryBundle\Entity\DiamondBidRequest;
 
 /**
  * Item resolver for cart bundle.
@@ -145,13 +146,6 @@ class ItemResolver implements ItemResolverInterface
                 break;
             }
         }
-        
-        //Set the diamonds values
-        $diamond = $data->query->get('diamond');
-        $item->setDiamondCarat($diamond['carat']);
-        $item->setDiamondColor($diamond['color']);
-        $item->setDiamondClarity($diamond['clarity']);
-        $item->setDiamondCut($diamond['cut']);
 
         if (!$this->availabilityChecker->isStockSufficient($variant, $quantity)) {
             throw new ItemResolvingException('Selected item is out of stock.');

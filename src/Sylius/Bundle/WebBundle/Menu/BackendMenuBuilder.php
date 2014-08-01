@@ -213,15 +213,20 @@ class BackendMenuBuilder extends MenuBuilder
 	            ->addChild('sales', $childOptions)
 	            ->setLabel("Orders and Bids")
 	        ;
-	
-	        $child->addChild('orders', array(
-	            'route' => 'sylius_backend_order_index',
-	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
-	        ))->setLabel("Bids Request");
+	        
+	        $child->addChild('bids', array(
+	        		'route' => 'sylius_backend_bids_index',
+	        		'labelAttributes' => array('icon' => 'glyphicon glyphicon-saved'),
+	        ))->setLabel("Bid Requests");
     	}
     	
     	if($this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
     	{
+    		$child->addChild('orders', array(
+    				'route' => 'sylius_backend_order_index',
+    				'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
+    		))->setLabel("Orders");
+    		
 	        $child->addChild('shipments', array(
 	            'route' => 'sylius_backend_shipment_index',
 	            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plane'),

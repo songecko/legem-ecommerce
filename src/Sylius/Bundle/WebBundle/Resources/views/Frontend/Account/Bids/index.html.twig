@@ -1,0 +1,45 @@
+{% import 'SyliusWebBundle:Frontend/Macros:buttons.html.twig' as buttons %}
+{% extends 'SyliusWebBundle:Frontend/Account:layout.html.twig' %}
+
+{% block content %}
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
+<div class="container">
+	<div class="row header">
+		<h3>Your bids requests</h3>
+	</div>
+
+    <div class="row">
+        {% if bidRequests is not empty %}
+        <table id="orders" class="table">
+            <thead>
+                <tr>
+                    <td>Created at</td>
+                    <td>Carat</td>
+                    <td>Color</td>
+                    <td>Clarity</td>
+                    <td>Cut</td>
+                    <td>Bids</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bidRequest in bidRequests %}
+                    <tr class="order" id="order-{{ bidRequest.id }}">
+                        <td>{{ bidRequest.createdAt|date }}</td>
+                        <td>{{ bidRequest.carat }}</td>
+                        <td>{{ bidRequest.color }}</td>
+                        <td>{{ bidRequest.clarity }}</td>
+                        <td>{{ bidRequest.cut }}</td>
+                        <td>{{ bidRequest.diamondBids|length }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>You have placed no bids approved yet.</p>
+        {% endif %}
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

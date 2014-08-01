@@ -7,6 +7,11 @@ services:
         tags:
             - { name: form.type, alias: legemdary_post }
     
+    legemdary.form.type.diamond_bid:
+        class: Gecko\LegemdaryBundle\Form\Type\DiamondBidType
+        tags:
+            - { name: form.type, alias: legemdary_diamond_bid }
+            
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:

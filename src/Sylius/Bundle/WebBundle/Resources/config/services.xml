@@ -9,6 +9,7 @@
         <parameter key="sylius.controller.frontend.homepage.class">Sylius\Bundle\WebBundle\Controller\Frontend\HomepageController</parameter>
         <parameter key="sylius.controller.frontend.account.address.class">Sylius\Bundle\WebBundle\Controller\Frontend\Account\AddressController</parameter>
         <parameter key="sylius.controller.frontend.account.order.class">Sylius\Bundle\WebBundle\Controller\Frontend\Account\OrderController</parameter>
+        <parameter key="sylius.controller.frontend.account.bid_request.class">Sylius\Bundle\WebBundle\Controller\Frontend\Account\BidRequestController</parameter>
 
         <parameter key="sylius.controller.backend.dashboard.class">Sylius\Bundle\WebBundle\Controller\Backend\DashboardController</parameter>
         <parameter key="sylius.controller.backend.security.class">Sylius\Bundle\WebBundle\Controller\Backend\SecurityController</parameter>
@@ -33,6 +34,11 @@
             </call>
         </service>
         <service id="sylius.controller.frontend.account.order" class="%sylius.controller.frontend.account.order.class%">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        <service id="sylius.controller.frontend.account.bid_request" class="%sylius.controller.frontend.account.bid_request.class%">
             <call method="setContainer">
                 <argument type="service" id="service_container" />
             </call>

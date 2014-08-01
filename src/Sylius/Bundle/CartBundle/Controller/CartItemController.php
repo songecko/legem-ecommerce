@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sylius\Component\Order\Model\OrderInterface;
+use Gecko\LegemdaryBundle\Entity\DiamondBidRequest;
 
 /**
  * Cart item controller.
@@ -65,7 +66,19 @@ class CartItemController extends Controller
             return $this->redirectAfterAdd($request);
         }
 
-        $cart->setState(OrderInterface::STATE_CONFIRMED);
+        //$cart->setState(OrderInterface::STATE_CONFIRMED);
+
+        //Create the Diamond Bid Request
+        $diamond = $request->query->get('diamond');
+        $diamondBidRequest = new DiamondBidRequest();
+        $diamondBidRequest->setCarat($diamond['carat']);
+        $diamondBidRequest->setColor($diamond['color']);
+        $diamondBidRequest->setClarity($diamond['clarity']);
+        $diamondBidRequest->setCut($diamond['cut']);
+        $diamondBidRequest->setOrderItem($item);
+        
+        $this->getDoctrine()->getManager()->persist($diamondBidRequest);
+        $this->getDoctrine()->getManager()->flush();
         
         $event = new CartItemEvent($cart, $item);
         $event->isFresh(true);

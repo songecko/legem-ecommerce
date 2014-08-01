@@ -13,6 +13,8 @@ namespace Sylius\Component\Order\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Gecko\LegemdaryBundle\Entity\DiamondBid;
+use Gecko\LegemdaryBundle\Entity\DiamondBidRequest;
 
 /**
  * Model for order line items.
@@ -69,13 +71,9 @@ class OrderItem implements OrderItemInterface
      * @var integer
      */
     protected $total = 0;
-
-    /** Diamond values **/
     
-    protected $diamondCarat = 0.4;
-    protected $diamondColor = "D";
-    protected $diamondClarity = "IF";
-    protected $diamondCut = "IDEAL";
+    protected $diamondBid;
+    protected $diamondBidRequest;
     
         
     /**
@@ -84,50 +82,6 @@ class OrderItem implements OrderItemInterface
     public function __construct()
     {
         $this->adjustments = new ArrayCollection();
-    }
-
-    public function setDiamondCarat($diamondCarat)
-    {
-    	$this->diamondCarat = $diamondCarat;
-    
-    	return $this;
-    }
-    public function getDiamondCarat()
-    {
-    	return $this->diamondCarat;
-    }
-    
-    public function setDiamondColor($diamondColor)
-    {
-    	$this->diamondColor = $diamondColor;
-    
-    	return $this;
-    }
-    public function getDiamondColor()
-    {
-    	return $this->diamondColor;
-    }
-    
-    public function setDiamondClarity($diamondClarity)
-    {
-    	$this->diamondClarity = $diamondClarity;
-    
-    	return $this;
-    }
-    public function getDiamondClarity()
-    {
-    	return $this->diamondClarity;
-    }
-    
-    public function setDiamondCut($diamondCut)
-    {
-    	$this->diamondCut = $diamondCut;
-    
-    	return $this;
-    }
-    public function getDiamondCut()
-    {
-    	return $this->diamondCut;
     }
     
     /**
@@ -326,5 +280,29 @@ class OrderItem implements OrderItemInterface
         }
 
         return $this;
+    }
+    
+    public function setDiamondBid(DiamondBid $diamondBid)
+    {
+    	$this->diamondBid = $diamondBid;
+    	
+    	return $this;
+    }
+    
+    public function getDiamondBid()
+    {
+    	return $this->diamondBid;
+    }
+    
+    public function setDiamondBidRequest(DiamondBidRequest $diamondBidRequest)
+    {
+    	$this->diamondBidRequest = $diamondBidRequest;
+    	 
+    	return $this;
+    }
+    
+    public function getDiamondBidRequest()
+    {
+    	return $this->diamondBidRequest;
     }
 }

@@ -20,7 +20,10 @@
         <many-to-one field="variant" target-entity="Sylius\Component\Product\Model\VariantInterface">
             <join-column name="variant_id" referenced-column-name="id" nullable="false" />
         </many-to-one>
-
+        
+		<one-to-one field="diamondBidRequest" target-entity="Gecko\LegemdaryBundle\Entity\DiamondBidRequest" mapped-by="orderItem" />
+		<one-to-one field="diamondBid" target-entity="Gecko\LegemdaryBundle\Entity\DiamondBid" mapped-by="orderItem" />
+        
         <one-to-many field="inventoryUnits" target-entity="Sylius\Component\Inventory\Model\InventoryUnitInterface" mapped-by="orderItem" orphan-removal="true">
             <cascade>
                 <cascade-all/>

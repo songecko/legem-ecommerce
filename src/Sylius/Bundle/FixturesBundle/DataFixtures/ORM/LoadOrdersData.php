@@ -21,6 +21,7 @@ use Sylius\Component\Core\SyliusCheckoutEvents;
 use Sylius\Component\Order\SyliusOrderEvents;
 use Sylius\Component\Payment\Model\PaymentInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Gecko\LegemdaryBundle\Entity\DiamondBidRequest;
 
 class LoadOrdersData extends DataFixture
 {
@@ -28,19 +29,23 @@ class LoadOrdersData extends DataFixture
     {
         $orderRepository = $this->getOrderRepository();
         $orderItemRepository = $this->getOrderItemRepository();
-
+        
         for ($i = 1; $i <= 5; $i++) {
             /* @var $order OrderInterface */
             $order = $orderRepository->createNew();
 
             for ($j = 0, $items = rand(3, 6); $j <= $items; $j++) {
                 $variant = $this->getReference('Sylius.Variant-'.rand(1, SYLIUS_FIXTURES_TOTAL_VARIANTS - 1));
-
+                
                 /* @var $item OrderItemInterface */
                 $item = $orderItemRepository->createNew();
                 $item->setVariant($variant);
                 $item->setUnitPrice($variant->getPrice());
                 $item->setQuantity(rand(1, 5));
+                
+                $diamondBidRequest = new DiamondBidRequest();
+                $diamondBidRequest->setOrderItem($item);
+                $manager->persist($diamondBidRequest);
 
                 $order->addItem($item);
             }

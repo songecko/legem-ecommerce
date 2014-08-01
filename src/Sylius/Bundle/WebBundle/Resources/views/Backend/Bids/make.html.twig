@@ -1,0 +1,25 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% from 'SyliusResourceBundle:Macros:actions.html.twig' import update %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.sales'|trans }}</li>
+    <li><a href="{{ path('sylius_backend_bids_index') }}">Bid Requests</a></li>
+    <li>Making a Bid</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="glyphicon glyphicon-pencil"></i> Making a Bid</h1>
+</div>
+
+{{ form_errors(form) }}
+
+<form action="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': app.request.get('diamond_bid_request_id'), '_method': 'PUT'}) }}" method="post" class="form-horizontal" novalidate>
+    <input type="hidden" name="_method" value="PUT">
+    {% include 'SyliusWebBundle:Backend/Bids:_form.html.twig' %}
+    {{ update() }}
+</form>
+{% endblock %}
