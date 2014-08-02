@@ -33,7 +33,9 @@
 					</a>
                 {#{ buttons.show(path('sylius_backend_order_show', {'id': order.id})) }#}
                 {#{ buttons.edit(path('sylius_backend_bids_update', {'id': bidRequest.id})) }#}
-                {#{ buttons.delete(path('sylius_backend_order_delete', {'id': bidRequest.id})) }#}
+                {% if is_granted('ROLE_SYLIUS_ADMIN') %}
+                {{ buttons.delete(path('sylius_backend_order_delete', {'id': bidRequest.id})) }}
+                {% endif %}
                 </div>
             </td>
         </tr>
