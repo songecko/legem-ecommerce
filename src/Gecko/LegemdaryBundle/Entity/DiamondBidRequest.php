@@ -64,9 +64,22 @@ class DiamondBidRequest extends Diamond
 	
 		return $this;
 	}
-	
+
 	public function hasDiamondBid(DiamondBid $diamondBid)
 	{
 		return $this->diamondBids->contains($diamondBid);
+	}
+	
+	public function hasDiamondBidByVendor($vendor)
+	{
+		foreach ($this->getDiamondBids() as $diamondBid)
+		{
+			if($diamondBid->getVendor()->getId() == $vendor->getId())
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

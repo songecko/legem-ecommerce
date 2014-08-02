@@ -15,19 +15,17 @@
             <th>Color</th>
             <th>Clarity</th>
             <th>Cut</th>
-            <th>Bids</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        {% for bidRequest in bidRequests %}
+        {% for bidRequest in bidRequests if not bidRequest.hasDiamondBidByVendor(app.user) %}
         <tr id="{{ bidRequest.id }}">
             <td>{{ bidRequest.createdAt|date }}</td>
             <td>{{ bidRequest.carat }}</td>
             <td>{{ bidRequest.color }}</td>
             <td>{{ bidRequest.clarity }}</td>
             <td>{{ bidRequest.cut }}</td>
-            <td>{{ bidRequest.diamondBids|length }}</td>
             <td>
                 <div class="pull-right">
     	            <a href="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': bidRequest.id}) }}" class="btn btn-primary">
@@ -43,11 +41,7 @@
     </tbody>
 </table>
 {% else %}
-    {% if user is not null %}
-        {{ alerts.info('sylius.user.order.no_results'|trans) }}
-    {% else %}
-        {{ alerts.info('sylius.order.no_results'|trans) }}
-    {% endif %}
+        {{ alerts.info('You have no new bid requests') }}
 {% endif %}
 
 {% endmacro %}

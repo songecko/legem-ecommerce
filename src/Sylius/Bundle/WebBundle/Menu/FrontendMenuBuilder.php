@@ -307,8 +307,8 @@ class FrontendMenuBuilder extends MenuBuilder
             	'linkAttributes' => array('title' => "My account", 'class' => 'signup'),
         	))->setLabel("My account");
         
-        	$menu->addChild('orders', array(
-        			'route' => 'sylius_account_order_index',
+        	$menu->addChild('bids', array(
+        			'route' => 'sylius_account_bids_index',
         			'linkAttributes' => array('title' => "My bids", 'class' => 'signup'),
         	))->setLabel("My bids");
 

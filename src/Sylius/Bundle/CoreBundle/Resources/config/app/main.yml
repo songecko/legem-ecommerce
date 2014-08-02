@@ -103,9 +103,12 @@ sylius_resource:
         legemdary.diamond_bid:
             driver: doctrine/orm
             classes:
+                controller: Sylius\Bundle\CoreBundle\Controller\DiamondBidController
                 model: Gecko\LegemdaryBundle\Entity\DiamondBid
+                repository: Gecko\LegemdaryBundle\Repository\DiamondBidRepository
         legemdary.diamond_bid_request:
             driver: doctrine/orm
             classes:
+                controller: Sylius\Bundle\CoreBundle\Controller\DiamondBidRequestController
                 model: Gecko\LegemdaryBundle\Entity\DiamondBidRequest
                 repository: Gecko\LegemdaryBundle\Repository\DiamondBidRequestRepository

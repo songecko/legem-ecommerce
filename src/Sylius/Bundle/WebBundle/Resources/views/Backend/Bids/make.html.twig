@@ -1,6 +1,6 @@
 {% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
 
-{% from 'SyliusResourceBundle:Macros:actions.html.twig' import update %}
+{% from 'SyliusResourceBundle:Macros:actions.html.twig' import create %}
 
 {% block topbar %}
 <ol class="breadcrumb">
@@ -17,9 +17,8 @@
 
 {{ form_errors(form) }}
 
-<form action="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': app.request.get('diamond_bid_request_id'), '_method': 'PUT'}) }}" method="post" class="form-horizontal" novalidate>
-    <input type="hidden" name="_method" value="PUT">
+<form action="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': diamond_bid.diamondBidRequest.id}) }}" method="post" class="form-horizontal" novalidate>
     {% include 'SyliusWebBundle:Backend/Bids:_form.html.twig' %}
-    {{ update() }}
+    {{ create() }}
 </form>
 {% endblock %}

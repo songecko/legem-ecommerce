@@ -8,60 +8,9 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class DiamondBidRequestRepository extends EntityRepository
 {
-    /**
-     * Create filter paginator.
-     *
-     * @param array   $criteria
-     * @param array   $sorting
-     * @param Boolean $deleted
-     *
-     * @return PagerfantaInterface
-     */
-    public function createFilterPaginator($criteria = array(), $sorting = array(), $deleted = false)
+    public function createByVendorPaginator(UserInterface $vendor, $sorting = array())
     {
-        $queryBuilder = parent::getCollectionQueryBuilder();
-
-        if ($deleted) {
-            $this->_em->getFilters()->disable('softdeleteable');
-        }
-
-        if (!empty($criteria['number'])) {
-            $queryBuilder
-                ->andWhere('o.number = :number')
-                ->setParameter('number', $criteria['number'])
-            ;
-        }
-        if (!empty($criteria['totalFrom'])) {
-            $queryBuilder
-                ->andWhere($queryBuilder->expr()->gte('o.total', ':totalFrom'))
-                ->setParameter('totalFrom', $criteria['totalFrom'] * 100)
-            ;
-        }
-        if (!empty($criteria['totalTo'])) {
-            $queryBuilder
-                ->andWhere($queryBuilder->expr()->lte('o.total', ':totalTo'))
-                ->setParameter('totalTo', $criteria['totalTo'] * 100)
-            ;
-        }
-        if (!empty($criteria['createdAtFrom'])) {
-            $queryBuilder
-                ->andWhere($queryBuilder->expr()->gte('o.createdAt', ':createdAtFrom'))
-                ->setParameter('createdAtFrom', $criteria['createdAtFrom'])
-            ;
-        }
-        if (!empty($criteria['createdAtTo'])) {
-            $queryBuilder
-                ->andWhere($queryBuilder->expr()->lte('o.createdAt', ':createdAtTo'))
-                ->setParameter('createdAtTo', $criteria['createdAtTo'])
-            ;
-        }
-
-        if (empty($sorting)) {
-            if (!is_array($sorting)) {
-                $sorting = array();
-            }
-            $sorting['updatedAt'] = 'desc';
-        }
+        $queryBuilder = $this->getCollectionQueryBuilderByVendor($vendor);
 
         $this->applySorting($queryBuilder, $sorting);
 
@@ -97,6 +46,28 @@ class DiamondBidRequestRepository extends EntityRepository
     	->setParameter('user', $user)
     	;
     
+    	$this->applySorting($queryBuilder, $sorting);
+    
+    	return $queryBuilder;
+    }
+    
+    protected function getCollectionQueryBuilderByVendor(UserInterface $vendor, array $sorting = array())
+    {
+    	$queryBuilder = $this->getCollectionQueryBuilder();
+    
+    	$queryBuilder
+	    	->leftJoin('o.diamondBids', 'diamondBid')
+	    	/*->andWhere('diamondBid.vendor IS NULL OR diamondBid.vendor != :vendor')
+	    	->setParameter('vendor', $vendor)*/
+    	;
+    
+    	if (empty($sorting)) {
+    		if (!is_array($sorting)) {
+    			$sorting = array();
+    		}
+    		$sorting['updatedAt'] = 'desc';
+    	}
+    	
     	$this->applySorting($queryBuilder, $sorting);
     
     	return $queryBuilder;
