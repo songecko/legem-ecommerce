@@ -78,7 +78,7 @@ class CartItemController extends Controller
         $diamondBidRequest->setOrderItem($item);
         
         $this->getDoctrine()->getManager()->persist($diamondBidRequest);
-        $this->getDoctrine()->getManager()->flush();
+        //$this->getDoctrine()->getManager()->flush();
         
         $event = new CartItemEvent($cart, $item);
         $event->isFresh(true);
