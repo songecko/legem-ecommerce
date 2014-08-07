@@ -30,6 +30,10 @@ class DiamondBidType extends AbstractType
         ->add('price', 'sylius_money', array(
         		'required' => true,
 				'label' => 'Price'
+        ))
+        ->add('pdfFile', 'file', array(
+        		'required' => true,
+        		'label' => 'Certificate'
         ));
     }
 

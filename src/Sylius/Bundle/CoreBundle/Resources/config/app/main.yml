@@ -18,11 +18,17 @@ knp_gaufrette:
             local:
                 directory:  %kernel.root_dir%/../web/media/video
                 create:     true
+        sylius_pdf:
+            local:
+                directory:  %kernel.root_dir%/../web/media/pdf
+                create:     true
     filesystems:
         sylius_image:
             adapter: sylius_image
         sylius_video:
-            adapter: sylius_video            
+            adapter: sylius_video    
+        sylius_pdf:
+            adapter: sylius_pdf           
 
 vich_uploader:
     db_driver: orm # or mongodb
@@ -41,7 +47,12 @@ vich_uploader:
             delete_on_remove:   true
             delete_on_update:   true
             namer:              vich_uploader.namer_uniqid
-            
+        pdf:
+            uri_prefix:         /pdf
+            upload_destination: sylius_pdf
+            delete_on_remove:   true
+            delete_on_update:   true
+            namer:              vich_uploader.namer_uniqid           
 liip_imagine:
     data_root: %kernel.root_dir%/../web/media/image
     filter_sets:

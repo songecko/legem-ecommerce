@@ -16,3 +16,7 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+            
+    legem.send.mailer:
+        class: Gecko\LegemdaryBundle\Mailer\SendMailer
+        arguments: ["@service_container"]

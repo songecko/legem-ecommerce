@@ -17,7 +17,7 @@
 
 {{ form_errors(form) }}
 
-<form action="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': diamond_bid.diamondBidRequest.id}) }}" method="post" class="form-horizontal" novalidate>
+<form action="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': diamond_bid.diamondBidRequest.id}) }}" method="post" enctype="multipart/form-data" class="form-horizontal" novalidate>
     {% include 'SyliusWebBundle:Backend/Bids:_form.html.twig' %}
     {{ create() }}
 </form>

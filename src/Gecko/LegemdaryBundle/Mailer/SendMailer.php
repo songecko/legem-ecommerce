@@ -16,14 +16,14 @@ class SendMailer
 		$this->container = $container;
 	}
 
-	public function sendBillRequest(User $user)
+	public function sendBidRequest(User $user)
 	{
 		$fullname = $user->getFullName();
 		$email = $user->getEmail();
-		$view = 'GeckoLegemdaryBundle:Frontend/Mailer:BillRequest.html.twig';
+		$view = 'GeckoLegemdaryBundle:Frontend/Mailer:BidRequest.html.twig';
 		
 		$message = $this->getMessage($view, $email)
-			->setSubject($fullname.', ya estás registrado en la app del Mes del Amigo LAN!');
+			->setSubject($fullname.', ya estás registrado en Legemdary');
 		
 		$failures = $this->send($message);
 		

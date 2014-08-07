@@ -1,0 +1,4 @@
+Gecko\LegemdaryBundle\Entity\DiamondBid:
+    pdfFile:
+        mapping:           pdf
+        filename_property: pdf
