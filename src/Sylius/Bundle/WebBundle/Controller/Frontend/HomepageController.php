@@ -33,7 +33,7 @@ class HomepageController extends Controller
      */
     public function mainAction()
     { 
-    	$this->get('legem.send.mailer')->sendToVendorsBidRequestedEmail($this->getUser());
+    	//$this->get('legem.send.mailer')->sendToVendorsBidRequestedEmail($this->getUser());
         return $this->render('SyliusWebBundle:Frontend/Homepage:main.html.twig');
     }
     
