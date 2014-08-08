@@ -1,10 +1,8 @@
-{% macro list(bidRequests, user) %}
+{% macro list(bidRequests, maked = false) %}
 
 {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
 {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
 {% import 'SyliusWebBundle:Backend/Macros:misc.html.twig' as misc %}
-
-{% set router_paramters = user is not null ? {'id' : user.id} : {} %}
 
 {% if bidRequests|length > 0 %}
 <table id="orders" class="table">
@@ -19,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for bidRequest in bidRequests if not bidRequest.hasDiamondBidByVendor(app.user) %}
+        {% for bidRequest in bidRequests if (not maked and not bidRequest.hasDiamondBidByVendor(app.user)) or (maked and bidRequest.hasDiamondBidByVendor(app.user)) %}
         <tr id="{{ bidRequest.id }}">
             <td>{{ bidRequest.createdAt|date }}</td>
             <td>{{ bidRequest.carat }}</td>
@@ -28,9 +26,15 @@
             <td>{{ bidRequest.cut }}</td>
             <td>
                 <div class="pull-right">
+                	{% if maked %}
+                	<a href="{{ path('sylius_backend_bids_update', {'id': bidRequest.getDiamondBidByVendor(app.user).id}) }}" class="btn btn-primary">
+    					<i class="glyphicon glyphicon-pencil"></i><span>Updated bid</span>
+					</a>
+            		{% else %}
     	            <a href="{{ path('sylius_backend_bids_make', {'diamond_bid_request_id': bidRequest.id}) }}" class="btn btn-primary">
     					<i class="glyphicon glyphicon-pencil"></i><span>Make a bid</span>
 					</a>
+					{% endif %}
                 {#{ buttons.show(path('sylius_backend_order_show', {'id': order.id})) }#}
                 {#{ buttons.edit(path('sylius_backend_bids_update', {'id': bidRequest.id})) }#}
                 {% if is_granted('ROLE_SYLIUS_ADMIN') %}

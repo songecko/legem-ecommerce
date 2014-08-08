@@ -28,6 +28,11 @@ class DiamondBidController extends ResourceController
                 return $this->redirectHandler->redirectToIndex();
             }
 
+            try {
+	            $this->get('legem.send.mailer')->sendToUserBidMakedEmail($diamondBidRequest->getOrderItem()->getOrder()->getUser());
+            }catch(Exception $e)
+            {}
+            
             return $this->redirectHandler->redirectTo($diamondBid);
         }
 

@@ -1,3 +1,16 @@
+var addCommas = function (nStr)
+{
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
+}
+
 var refreshProductPrice = function()
 {
 	var variantOptionIndex = $('#sylius_cart_item_variant_metal').val();
@@ -74,7 +87,10 @@ var calculateApproxPrice = function()
 		maxPrice = maxPrice * 1.1;
 	}
 	
-	$('#wizardModal .approxPrice .range').html('$'+Math.round(minPrice)+' - $'+Math.round(maxPrice));
+	minPrice = addCommas(Math.round(minPrice));
+	maxPrice = addCommas(Math.round(maxPrice));
+	
+	$('#wizardModal .approxPrice .range').html('$'+minPrice+' - $'+maxPrice);
 };
 
 var refreshCaratValue = function(value)
@@ -96,6 +112,8 @@ var refreshCaratValue = function(value)
 	
 	$(".customizable .selection .review .carat .value").html(value);
 	$(".customizable .caratSelection .ctSelection").val(value);
+	
+	calculateApproxPrice();
 };
 
 $(document).ready(function()
@@ -234,5 +252,7 @@ $(document).ready(function()
 		
 		var selectionType = $(this).parent('.choice').data('selection');
 		$(".customizable .selection .review ."+selectionType+" .value").html($(this).html());
+		
+		calculateApproxPrice();
 	});
 });

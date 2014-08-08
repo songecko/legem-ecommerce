@@ -458,3 +458,11 @@ header .navbar-brand img {
 	color: #4589E3;
 	margin-bottom: 30px;
 }
+
+.accountMenu {
+	text-align: center;
+}
+
+#bids td, #bids th  {
+	text-align: center;
+}

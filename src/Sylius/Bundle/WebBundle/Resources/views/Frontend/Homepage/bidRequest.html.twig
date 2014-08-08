@@ -1,7 +1,17 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
 {% block main %}
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
 <div class="container">
-	<h2>Bid requested succesfully</h2>
+	<div class="row header">
+		<h3 style="text-align: left;">Bid requested succesfully</h3>
+	</div>
+
+	<br>
+
+	<a href="{{ path('sylius_account_bids_index') }}">Go to My Bids</a>
+</div>
+</div>
 </div>
 {% endblock %}

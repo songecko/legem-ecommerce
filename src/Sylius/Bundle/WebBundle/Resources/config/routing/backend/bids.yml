@@ -7,15 +7,25 @@ sylius_backend_bids_index:
             template: SyliusWebBundle:Backend/Bids:index.html.twig
             sortable: true
             paginate: 20
+            
+sylius_backend_bids_index_maked:
+    pattern: /maked
+    methods: [GET]
+    defaults:
+        _controller: legemdary.controller.diamond_bid_request:indexByVendorMakedAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bids:indexMaked.html.twig
+            sortable: true
+            paginate: 20
 
 sylius_backend_bids_update:
     pattern: /{id}/edit
     methods: [GET, PUT]
     defaults:
-        _controller: legemdary.controller.diamond_bid_request:updateAction
+        _controller: legemdary.controller.diamond_bid:updateAction
         _sylius:
             template: SyliusWebBundle:Backend/Bids:update.html.twig
-            redirect: sylius_backend_bids_index
+            redirect: sylius_backend_bids_index_maked
 
 sylius_backend_bids_delete:
     pattern: /{id}

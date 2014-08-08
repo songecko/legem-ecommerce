@@ -1,23 +1,66 @@
-{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+{% extends 'SyliusWebBundle:Frontend:signin_layout.html.twig' %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block content %}
-<div class="page-header">
-    {{ 'registration.register_header'|trans|raw }}
+<div class="container">
+	<div class="row header">
+		<div class="col-md-12">
+			<h3 class="logo">
+				<a href="/">Legemdary</a>
+			</h3>
+			<h4>Sign up.</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="wrapper clearfix">
+				<div class="formy">
+					<div class="row">
+						<div class="col-md-12">
+							<form action="{{ path('fos_user_registration_register') }}" method="post" role="form">
+								<div class="form-group">
+						    		<label for="fos_user_registration_form_firstName">First name</label>
+						    		{{ form_widget(form.firstName) }}
+						  		</div>
+						  		<div class="form-group">
+						    		<label for="fos_user_registration_form_lastName">Last name</label>
+						    		{{ form_widget(form.lastName) }}
+						  		</div>
+						  		<div class="form-group">
+						    		<label for="fos_user_registration_form_email">Email</label>
+						    		{{ form_widget(form.email) }}
+						  		</div>
+						  		<div class="form-group">
+						    		<label for="fos_user_registration_form_plainPassword_first">Password</label>
+						    		{{ form_widget(form.plainPassword.first) }}
+						  		</div>
+						  		<div class="form-group">
+						    		<label for="fos_user_registration_form_plainPassword_second">Password (again)</label>
+						    		{{ form_widget(form.plainPassword.second) }}
+						  		</div>
+						  		{{ form_rest(form) }}
+						  		{#<div class="checkbox">
+						    		<label>
+						      			<input type="checkbox"> You have read & agree to the 
+						      			<a href="#">Terms of service</a>.
+						    		</label>
+						  		</div>#}
+						  		<div class="submit">
+						  			<button class="button-clear">
+							  			<span>Create my account</span>
+							  		</button>
+						  		</div>
+							</form>
+						</div>
+					</div>						
+				</div>
+			</div>
+			<div class="already-account">
+				Already have an account?
+				<a href="{{ path('fos_user_security_login') }}">Sign in here</a>
+			</div>
+		</div>
+	</div>
 </div>
-
-<form action="{{ path('fos_user_registration_register') }}" method="post" class="form-horizontal" novalidate>
-    <fieldset class="well">
-        {% for field in form %}
-            {{ form_row(field) }}
-        {% endfor %}
-    </fieldset>
-    <div class="form-actions clearfix">
-        {#<div class="pull-right">
-            {{ render(url('hwi_oauth_connect')) }}
-        </div>#}
-        <button type="submit" class="btn btn-success btn-lg"><i class="icon-user"></i> {{ 'registration.submit'|trans }}</button>
-    </div>
-</form>
 {% endblock %}

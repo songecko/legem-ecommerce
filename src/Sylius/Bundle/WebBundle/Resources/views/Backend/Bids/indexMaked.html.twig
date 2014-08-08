@@ -1,0 +1,25 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Backend/Bids:macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.sales'|trans }}</li>
+    <li>Bids Maked</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="glyphicon glyphicon-saved"></i> Bids Maked</h1>
+</div>
+
+{#% render(controller('sylius.controller.backend.form:filterAction', {'type': 'sylius_order_filter', 'template': 'SyliusWebBundle:Backend/Order:filterForm.html.twig'})) %#}
+
+{{ pagination(diamond_bid_requests) }}
+{{ list(diamond_bid_requests, true) }}
+{{ pagination(diamond_bid_requests) }}
+
+{% endblock %}

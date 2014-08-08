@@ -3,11 +3,17 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block content %}
-<div class="page-header">
-    {{ 'registration.confirmed_header'|trans|raw }}
-</div>
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
+<div class="container">
+	<div class="row header">
+		<h3 style="text-align: left;">{{ 'registration.confirmed'|trans({'%username%': user.firstName}) }}</h3>
+	</div>
 
-<div class="alert alert-success">
-    {{ 'registration.confirmed'|trans({'%username%': user.firstName}) }}
+	<br>
+
+	<a href="{{ path('sylius_product_index') }}">Go to Browse Rings</a>
+</div>
+</div>
 </div>
 {% endblock %}

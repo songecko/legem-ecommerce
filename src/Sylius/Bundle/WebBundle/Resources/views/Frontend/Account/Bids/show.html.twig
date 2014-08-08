@@ -1,17 +1,68 @@
-{% import 'SyliusWebBundle:Frontend/Macros:buttons.html.twig' as buttons %}
-{% extends 'SyliusWebBundle:Frontend/Account:layout.html.twig' %}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
 {% block content %}
-    <h4>{{ 'sylius.account.order.details'|trans }}</h4>
-
-    {% include "SyliusWebBundle:Frontend/Account:Order/_detail.html.twig" %}
-
-    {% if order.isInvoiceAvailable %}
-    {{ buttons.btn(
-        path('sylius_account_order_invoice', {'number': order.number}),
-        'sylius.account.order.download_invoice',
-        'order-' ~ order.number ~ '-invoice',
-        'file'
-    ) }}
-    {% endif %}
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
+<div class="container">
+	<div class="row header">
+		<h3>Select a diamond bid for your request</h3>
+	</div>
+	
+	<br>
+	
+	<table id="diamondSelection" class="table table-bordered">
+		<tbody>
+			<tr>
+				<th colspan="2">Number of bids: {{ bidRequest.diamondBids|length }}</th>
+			</tr>
+			<tr>
+				<td width="70%">Your Ring:</td>
+				<td width="30%" class="ringPrice" data-price="{{ bidRequest.orderItem.total }}">{{ bidRequest.orderItem.total|sylius_money }}</td>
+			</tr>
+			<tr>
+				<td width="70%">Your Diamond:</td>
+				<td width="30%" class="diamondPrice">--</td>
+			</tr>
+			<tr>
+				<td width="70%">Total Price:</td>
+				<td width="30%" class="totalPrice">--</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+	
+    <div class="row">
+        <table id="bids" class="table table-bordered">
+            <thead>
+                <tr>
+                	<th>Your Diamond Selection</th>
+                    <th>Carat <br> [{{ bidRequest.carat }}]</th>
+                    <th>Color <br> [{{ bidRequest.color }}]</th>
+                    <th>Clarity <br> [{{ bidRequest.clarity }}]</th>
+                    <th>Cut <br> [{{ bidRequest.cut }}]</th>
+                    <th>Certificate</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bid in bidRequest.diamondBids %}
+                    <tr class="bid" id="bid-{{ bid.id }}">
+                    	<td>{{ bid.vendor.firstName }}</td>
+                        <td>{{ bid.carat }}</td>
+                        <td>{{ bid.color }}</td>
+                        <td>{{ bid.clarity }}</td>
+                        <td>{{ bid.cut }}</td>
+                        <td><a href="{{ asset('media/pdf/'~bid.pdf) }}" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a></td>
+                        <td>{{ bid.price|sylius_money }} <br> {{ (bid.price/bid.carat)|sylius_money }} per carat</td>
+                        <td><a href="#" class="btn btn-info btn-sm selectBidButton" data-price="{{ bid.price }}">Select</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
 {% endblock %}

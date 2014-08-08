@@ -1,16 +1,23 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
-{% block flashes %}
-    {% for name, flashes in app.session.flashbag.all if name in ['success', 'error', 'fos_user_success'] %}
-        {% for flash in flashes %}
-            <div class="alert alert-{{ name == 'fos_user_success' ? 'success' : name == 'error' ? 'danger' : name }}">
-                <a class="close" data-dismiss="alert" href="#">×</a>
-                {{ flash|trans({}, 'FOSUserBundle') }}
-            </div>
-        {% endfor %}
-    {% endfor %}
+{% block main %}
+<div id="gallery">
+<div id="showcase" style="margin-bottom: 0;">
+	<div class="container">
+		<div class="row header">
+			<h3>Your Account</h3>
+			<div class="accountMenu">
+				<a href="{{ path('sylius_account_homepage') }}">Profile</a> - 
+				<a href="{{ path('fos_user_profile_edit') }}">Edit personal information</a> -
+				<a href="{{ path('fos_user_change_password') }}">Edit password</a>
+			</div>
+		</div>
+	
+		<br>
+	
+		{% block content %}
+		{% endblock %}
+	</div>
+</div>
+</div>
 {% endblock %}
-
-{% block sidebar %}
-{{ knp_menu_render('sylius.frontend.account', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
-{% endblock sidebar %}

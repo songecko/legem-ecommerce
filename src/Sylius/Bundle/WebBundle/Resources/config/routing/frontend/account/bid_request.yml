@@ -4,7 +4,7 @@ sylius_account_bids_index:
     defaults:
         _controller: sylius.controller.frontend.account.bid_request:indexAction
 
-sylius_account_bids_show:
+sylius_account_bids_select:
     pattern: /{id}
     methods: [GET]
     defaults: 

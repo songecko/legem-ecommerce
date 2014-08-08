@@ -16,28 +16,28 @@ class SendMailer
 		$this->container = $container;
 	}
 
-	public function sendBidRequest(User $user)
+	public function sendToVendorsBidRequestedEmail(User $user)
 	{
 		$fullname = $user->getFullName();
 		$email = $user->getEmail();
-		$view = 'GeckoLegemdaryBundle:Frontend/Mailer:BidRequest.html.twig';
+		$view = 'GeckoLegemdaryBundle:Frontend/Mailer:bid_requested.html.twig';
 		
 		$message = $this->getMessage($view, $email)
-			->setSubject($fullname.', ya estás registrado en Legemdary');
+			->setSubject('Legemdary - New user request a bid');
 		
 		$failures = $this->send($message);
 		
 		return $failures;
 	}
 	
-	public function sendVendorResponse(User $user)
+	public function sendToUserBidMakedEmail(User $user)
 	{
 		$fullname = $user->getFullName();
 		$email = $user->getEmail();
-		$view = 'GeckoLegemdaryBundle:Frontend/Mailer:VendorResponse.html.twig';
+		$view = 'GeckoLegemdaryBundle:Frontend/Mailer:bid_maked.html.twig';
 		
 		$message = $this->getMessage($view, $email)
-						->setSubject($fullname.', ya ha comenzado la promoción!');
+						->setSubject($fullname.', you have a new bid for your request');
 		
 		$failures = $this->send($message);
 		

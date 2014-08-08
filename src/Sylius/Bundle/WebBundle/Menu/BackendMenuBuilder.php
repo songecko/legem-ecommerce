@@ -218,6 +218,11 @@ class BackendMenuBuilder extends MenuBuilder
 	        		'route' => 'sylius_backend_bids_index',
 	        		'labelAttributes' => array('icon' => 'glyphicon glyphicon-saved'),
 	        ))->setLabel("Bid Requests");
+	        
+	        $child->addChild('bids_maked', array(
+	        		'route' => 'sylius_backend_bids_index_maked',
+	        		'labelAttributes' => array('icon' => 'glyphicon glyphicon-saved'),
+	        ))->setLabel("Bids Maked");
     	}
     	
     	if($this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))

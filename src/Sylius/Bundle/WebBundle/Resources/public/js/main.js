@@ -8,6 +8,18 @@ $(document).ready(function()
 	var swiping = false;
 	var interval;
 	
+	//Bidding area
+	$('.selectBidButton').click(function(e)
+	{
+		e.preventDefault();
+		
+		var diamondPrice = $(this).data('price');
+		var ringPrice = $('#diamondSelection .ringPrice').data('price');
+		
+		$('#diamondSelection .diamondPrice').html('$'+diamondPrice/100);
+		$('#diamondSelection .totalPrice').html('$'+(ringPrice + diamondPrice)/100);
+	});
+	
 	//Product images
 	$('.project .screens .thumb').click(function(e)
 	{
