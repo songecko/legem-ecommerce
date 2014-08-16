@@ -48,7 +48,7 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
      */
     public function build(ProcessBuilderInterface $builder)
     {
-        $cart = $this->getOrder();//$this->getCurrentCart();
+        $cart = $this->getOrderBidRequest();//$this->getCurrentCart();
 
         $builder
             ->add('security', 'sylius_checkout_security')
@@ -86,7 +86,7 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
      */
     protected function getOrderBidRequest()
     {
-    	$order = $this->container->get('sylius.repository.order')->find(8);
+    	$order = $this->container->get('sylius.repository.order')->find($_SESSION['order_to_checkout']);
     	
     	return $order;
     }

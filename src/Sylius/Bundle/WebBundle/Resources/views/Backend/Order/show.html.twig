@@ -49,7 +49,7 @@
             <div class="list-group-item">
                 <h4 class="list-group-item-heading">{{ 'sylius.order.payment'|trans }}</h4>
                 <div class="list-group-item-text">
-                    <a href="{{ path('sylius_backend_payment_update', {'id': order.payment.id}) }}">{{ order.payment.method }} - {{ order.payment.amount|sylius_price(order.payment.currency) }}</a>
+                    <a href="{{ path('sylius_backend_payment_update', {'id': order.payment.id}) }}">{{ order.payment.method }} - {{ order.payment.amount|sylius_money(order.payment.currency) }}</a>
                     <div class="pull-right">
                         {{ misc.state_label(order.payment.state, 'payment') }}
                     </div>
@@ -86,7 +86,8 @@
             <th class="picture"></th>
             <th class="info">{{ 'sylius.order_item.product'|trans }}</th>
             <th class="quantity text-center">{{ 'sylius.order_item.quantity'|trans }}</th>
-            <th class="unit-price text-center">{{ 'sylius.order_item.unit_price'|trans }}</th>
+            <th class="unit-price text-center">Ring price</th>
+            <th class="unit-price text-center">Diamond price</th>
             <th class="total text-right">{{ 'sylius.order_item.total'|trans }}</th>
         </tr>
     </thead>
@@ -113,13 +114,22 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
+                <ul class="list-unstyled">
+					<li><strong>Diamond Carat</strong>: {{ item.diamondBid.carat }}</li>
+					<li><strong>Diamond Color</strong>: {{ item.diamondBid.color }}</li>
+					<li><strong>Diamond Clarity</strong>: {{ item.diamondBid.clarity }}</li>
+					<li><strong>Diamond Cut</strong>: {{ item.diamondBid.cut }}</li>
+				</ul> 
             </td>
             <td class="quantity text-center">{{ item.quantity }}</td>
             <td class="unit-price text-center">
-                {{ item.unitPrice|sylius_price(order.currency) }}
+                {{ item.unitPrice|sylius_money(order.currency) }}
+            </td>
+            <td class="unit-price text-center">
+                {{ item.diamondBid.price|sylius_money(order.currency) }}
             </td>
             <td class="total text-right">
-                {{ item.total|sylius_price(order.currency) }}
+                {{ item.total|sylius_money(order.currency) }}
             </td>
         </tr>
         {% else %}
@@ -135,7 +145,7 @@
         <tr>
             <td class="active text-right" colspan="6">
                 <strong>{{ 'sylius.order.items_total'|trans }}</strong>:
-                <span class="amount">{{ order.itemsTotal|sylius_price(order.currency) }}</span>
+                <span class="amount">{{ order.itemsTotal|sylius_money(order.currency) }}</span>
             </td>
         </tr>
         <tr class="taxes">
@@ -144,7 +154,7 @@
                 {% if order.taxAdjustments|length > 0 %}
                     <ul class="list-unstyled">
                         {% for taxAdjustment in order.taxAdjustments %}
-                            <li>{{ taxAdjustment.description }} {{ taxAdjustment.amount|sylius_price(order.currency) }} </li>
+                            <li>{{ taxAdjustment.description }} {{ taxAdjustment.amount|sylius_money(order.currency) }} </li>
                         {% endfor %}
                     </ul>
                 {% else %}
@@ -153,7 +163,7 @@
             </td>
             <td class="text-right" colspan="3">
                 <strong>{{ 'sylius.order.tax_total'|trans }}</strong>:
-                <span class="amount">{{ order.taxTotal|sylius_price(order.currency) }}</span>
+                <span class="amount">{{ order.taxTotal|sylius_money(order.currency) }}</span>
             </td>
         </tr>
         <tr class="shipping-charges">
@@ -162,7 +172,7 @@
                 {% if order.shippingAdjustments|length > 0 %}
                     <ul class="list-unstyled">
                         {% for adjustment in order.shippingAdjustments %}
-                            <li>{{ adjustment.description }} {{ adjustment.amount|sylius_price(order.currency) }} </li>
+                            <li>{{ adjustment.description }} {{ adjustment.amount|sylius_money(order.currency) }} </li>
                         {% endfor %}
                     </ul>
                 {% else %}
@@ -171,7 +181,7 @@
             </td>
             <td class="text-right" colspan="3">
                 <strong>{{ 'sylius.order.shipping_total'|trans }}</strong>:
-                <span class="amount">{{ order.shippingTotal|sylius_price(order.currency) }}</span>
+                <span class="amount">{{ order.shippingTotal|sylius_money(order.currency) }}</span>
             </td>
         </tr>
         <tr class="promotion-discount">
@@ -180,7 +190,7 @@
                 {% if order.promotionAdjustments|length > 0 %}
                     <ul class="list-unstyled">
                         {% for adjustment in order.promotionAdjustments %}
-                            <li>{{ adjustment.description }} {{ adjustment.amount|sylius_price(order.currency) }} </li>
+                            <li>{{ adjustment.description }} {{ adjustment.amount|sylius_money(order.currency) }} </li>
                         {% endfor %}
                     </ul>
                 {% else %}
@@ -189,13 +199,13 @@
             </td>
             <td class="text-right" colspan="3">
                 <strong>{{ 'sylius.checkout.finalize.order.promotion_total'|trans }}</strong>:
-                <span class="amount">{{ order.promotionTotal|sylius_price(order.currency) }}</span>
+                <span class="amount">{{ order.promotionTotal|sylius_money(order.currency) }}</span>
             </td>
         </tr>
         <tr>
             <td class="text-right active text-success lead" colspan="6">
                 <strong>{{ 'sylius.order.total'|trans }}</strong>:
-                <span class="amount">{{ order.total|sylius_price(order.currency) }}</span>
+                <span class="amount">{{ order.total|sylius_money(order.currency) }}</span>
             </td>
         </tr>
     </tfoot>

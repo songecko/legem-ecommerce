@@ -8,59 +8,88 @@
 		<h3>Select a diamond bid for your request</h3>
 	</div>
 	
-	<br>
+	<br><br>
 	
-	<table id="diamondSelection" class="table table-bordered">
-		<tbody>
-			<tr>
-				<th colspan="2">Number of bids: {{ bidRequest.diamondBids|length }}</th>
-			</tr>
-			<tr>
-				<td width="70%">Your Ring:</td>
-				<td width="30%" class="ringPrice" data-price="{{ bidRequest.orderItem.total }}">{{ bidRequest.orderItem.total|sylius_money }}</td>
-			</tr>
-			<tr>
-				<td width="70%">Your Diamond:</td>
-				<td width="30%" class="diamondPrice">--</td>
-			</tr>
-			<tr>
-				<td width="70%">Total Price:</td>
-				<td width="30%" class="totalPrice">--</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-md-5">
+			<table id="diamondSelection" class="table table-bordered">
+				<thead>
+					<tr>
+						<th><span>Ring: {{ bidRequest.orderItem.variant.product.name }}</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="padding: 0;">
+							<img src="{{ bidRequest.orderItem.variant.product.image ? bidRequest.orderItem.variant.product.image.path|imagine_filter('sylius_medium') : 'http://placehold.it/262x255' }}" class="img-responsive" style="height: 173px;
+margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="col-md-6 col-md-offset-1">
+			<table id="diamondSelection" class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2"><span>Number of bids: {{ bidRequest.diamondBids|length }}</span><span class="pull-right">Time left: <span class="timeleft" data-end-date="{{ bidRequest.timeLeft.format('D, d M Y H:i:s O') }}"></span> hs.</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td width="70%" style="text-align: right;">Your Ring:</td>
+						<td width="30%" class="ringPrice" data-price="{{ bidRequest.orderItem.unitPrice }}">{{ bidRequest.orderItem.unitPrice|sylius_money }}</td>
+					</tr>
+					<tr>
+						<td width="70%" style="text-align: right;">Your Diamond:</td>
+						<td width="30%" class="diamondPrice">--</td>
+					</tr>
+					<tr>
+						<td width="70%" style="text-align: right;">Total Price:</td>
+						<td width="30%" class="totalPrice">--</td>
+					</tr>
+					<tr>
+						<td colspan="2"><a href="#" class="checkoutButton btn btn-lg btn-success disabled pull-right">Checkout</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 	
 	<br>
 	
     <div class="row">
-        <table id="bids" class="table table-bordered">
-            <thead>
-                <tr>
-                	<th>Your Diamond Selection</th>
-                    <th>Carat <br> [{{ bidRequest.carat }}]</th>
-                    <th>Color <br> [{{ bidRequest.color }}]</th>
-                    <th>Clarity <br> [{{ bidRequest.clarity }}]</th>
-                    <th>Cut <br> [{{ bidRequest.cut }}]</th>
-                    <th>Certificate</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for bid in bidRequest.diamondBids %}
-                    <tr class="bid" id="bid-{{ bid.id }}">
-                    	<td>{{ bid.vendor.firstName }}</td>
-                        <td>{{ bid.carat }}</td>
-                        <td>{{ bid.color }}</td>
-                        <td>{{ bid.clarity }}</td>
-                        <td>{{ bid.cut }}</td>
-                        <td><a href="{{ asset('media/pdf/'~bid.pdf) }}" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a></td>
-                        <td>{{ bid.price|sylius_money }} <br> {{ (bid.price/bid.carat)|sylius_money }} per carat</td>
-                        <td><a href="#" class="btn btn-info btn-sm selectBidButton" data-price="{{ bid.price }}">Select</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    	<div class="col-md-12">
+	        <table id="bids" class="table table-bordered">
+	            <thead>
+	                <tr>
+	                	<th>Your Diamond Selection</th>
+	                    <th>Carat <br> [{{ bidRequest.carat }}]</th>
+	                    <th>Color <br> [{{ bidRequest.color }}]</th>
+	                    <th>Clarity <br> [{{ bidRequest.clarity }}]</th>
+	                    <th>Cut <br> [{{ bidRequest.cut }}]</th>
+	                    <th>Certificate</th>
+	                    <th>Price</th>
+	                    <th></th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                {% for bid in bidRequest.diamondBids %}
+	                    <tr class="bid" id="bid-{{ bid.id }}">
+	                    	<td>{{ bid.vendor.firstName }}</td>
+	                        <td>{{ bid.carat }}</td>
+	                        <td>{{ bid.color }}</td>
+	                        <td>{{ bid.clarity }}</td>
+	                        <td>{{ bid.cut }}</td>
+	                        <td><a href="{{ asset('media/pdf/'~bid.pdf) }}" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a></td>
+	                        <td>{{ bid.price|sylius_money }} <br> {{ (bid.price/bid.carat)|sylius_money }} per carat</td>
+	                        <td><a href="#" class="btn btn-info btn-sm selectBidButton" data-price="{{ bid.price }}" data-checkout-url="{{ path('sylius_account_bids_apply_and_checkout', {'id': bidRequest.id, 'bidId': bid.id}) }}">Select</a></td>
+	                    </tr>
+	                {% endfor %}
+	            </tbody>
+	        </table>
+		</div>
     </div>
 </div>
 </div>

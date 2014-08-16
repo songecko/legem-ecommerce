@@ -87,4 +87,46 @@ class DiamondBidRequest extends Diamond
 	{
 		return ($this->getDiamondBidByVendor($vendor))?true:false;
 	}
+	
+	public function getOldestBid()
+	{
+		$oldestBid = null;
+		foreach($this->diamondBids as $diamondBid)
+		{
+			if(!$oldestBid)
+			{
+				$oldestBid = $diamondBid;
+			}else {
+				if($diamondBid->getCreatedAt() > $oldestBid->getCreatedAt())
+				{
+					$oldestBid = $diamondBid;
+				}
+			}
+		}
+		
+		return $oldestBid;
+	}
+	
+	public function getTimeLeft()
+	{
+		if($oldestBid = $this->getOldestBid())
+		{
+			$timeLeft = clone $oldestBid->getCreatedAt();
+			return $timeLeft->modify('+ 2 days');
+		}
+		
+		return 0;
+	}
+	
+	public function isBidTimeout()
+	{
+		if($timeLeft = $this->getTimeLeft())
+		{
+			$now = new \DateTime('now');
+			
+			return ($now->getTimestamp() > $timeLeft->getTimestamp());
+		}
+		
+		return false;
+	}
 }

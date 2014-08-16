@@ -8,16 +8,35 @@ $(document).ready(function()
 	var swiping = false;
 	var interval;
 	
+	if($('.timeleft').length > 0)
+	{
+		$('.timeleft').countdown({
+			date: $('.timeleft').data('endDate'),
+			render: function(data) 
+			{
+	            $('.timeleft').html(this.leadingZeros((data.days*24)+data.hours, 2) + ":" + this.leadingZeros(data.min, 2) + ":" + this.leadingZeros(data.sec, 2));
+	        },
+	        onEnd: function() 
+	        {
+	        	location.reload();
+	        }
+		});
+	}
+	
 	//Bidding area
 	$('.selectBidButton').click(function(e)
 	{
 		e.preventDefault();
 		
 		var diamondPrice = $(this).data('price');
+		var checkoutUrl = $(this).data('checkoutUrl');
 		var ringPrice = $('#diamondSelection .ringPrice').data('price');
 		
 		$('#diamondSelection .diamondPrice').html('$'+diamondPrice/100);
 		$('#diamondSelection .totalPrice').html('$'+(ringPrice + diamondPrice)/100);
+		
+		$('#diamondSelection .checkoutButton').attr('href', checkoutUrl);
+		$('#diamondSelection .checkoutButton').removeClass('disabled');
 	});
 	
 	//Product images

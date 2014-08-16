@@ -3,16 +3,27 @@
     <td>{{ loop.index }}</td>
     <td>
         {{ include('SyliusWebBundle:Frontend/Product:_variant.html.twig', {'variant': item.variant}) }}
+        <ul class="list-unstyled">
+			<li><strong>Diamond Carat</strong>: {{ item.diamondBid.carat }}</li>
+			<li><strong>Diamond Color</strong>: {{ item.diamondBid.color }}</li>
+			<li><strong>Diamond Clarity</strong>: {{ item.diamondBid.clarity }}</li>
+			<li><strong>Diamond Cut</strong>: {{ item.diamondBid.cut }}</li>
+		</ul> 
     </td>
     <td>{{ item.quantity }}</td>
     <td>
         <span class="pull-right">
-        {{ item.unitPrice|sylius_price }}
+        {{ item.unitPrice|sylius_money }}
         </span>
     </td>
     <td>
         <span class="pull-right">
-        {{ item.total|sylius_price }}
+        {{ item.diamondBid.price|sylius_money }}
+        </span>
+    </td>
+    <td>
+        <span class="pull-right">
+        {{ item.total|sylius_money }}
         </span>
     </td>
 </tr>

@@ -9,3 +9,15 @@ sylius_account_bids_select:
     methods: [GET]
     defaults: 
         _controller: sylius.controller.frontend.account.bid_request:showAction
+
+sylius_account_bids_resend:
+    pattern: /{id}/resend
+    methods: [GET]
+    defaults: 
+        _controller: sylius.controller.frontend.account.bid_request:resendAction
+        
+sylius_account_bids_apply_and_checkout:
+    pattern: /{id}/{bidId}/resend
+    methods: [GET]
+    defaults: 
+        _controller: sylius.controller.frontend.account.bid_request:applyAndCheckoutAction

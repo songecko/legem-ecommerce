@@ -229,6 +229,7 @@ class OrderItem implements OrderItemInterface
      */
     public function getTotal()
     {
+    	//ldd($this->total);
         return $this->total;
     }
 
@@ -249,7 +250,7 @@ class OrderItem implements OrderItemInterface
     {
         $this->calculateAdjustmentsTotal();
 
-        $this->total = ($this->quantity * $this->unitPrice) + $this->adjustmentsTotal;
+        $this->total = ($this->quantity * $this->unitPrice) + $this->adjustmentsTotal + $this->diamondBid->getPrice();
 
         if ($this->total < 0) {
             $this->total = 0;

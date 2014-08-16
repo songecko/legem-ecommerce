@@ -9,21 +9,22 @@
 		<h3>Your bids requests</h3>
 	</div>
 	
-	<br>
+	<br><br>
 	
     <div class="row">
         {% if bidRequests is not empty %}
         <table id="orders" class="table">
             <thead>
                 <tr>
-                	<td>Ring</td>
-                    <td>Date</td>
-                    <td>Carat</td>
-                    <td>Color</td>
-                    <td>Clarity</td>
-                    <td>Cut</td>
-                    <td>Bids</td>
-                    <td></td>
+                	<th>Ring</th>
+                    <th>Date</th>
+                    <th>Carat</th>
+                    <th>Color</th>
+                    <th>Clarity</th>
+                    <th>Cut</th>
+                    <th>Bids</th>
+                    <th>Time left</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +37,24 @@
                         <td>{{ bidRequest.clarity }}</td>
                         <td>{{ bidRequest.cut }}</td>
                         <td>{{ bidRequest.diamondBids|length }}</td>
-                        <td><a href="{{ path('sylius_account_bids_select', {'id': bidRequest.id}) }}" class="btn btn-info btn-sm">Select a Bid</a></td>
+                        <td>
+                        {% if bidRequest.isBidTimeout %}
+                        	<span class="label label-danger">Time out</span>
+                        {% elseif bidRequest.timeLeft %}
+                        	<span class="timeleft label label-success" data-end-date="{{ bidRequest.timeLeft.format('D, d M Y H:i:s O') }}">--:--:--</span>
+                        {% else %}
+                        	<span class="label label-default">No bids yet</span>
+                        {% endif %}
+                        </td>
+                        <td>
+                        	{% if bidRequest.isBidTimeout %}
+                        		<a href="{{ path('sylius_account_bids_resend', {'id': bidRequest.id}) }}" class="btn btn-default btn-sm">Resend Bid Request</a>
+                        	{% elseif bidRequest.timeLeft %}
+                        		<a href="{{ path('sylius_account_bids_select', {'id': bidRequest.id}) }}" class="btn btn-info btn-sm">Select a Bid</a>
+                        	{% else %}
+                        		<a href="#" class="btn btn-info disabled btn-sm">Select a Bid</a>
+                        	{% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
