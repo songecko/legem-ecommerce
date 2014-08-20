@@ -250,7 +250,7 @@ class OrderItem implements OrderItemInterface
     {
         $this->calculateAdjustmentsTotal();
 
-        $this->total = ($this->quantity * $this->unitPrice) + $this->adjustmentsTotal + $this->diamondBid->getPrice();
+        $this->total = ($this->quantity * $this->unitPrice) + $this->adjustmentsTotal + ($this->diamondBid?$this->diamondBid->getPrice():0);
 
         if ($this->total < 0) {
             $this->total = 0;
