@@ -28,6 +28,9 @@ var contactForm = {
 					required: true,
 					email: true
 				},
+				"contact[phone]": {
+					required: false,
+				},
 				"message": {
 					required: true
 				}

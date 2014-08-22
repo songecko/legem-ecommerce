@@ -18,6 +18,7 @@ use Gecko\LegemdaryBundle\Entity\LegemdaryPost;
 use Sylius\Bundle\CartBundle\Event\CartEvent;
 use Sylius\Component\Cart\SyliusCartEvents;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Sylius\Bundle\WebBundle\Form\ContactFormType;
 
 /**
  * Frontend homepage controller.
@@ -79,6 +80,28 @@ class HomepageController extends Controller
 	public function ringSizerAction(Request $request)
 	{
 		return $this->render('SyliusWebBundle:Frontend/Homepage:ringSizer.html.twig');
+	}
+	
+	public function contactAction(Request $request)
+	{
+		$form = $this->createForm(new ContactFormType());
+		
+		if ($request->isMethod('POST')) 
+		{
+			$form->bind($request);
+		
+			if ($form->isValid()) 
+			{
+				$this->get('legem.send.mailer')->sendContactEmail($form->getData());
+		
+				$request->getSession()->getFlashBag()->add('success', 'Your email has been sent succesfully!');
+				return $this->redirect($this->generateUrl('sylius_contact'));
+			}
+		}
+		
+		return $this->render('SyliusWebBundle:Frontend/Homepage:contact.html.twig', array(
+			'form' => $form->createView()
+		));
 	}
 
     public function getPricingMatrixAction()

@@ -1,0 +1,55 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block main %}
+<div id="contact-us">
+<div id="info">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 message">
+				<h3>Send us a message</h3>
+				<p>
+					You can contact us with anything related to Legemdary. <br> We'll get in touch with you as soon as possible.
+				</p>
+				<form action="{{ path('sylius_contact') }}" role="form" id="contact-form" method="post" novalidate="novalidate">
+					{{ form_errors(form) }}
+					<div class="form-group">
+			    		<label for="{{ form.name.vars.id }}">{{ form.name.vars.label }}</label>
+						{{ form_widget(form.name) }}
+						{{ form_errors(form.name) }}
+			  		</div>
+			  		<div class="form-group">
+			    		<label for="{{ form.email.vars.id }}">{{ form.email.vars.label }}</label>
+						{{ form_widget(form.email) }}
+			  			{{ form_errors(form.email) }}
+			  		</div>
+			  		<div class="form-group">
+			    		<label for="{{ form.phone.vars.id }}">{{ form.phone.vars.label }}</label>
+						{{ form_widget(form.phone, {'attr': {'required': 'false'}}) }}
+			  			{{ form_errors(form.phone) }}
+			  		</div>
+			  		<div class="form-group">
+			    		<label for="{{ form.message.vars.id }}">{{ form.message.vars.label }}</label>
+						{{ form_widget(form.message, {'attr': {'rows': 6}}) }}
+			  			{{ form_errors(form.message) }}
+						{{ form_rest(form) }}
+			  		</div>
+			  		<div class="submit">
+			  			<input type="submit" class="button button-small" value="Email us">
+			  		</div>
+				</form>
+			</div>
+			<div class="col-md-4 contact">
+				<div class="phone">
+					<h3>By Phone</h3>
+					<p>1-888-332-1714</p>
+				</div>
+				<div class="social">
+					<a href="#" class="fb"><img src="{{ asset('bundles/syliusweb/images/social/fb.png') }}" alt="facebook"></a>
+					<a href="#" class="tw"><img src="{{ asset('bundles/syliusweb/images/social/tw.png') }}" alt="twitter"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

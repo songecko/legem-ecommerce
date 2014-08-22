@@ -44,6 +44,24 @@ class SendMailer
 		return $failures;
 	}		
 	
+	public function sendContactEmail($data)
+	{
+		$view = 'GeckoLegemdaryBundle:Frontend/Mailer:contact.html.twig';
+		
+		$message = $this->message
+			->setSubject('Legemdary - New contact')
+			->setFrom(array($data['email'] => $data['name']))
+			->setTo('legemdary1@gmail.com')
+			->setBody(
+				$this->container->get('templating')->render($view, array('data' => $data)),
+				'text/html'
+			);
+		
+		$failures = $this->send($message);
+		
+		return $failures;
+	}
+	
 	private function getMessage($view, $emailTo)
 	{
 		return $this->message

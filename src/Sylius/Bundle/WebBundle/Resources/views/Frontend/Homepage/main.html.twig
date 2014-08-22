@@ -15,20 +15,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-8 info">
-						<h1 class="hero-text">Best place for diamonds.</h1>
+						<h1 class="hero-text">Shop from the Source</h1>
 						<p>
-							LeGEMdary is the best place for diamonds, where you can connect with qualified diamond vendors and source your diamond at the most competitive price.
+							Make diamond wholesalers competitively bid for your business.
 						</p>
 						<div class="cta">
 							<a href="{{ path('sylius_product_index') }}" class="button-outline">
-								BROWSE RINGS
+								SHOP RINGS
 								<i class="fa fa-chevron-right"></i>
 							</a>
 						</div>
 					</div>
 					<div class="col-sm-4 hidden-xs mobiles">
 						<!-- <img src="images/static-hero.png" class="animated fadeInLeft" alt="devices" /> -->
-						<img src="{{ asset('bundles/syliusweb/images/ring.png') }}" class="animated fadeInLeft img-responsive" alt="devices" />
+						<!--<img src="{{ asset('bundles/syliusweb/images/ring.png') }}" class="animated fadeInLeft img-responsive" alt="devices" /> -->
 					</div>
 				</div>
 			</div>
@@ -36,35 +36,46 @@
 		<div class="slide second">
 			<div class="bg"></div>
 			<div class="container">
-				<h1 class="hero-text">How it works</h1>
+				<h1 class="hero-text">Focus on Your Moment</h1>
 				<p class="sub-text">
-					Nullam tortor urna, posuere sit amet est vitae, pharetra rhoncus nisi. Cras eget ligula et urna lobortis vehicula. Vestibulum quis varius lorem. 
+					Easily create  your ring and receive bids. 
 				</p>
-				<div class="video-wrapper">
-					<div class="video animated fadeInUp">
-						<img src="{{ asset('bundles/syliusweb/images/player.jpg') }}" id="demo-player" alt="videoplayer" />
-					</div>
+				<br><br>
+				<div class="cta" style="text-align: center;">
+					<a href="{{ path('sylius_how_it_works') }}" class="button-outline">
+						HOW IT WORKS
+						<i class="fa fa-chevron-right"></i>
+					</a>
 				</div>
+				<!--<div class="video-wrapper">
+					<div class="video animated fadeInUp">
+						 <img src="{{ asset('bundles/syliusweb/images/player.jpg') }}" id="demo-player" alt="videoplayer" />
+					</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="slide third">
 			<div class="bg"></div>
 			<div class="container">
 				<h1 class="hero-text animated fadeInLeft">
-					Engagement proposal.
+					Big moment, big savings
 				</h1>
 				<p class="sub-text animated fadeInLeft">
-					Your engagement proposal is a milestone in your life. Make it a "leGEMdary" moment that she won't forget!
+					The diamond you want at the price you want.
 				</p>
+				<div class="cta animated fadeInRight">
+					<a href="{{ path('sylius_product_index') }}" class="button-outline">Shop Rings</a>
+					<a href="{{ path('fos_user_registration_register') }}" class="button">Sign up free</a>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="video-modal">
+	{#<div class="video-modal">
 		<div class="wrap">
 			<iframe src="//www.youtube.com/embed/PR-zqVl6xKk" frameborder="0" allowfullscreen" width="620" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		</div>
-	</div>
+	</div>#}
 </div>
 
 <div id="features">
@@ -73,21 +84,21 @@
 		<div class="row">
 			<div class="col-md-12 pics">
 				<a class="pic" href="#">
-					<img src="{{ asset('bundles/syliusweb/images/blog1.png') }}" alt="blog1">
+					<img src="{{ asset('bundles/syliusweb/images/competitive-wholesale.jpg') }}" alt="competitive wholesale">
 					<div class="bg">
-						<p>How to survive in the big city</p>
+						<p>Competitive Wholesale</p>
 					</div>
 				</a>
 				<a class="pic" href="#">
-					<img src="{{ asset('bundles/syliusweb/images/blog2.png') }}" alt="blog2">
+					<img src="{{ asset('bundles/syliusweb/images/our-social-commitment.jpg') }}" alt="our social commitment">
 					<div class="bg">
-						<p>How to develop scalable Rails apps</p>
+						<p>Our Social Commitment</p>
 					</div>
 				</a>
-				<a class="pic" href="#">
-					<img src="{{ asset('bundles/syliusweb/images/blog3.png') }}" alt="blog3">
+				<a class="pic" href="{{ path('sylius_diamond_education') }}">
+					<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge.jpg') }}" alt="diamond knowledge">
 					<div class="bg">
-						<p>Enjoy your life at the beach</p>
+						<p>Diamond Knowledge</p>
 					</div>
 				</a>
 			</div>
@@ -102,7 +113,7 @@
 			<div class="col-sm-6">
 				<div class="testimonial pull-right">
 					<div class="quote">
-						I am just quoting some stuff but I am seriously happy about this product. It's just so much fun!
+						Legemdary’s no-pressure purchasing process made it so much simpler and less stressful for me. Most importantly, my fiancée could not be happier with the ring!
 						<div class="arrow-down">
 			                <div class="arrow"></div>
 			                <div class="arrow-border"></div>
@@ -110,15 +121,14 @@
 					</div>
 					<div class="author">
 						<img src="{{ asset('bundles/syliusweb/images/testimonials/testimonial1.jpg') }}" class="pic" alt="testimonial1">
-						<div class="name">Erick Alvarez</div>
-						<div class="company">Microsoft</div>
+						<div class="name">Jason</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="testimonial">
 					<div class="quote">
-						This thing is one of those tools that everybody should be using. You can kickstart your projects and apps and just focus on your business!
+						She LOVES it! Thank you so much for making this such a pleasurable experience.  I was a little nervous at first, but couldn’t be happier.
 						<div class="arrow-down">
 			                <div class="arrow"></div>
 			                <div class="arrow-border"></div>
@@ -126,8 +136,7 @@
 					</div>
 					<div class="author">
 						<img src="{{ asset('bundles/syliusweb/images/testimonials/testimonial2.jpg') }}" class="pic" alt="testimonial2">
-						<div class="name">Karen Jones</div>
-						<div class="company">Pixar Co.</div>
+						<div class="name">Nick</div>
 					</div>
 				</div>
 			</div>

@@ -125,21 +125,40 @@ class FrontendMenuBuilder extends MenuBuilder
         	$this->createTaxonomiesMenuNode($child, $taxonomy->getRoot());
         }*/
 
-        $menu->addChild("Browse Rings", array(
-        		'route' => 'sylius_product_index'
-        ));
-        
-        $menu->addChild('Blog', array(
-        		'route' => 'legemdary_blog'
-        ));
-        
         $menu->addChild('How it works', array(
-        		/*'route' => 'fos_user_security_login',*/
-        		'uri' => '#'
+        		'route' => 'sylius_how_it_works',
+        ));
+
+        $helpMenu = $menu->addChild("Help", array(
+        		'route' => 'sylius_help',
+        		'attributes' => array('class' => 'dropdown'),
+        		'childrenAttributes' => array('class' => 'dropdown-menu'),
+        		'linkAttributes'    => array(
+        				'class' => 'dropdown-toggle',
+        				'data-toggle' => 'dropdown'
+        		),
+        		'labelAttributes' => array(
+        				'icon' => 'fa fa-chevron-down'
+        		)
+        ));
+        $helpMenu->addChild('30 day returns', array(
+        		'route' => 'sylius_help',
+        ));
+        $helpMenu->addChild('Payment', array(
+        		'route' => 'sylius_help',
+        ));
+        $helpMenu->addChild('Policies and security', array(
+        		'route' => 'sylius_help',
+        ));
+        $helpMenu->addChild('Orders and alterations', array(
+        		'route' => 'sylius_help',
+        ));
+        $helpMenu->addChild('Contact', array(
+        		'route' => 'sylius_contact',
         ));
         
-        $menu->addChild('Diamond education', array(
-        		'route' => 'sylius_diamond_education'
+        $menu->addChild("Shop Rings", array(
+        		'route' => 'sylius_product_index',
         ));
         
         /*if ($this->cartProvider->hasCart()) {

@@ -50,23 +50,23 @@ header .navbar-brand img {
 		padding-left: 50px;
 	} 
 	.navbar.white .navbar-collapse .navbar-nav:last-child {
-		min-width: 500px;
+		min-width: 340px;
 	}
 }
 
 /** THEME CUSTOMIZATIONS **/
 #home2 #hero .slides .slide.first .bg {
-	background: url(../images/slider/slider_1.jpg) no-repeat center;
+	background: url(../images/slider/slider_3.jpg) no-repeat center 26%;
 	background-size: cover;
 }
 
 #home2 #hero .slides .slide.second .bg {
-	background: url(../images/slider/slider_2.jpg) no-repeat center;
+	background: url(../images/slider/slider_4.jpg) no-repeat center;
 	background-size: cover;
 }
 
 #home2 #hero .slides .slide.third .bg {
-	background: url(../images/slider/slider_3.jpg) no-repeat center 26%;
+	background: url(../images/slider/slider_1.jpg) no-repeat center;
 	background-size: cover;
 }
 
@@ -491,4 +491,19 @@ header .navbar-brand img {
 
 .bid-requested .text h3 {
 	font-size: 22px;
+}
+
+#contact-us #info .message form input[type="text"], #contact-us #info .message form input[type="email"] {
+	width: 100%;
+}
+
+#signup {
+	background: url(../images/diamonds-background.png) no-repeat;
+	background-size: cover;
+}
+
+#signup .header .logo a,
+#signup .header h4,
+#signup .already-account, #signup .already-account a {
+	color: #4d6077;
 }

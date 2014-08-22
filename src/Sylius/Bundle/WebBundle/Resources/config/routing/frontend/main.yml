@@ -36,7 +36,11 @@ sylius_our_story:
 sylius_ring_sizer:
     pattern: /ring-sizer
     defaults: { _controller: sylius.controller.frontend.homepage:ringSizerAction }
-         
+
+sylius_contact:
+    pattern: /contact
+    defaults: { _controller: sylius.controller.frontend.homepage:contactAction }
+             
 legemdary_blog:
     pattern: /blog
     defaults: { _controller: sylius.controller.frontend.homepage:blogAction }
