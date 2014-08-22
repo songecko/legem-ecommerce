@@ -56,6 +56,31 @@ class HomepageController extends Controller
     	return $this->render('SyliusWebBundle:Frontend/Homepage:bidRequest.html.twig');
     }
     
+    public function diamondEducationAction(Request $request)
+    {
+		return $this->render('SyliusWebBundle:Frontend/Homepage:diamondEducation.html.twig');    	
+	}
+	
+	public function helpAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:help.html.twig');
+	}
+	
+	public function howItWorksAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:howItWorks.html.twig');
+	}
+	
+	public function ourStoryAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:ourStory.html.twig');
+	}
+	
+	public function ringSizerAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:ringSizer.html.twig');
+	}
+
     public function getPricingMatrixAction()
     {
     	$repository = $this->getDoctrine()->getRepository('GeckoLegemdaryBundle:DiamondPrice');

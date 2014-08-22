@@ -139,8 +139,7 @@ class FrontendMenuBuilder extends MenuBuilder
         ));
         
         $menu->addChild('Diamond education', array(
-        		/*'route' => 'fos_user_security_login',*/
-        		'uri' => '#'
+        		'route' => 'sylius_diamond_education'
         ));
         
         /*if ($this->cartProvider->hasCart()) {

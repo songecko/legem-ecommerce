@@ -466,3 +466,29 @@ header .navbar-brand img {
 #bids td, #bids th  {
 	text-align: center;
 }
+
+#services #hero {
+	background: none;
+	height: auto;
+}
+
+.bid-requested {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.bid-requested .container {
+	position: relative;
+}
+
+.bid-requested .text {
+	position: absolute;
+	top: 10px;
+	left: 50px;
+	color: #FFFFFF;
+	width: 52%;
+}
+
+.bid-requested .text h3 {
+	font-size: 22px;
+}

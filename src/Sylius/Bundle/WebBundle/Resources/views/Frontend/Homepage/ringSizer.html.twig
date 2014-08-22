@@ -1,0 +1,27 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block main %}
+<div id="features" style="margin-top: 0;">
+<div id="first-option" style="margin-top: 0;">
+	<div class="container">
+		<div class="row feature backwards">
+			<div class="col-md-6 info">
+				<h3>Printable Ring Sizer</h3> 
+				<p>
+					The best way to determine the  ring size for your ring is to find out by asking friends or family. You could also find a ring that they wear often and take it to a store to check it’s size.
+				</p>
+				<p>
+					Legemdary realizes that you may not know the ring size or be able to creatively find out, and we want to help. We provide a printable ring sizer that can help you determine your ring size. Prior to printing, ensure that page scaling is set to "none" on your print dialog box.
+				</p>
+				<p>
+					<a href="#" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a>
+				</p>
+			</div>
+			<div class="col-md-6 image">
+				<img src="{{ asset('bundles/syliusweb/images/ring-sizer.png') }}" class="img-responsive" alt="ring sizer">
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

@@ -1,12 +1,14 @@
-{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+{% extends 'SyliusWebBundle:Frontend:error_layout.html.twig' %}
 
 {% block content %}
-<h1>Oops! An Error Occurred</h1>
-<h2>The server returned a "404 Not Found".</h2>
+<div class="info">
+	<h1>404</h1>
+	<p>The page you're looking for doesn't exist.</p>
 
-<div>
-    Something is broken. Please e-mail us at [email] and let us know
-    what you were doing when this error occurred. We will fix it as soon
-    as possible. Sorry for any inconvenience caused.
+	<p class="go-back">
+		Go to our <a href="{{ path('sylius_homepage') }}">Home page</a>.
+	</p>
+</div>
+<div id="container">
 </div>
 {% endblock %}

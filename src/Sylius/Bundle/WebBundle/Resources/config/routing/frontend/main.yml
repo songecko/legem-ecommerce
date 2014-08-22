@@ -17,6 +17,26 @@ sylius_coming_soon:
     pattern: /
     defaults: { _controller: sylius.controller.frontend.homepage:comingSoonAction }
     
+sylius_diamond_education:
+    pattern: /diamond-knowledge
+    defaults: { _controller: sylius.controller.frontend.homepage:diamondEducationAction }
+
+sylius_help:
+    pattern: /help
+    defaults: { _controller: sylius.controller.frontend.homepage:helpAction }
+        
+sylius_how_it_works:
+    pattern: /how-it-works
+    defaults: { _controller: sylius.controller.frontend.homepage:howItWorksAction }
+   
+sylius_our_story:
+    pattern: /our-story
+    defaults: { _controller: sylius.controller.frontend.homepage:ourStoryAction }
+
+sylius_ring_sizer:
+    pattern: /ring-sizer
+    defaults: { _controller: sylius.controller.frontend.homepage:ringSizerAction }
+         
 legemdary_blog:
     pattern: /blog
     defaults: { _controller: sylius.controller.frontend.homepage:blogAction }
