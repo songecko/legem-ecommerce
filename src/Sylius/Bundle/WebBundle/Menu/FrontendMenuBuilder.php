@@ -153,12 +153,13 @@ class FrontendMenuBuilder extends MenuBuilder
         $helpMenu->addChild('Orders and alterations', array(
         		'route' => 'sylius_help',
         ));
-        $helpMenu->addChild('Contact', array(
+        $helpMenu->addChild('Contact us', array(
         		'route' => 'sylius_contact',
         ));
         
         $menu->addChild("Shop Rings", array(
         		'route' => 'sylius_product_index',
+        		'linkAttributes' => array('class' => 'button')
         ));
         
         /*if ($this->cartProvider->hasCart()) {

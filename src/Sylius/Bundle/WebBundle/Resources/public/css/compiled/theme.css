@@ -1423,7 +1423,7 @@ a:focus, button:focus {
         @media (max-width: 767px) {
           #home2 #hero .slides .slide.first .info .cta {
             text-align: center; } }
-        #home2 #hero .slides .slide.first .info .cta a {
+        #home2 #hero .slides .slide.first .info .cta a.button-outline {
           position: relative;
           margin: 0px 30px 0 0;
           padding: 16px 25px;
@@ -1432,7 +1432,16 @@ a:focus, button:focus {
           text-transform: uppercase;
           border: 2px solid rgba(255, 255, 255, 0.8);
           background: rgba(0, 0, 0, 0.4); }
-          #home2 #hero .slides .slide.first .info .cta a:hover {
+          #home2 #hero .slides .slide.first .info .cta a.button {
+          	position: relative;
+          }
+          #home2 #hero .slides .slide.first .info .cta a.button .fa {
+          	color: #FFFFFF;
+          }
+          #home2 #hero .slides .slide.first .info .cta a.button:hover {
+          	padding-right: 45px;
+          }
+          #home2 #hero .slides .slide.first .info .cta a.button-outline:hover {
             color: #252525;
             background: #fff;
             padding-right: 45px; }
