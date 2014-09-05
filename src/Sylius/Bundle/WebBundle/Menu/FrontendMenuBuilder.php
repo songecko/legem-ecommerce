@@ -141,6 +141,9 @@ class FrontendMenuBuilder extends MenuBuilder
         				'icon' => 'fa fa-chevron-down'
         		)
         ));
+        $helpMenu->addChild('Free shipping', array(
+        		'route' => 'sylius_help',
+        ));
         $helpMenu->addChild('30 day returns', array(
         		'route' => 'sylius_help',
         ));

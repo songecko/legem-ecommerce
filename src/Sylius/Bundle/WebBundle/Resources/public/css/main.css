@@ -2,6 +2,12 @@
 	background: #7D8186 !important;
 }
 
+.button.green {
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	background: linear-gradient(#4CA54C, #5cb85c);
+}
+
 .list-unstyled {
 	margin: 0;
 }
@@ -511,4 +517,18 @@ header .navbar-brand img {
 #signup .header h4,
 #signup .already-account, #signup .already-account a {
 	color: #4d6077;
+}
+
+#diamondSelection .timeleftContainter {
+	color: #417bff;
+}
+
+#diamondSelection .shaded {
+	background: rgb(241, 241, 50);
+	padding: 5px;
+}
+
+#diamondSelection .caratPrice {
+	font-style: oblique;
+	font-size: 11px;
 }

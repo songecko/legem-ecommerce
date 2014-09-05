@@ -3,16 +3,16 @@
 {% block content %}
 <div id="gallery">
 <div id="showcase" style="margin-bottom: 0;">
-<div class="container">
+<div id="diamondSelection" class="container">
 	<div class="row header">
-		<h3>Select a diamond bid for your request</h3>
+		<h3>Select a diamond bid for your ring</h3>
 	</div>
 	
 	<br><br>
 	
 	<div class="row">
-		<div class="col-md-5">
-			<table id="diamondSelection" class="table table-bordered">
+		<div class="col-md-7" style="padding-right: 0px;">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th><span>Ring: {{ bidRequest.orderItem.variant.product.name }}</span></th>
@@ -29,24 +29,24 @@ margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}">
 			</table>
 		</div>
 		
-		<div class="col-md-6 col-md-offset-1">
-			<table id="diamondSelection" class="table table-bordered">
+		<div class="col-md-5" style="padding-left: 0px;">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th colspan="2"><span>Number of bids: {{ bidRequest.diamondBids|length }}</span><span class="pull-right">Time left: <span class="timeleft" data-end-date="{{ bidRequest.timeLeft.format('D, d M Y H:i:s O') }}"></span> hs.</span></th>
+						<th colspan="2"><span>Number of bids: {{ bidRequest.diamondBids|length }}</span><span class="pull-right timeleftContainter">Time left: <span class="timeleft" data-end-date="{{ bidRequest.timeLeft.format('D, d M Y H:i:s O') }}"></span> hs.</span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td width="70%" style="text-align: right;">Your Ring:</td>
+						<td width="70%" style="text-align: left;">Your Ring:</td>
 						<td width="30%" class="ringPrice" data-price="{{ bidRequest.orderItem.unitPrice }}">{{ bidRequest.orderItem.unitPrice|sylius_money }}</td>
 					</tr>
 					<tr>
-						<td width="70%" style="text-align: right;">Your Diamond:</td>
+						<td width="70%" style="text-align: left;">Your Diamond:</td>
 						<td width="30%" class="diamondPrice">--</td>
 					</tr>
 					<tr>
-						<td width="70%" style="text-align: right;">Total Price:</td>
+						<td width="70%" style="text-align: left;">Total Price:</td>
 						<td width="30%" class="totalPrice">--</td>
 					</tr>
 					<tr>
@@ -78,12 +78,15 @@ margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}">
 	                {% for bid in bidRequest.diamondBids %}
 	                    <tr class="bid" id="bid-{{ bid.id }}">
 	                    	<td>{{ bid.vendor.firstName }}</td>
-	                        <td>{{ bid.carat }}</td>
-	                        <td>{{ bid.color }}</td>
-	                        <td>{{ bid.clarity }}</td>
-	                        <td>{{ bid.cut }}</td>
+	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.carat }}</span></td>
+	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.color }}</span></td>
+	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.clarity }}</span></td>
+	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.cut }}</span></td>
 	                        <td><a href="{{ asset('media/pdf/'~bid.pdf) }}" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a></td>
-	                        <td>{{ bid.price|sylius_money }} <br> {{ (bid.price/bid.carat)|sylius_money }} per carat</td>
+	                        <td>
+	                        	{{ bid.price|sylius_money }} 
+	                        	<br> 
+	                        	<span class="caratPrice">({{ (bid.price/bid.carat)|sylius_money }} per carat)</span></td>
 	                        <td><a href="#" class="btn btn-info btn-sm selectBidButton" data-price="{{ bid.price }}" data-checkout-url="{{ path('sylius_account_bids_apply_and_checkout', {'id': bidRequest.id, 'bidId': bid.id}) }}">Select</a></td>
 	                    </tr>
 	                {% endfor %}
