@@ -10,16 +10,19 @@ $(document).ready(function()
 	
 	if($('.timeleft').length > 0)
 	{
-		$('.timeleft').countdown({
-			date: $('.timeleft').data('endDate'),
-			render: function(data) 
-			{
-	            $('.timeleft').html(this.leadingZeros((data.days*24)+data.hours, 2) + ":" + this.leadingZeros(data.min, 2) + ":" + this.leadingZeros(data.sec, 2));
-	        },
-	        onEnd: function() 
-	        {
-	        	location.reload();
-	        }
+		$('.timeleft').each(function()
+		{
+			$(this).countdown({
+				date: $(this).data('endDate'),
+				render: function(data) 
+				{
+		            $(this.el).html(this.leadingZeros((data.days*24)+data.hours, 2) + ":" + this.leadingZeros(data.min, 2) + ":" + this.leadingZeros(data.sec, 2));
+		        },
+		        onEnd: function() 
+		        {
+		        	location.reload();
+		        }
+			});
 		});
 	}
 	
@@ -149,6 +152,11 @@ $(document).ready(function()
 	});
 
 
+	$('.magnific').magnificPopup({ 
+		  type: 'iframe'
+			// other options
+	});
+	
 	// Initialize Isotope plugin for filtering
     var $container = $('.isotope_container'),
           $filters = $("#filters a");

@@ -82,7 +82,11 @@ margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}">
 	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.color }}</span></td>
 	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.clarity }}</span></td>
 	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.cut }}</span></td>
-	                        <td><a href="{{ asset('media/pdf/'~bid.pdf) }}" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a></td>
+	                        <td>
+	                        	{% if bid.pdf %}
+	                        	<a href="{{ asset('media/pdf/'~bid.pdf) }}" class="magnific" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a>
+	                        	{% endif %}
+	                        </td>
 	                        <td>
 	                        	{{ bid.price|sylius_money }} 
 	                        	<br> 

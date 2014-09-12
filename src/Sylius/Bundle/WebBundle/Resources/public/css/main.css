@@ -146,6 +146,11 @@ header .navbar-brand img {
 	height: 100%;
 }
 
+#wizardModal .wizard .content .explanation p,
+#wizardModal .wizard .content .explanation iframe {
+	float: right;	
+} 
+
 #wizardModal .backButton {
 	display: inline-block;
 	font-size: 17px;
@@ -276,6 +281,10 @@ header .navbar-brand img {
 	background: #505050;
 }
 
+.wizard > .content .selection .selectionContent.review {
+	width: 60%;
+}
+
 .wizard > .content .selection .selectionContent.choice div {
 	float: left;
 	width: 54px;
@@ -343,10 +352,11 @@ header .navbar-brand img {
 .wizard > .content .review .label {
 	float: left;
 	font-size: 18px;
-	width: 32%;
+	width: 40%;
 	text-align: left;
 	line-height: 59px;
 	padding: 0 0 0 25px;
+	font-weight: 500;
 }
 
 .wizard > .content .review .value {
@@ -354,7 +364,6 @@ header .navbar-brand img {
 	font-size: 18px;
 	background: white;
 	padding: 12px;
-	border: 5px solid #818181;
 }
 
 .wizard > .content .explanation p {
