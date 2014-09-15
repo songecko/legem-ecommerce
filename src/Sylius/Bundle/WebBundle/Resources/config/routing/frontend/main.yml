@@ -33,6 +33,10 @@ sylius_our_story:
     pattern: /our-story
     defaults: { _controller: sylius.controller.frontend.homepage:ourStoryAction }
 
+sylius_our_social_commitment:
+    pattern: /our-social-commitment
+    defaults: { _controller: sylius.controller.frontend.homepage:ourSocialCommitmentAction }
+    
 sylius_ring_sizer:
     pattern: /ring-sizer
     defaults: { _controller: sylius.controller.frontend.homepage:ringSizerAction }

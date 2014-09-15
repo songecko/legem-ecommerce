@@ -77,6 +77,11 @@ class HomepageController extends Controller
 		return $this->render('SyliusWebBundle:Frontend/Homepage:ourStory.html.twig');
 	}
 	
+	public function ourSocialCommitmentAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:ourSocialCommitment.html.twig');
+	}
+	
 	public function ringSizerAction(Request $request)
 	{
 		return $this->render('SyliusWebBundle:Frontend/Homepage:ringSizer.html.twig');

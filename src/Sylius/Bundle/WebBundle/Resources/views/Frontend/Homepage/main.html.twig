@@ -83,13 +83,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 pics">
-				<a class="pic" href="#">
+				<a class="pic" href="{{ path('sylius_how_it_works') }}">
 					<img src="{{ asset('bundles/syliusweb/images/competitive-wholesale.jpg') }}" alt="competitive wholesale">
 					<div class="bg">
 						<p>Competitive Wholesale</p>
 					</div>
 				</a>
-				<a class="pic" href="#">
+				<a class="pic" href="{{ path('sylius_our_social_commitment') }}">
 					<img src="{{ asset('bundles/syliusweb/images/our-social-commitment.jpg') }}" alt="our social commitment">
 					<div class="bg">
 						<p>Our Social Commitment</p>
@@ -128,7 +128,7 @@
 			<div class="col-sm-6">
 				<div class="testimonial">
 					<div class="quote">
-						She LOVES it! Thank you so much for making this such a pleasurable experience.  I was a little nervous at first, but couldn’t be happier.
+						She LOVES it! Thank you so much for making this such a pleasurable experience.  I was a little nervous at first, but couldn’t be happier. Definitely the best way to buy.
 						<div class="arrow-down">
 			                <div class="arrow"></div>
 			                <div class="arrow-border"></div>
@@ -144,76 +144,20 @@
 	</div>
 </div>
 
-<div id="pricing">
+<div id="home">
+<div id="clients">
 	<div class="container">
-		<div class="row header">
-			<div class="col-md-12">
-				<h3>How it works</h3>
+		<div class="row">
+			<div class="col-md-6">
+				<h3>30 Day Returns</h3>
+				<p>Your Moment Demands Perfection</p>
 			</div>
-		</div>
-		<div id="support">
-			<div id="browse">
-		
-				<div class="row">
-					<div class="col-sm-4 topic">
-						<a href="#">
-							<span class="icon ion-clipboard"></span>
-							<strong>Competetive diamond quotes</strong>
-						</a>
-						<p>
-							Request bids for Your diamond selection. Vendors compete for your business.
-						</p>
-					</div>
-					<div class="col-sm-4 topic">
-						<a href="#">
-							<span class="icon ion-gear-a"></span>
-							<strong>It's simple</strong>
-						</a>
-						<p>
-							Our streamlined, process makes it easy to create a ring and get bids.
-						</p>
-					</div>
-					<div class="col-sm-4 topic">
-						<a href="#">
-							<span class="icon ion-card"></span>
-							<strong>Billing information</strong>
-						</a>
-						<p>
-							Learn how to change tasks and assign projects to all your teammates.
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4 topic">
-						<a href="#">
-							<span class="icon ion-person-stalker"></span>
-							<strong>Risk free buying</strong>
-						</a>
-						<p>
-							30 Days Full Refund Returns and Free Shipping.
-						</p>
-					</div>
-					<div class="col-sm-4 topic">
-						<a href="#">
-							<span class="icon ion-upload"></span>
-							<strong>24/7 professional support</strong>
-						</a>
-						<p>
-							Speak with a Professional Geomologist with years of industry experience
-						</p>
-					</div>
-					<div class="col-sm-4 topic">
-						<a href="#">
-							<span class="icon ion-compose"></span>
-							<strong>Lorem ipsum sit amet</strong>
-						</a>
-						<p>
-							Learn how to change tasks and assign projects to all your teammates.
-						</p>
-					</div>
-				</div>
+			<div class="col-md-6">
+				<h3>Free Shipping</h3>
+				<p>Secure and Reliable</p>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 {% endblock %}

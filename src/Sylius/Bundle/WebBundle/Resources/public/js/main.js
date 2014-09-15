@@ -26,6 +26,14 @@ $(document).ready(function()
 		});
 	}
 	
+	if($('.flexslider').length > 0)
+	{
+		$('.flexslider').flexslider({
+			directionNav: false,
+			slideshowSpeed: 4000
+		});
+	}
+	
 	//Bidding area
 	$('.selectBidButton').click(function(e)
 	{
