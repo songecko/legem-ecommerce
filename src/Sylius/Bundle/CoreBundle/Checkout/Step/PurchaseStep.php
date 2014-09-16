@@ -63,6 +63,7 @@ class PurchaseStep extends CheckoutStep
         $payment = $order->getPayment();
         $previousState = $order->getPayment()->getState();
         $payment->setState($status->getStatus());
+        ldd($payment);
 
         if ($previousState !== $payment->getState()) {
             $this->dispatchEvent(
