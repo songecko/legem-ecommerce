@@ -39,7 +39,7 @@ margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}">
 				<tbody>
 					<tr>
 						<td width="70%" style="text-align: left;">Your Ring:</td>
-						<td width="30%" class="ringPrice" data-price="{{ bidRequest.orderItem.unitPrice }}">{{ bidRequest.orderItem.unitPrice|sylius_money }}</td>
+						<td width="30%" class="ringPrice" data-price="{{ bidRequest.orderItem.ringUnitPrice }}">{{ bidRequest.orderItem.ringUnitPrice|sylius_money }}</td>
 					</tr>
 					<tr>
 						<td width="70%" style="text-align: left;">Your Diamond:</td>

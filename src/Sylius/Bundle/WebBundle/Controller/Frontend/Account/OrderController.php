@@ -84,9 +84,9 @@ class OrderController extends Controller
             'order'  => $order
         ));
 
-        if ('html' === $request->attributes->get('_format')) {
+        //if ('html' === $request->attributes->get('_format')) {
             return new Response($html);
-        }
+        //}
 
         $generator = $this
             ->get('knp_snappy.pdf')
@@ -96,7 +96,7 @@ class OrderController extends Controller
             'footer-left' => '[title]',
             'footer-right' => '[page]/[topage]',
             'footer-line' => true,
-            'footer-font-name' => '"Helvetica Neue",​Helvetica,​Arial,​sans-serif',
+            //'footer-font-name' => '"Helvetica Neue",​Helvetica,​Arial,​sans-serif',
             'footer-font-size' => 10,
         ));
 

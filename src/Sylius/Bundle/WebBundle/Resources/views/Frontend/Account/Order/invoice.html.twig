@@ -1,26 +1,118 @@
-{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<title>{{ 'sylius.account.order.invoice'|trans }} {{ order.number }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" type="text/css" />
-    <style>
-        .img-polaroid { display: none; }
-    </style>
-{% endblock %}
+	<!-- stylesheets -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/syliusweb/css/bootstrap/bootstrap.min.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/syliusweb/css/compiled/theme.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/syliusweb/css/vendor/font-awesome.min.css') }}" />
 
-{% block title %}
-    {{ 'sylius.account.order.invoice'|trans }} {{ order.number }}
-{% endblock %}
+	<!-- javascript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="{{ asset('bundles/syliusweb/js/bootstrap/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('bundles/syliusweb/js/theme.js') }}"></script>
 
-{% block header %}
-    <h1>{{ 'sylius.account.order.invoice'|trans }} {{ order.number }}</h1>
-{% endblock %}
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body id="invoice">
+	<div class="logo">
+		<a href="{{ url('sylius_homepage') }}">Legemdary</a>
+	</div>
 
-{% block main %}
-    {% include "SyliusWebBundle:Frontend/Account:Order/_detail.html.twig" %}
-{% endblock %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="invoice-wrapper">
+					<div class="intro">
+						This is the receipt for a payment of <strong>{{ order.total|sylius_money }}</strong> (USD) you made to Legemdary.
+					</div>
 
-{% block gallery %}
-{% endblock %}
+					<div class="payment-info">
+						<div class="row">
+							<div class="col-sm-6">
+								<span>Order number</span>
+								<strong>{{ order.number }}</strong>
+							</div>
+							<div class="col-sm-6 text-right">
+								<span>{{ 'sylius.account.order.created_at'|trans }}</span> 
+								<strong>{{ order.createdAt|date() }}</strong>
+							</div>
+						</div>
+					</div>
 
-{% block footer %}
-{% endblock %}
+					<div class="payment-details">
+						<div class="row">
+							<div class="col-sm-6">
+								<span>{{ 'sylius.checkout.finalize.order.shipping_address'|trans }}</span>
+								{% include 'SyliusWebBundle:Common/Address:_show.html.twig' with { 'address': order.shippingAddress } %}
+							</div>
+							<div class="col-sm-6 text-right">
+								<span>{{ 'sylius.checkout.finalize.order.billing_address'|trans }}</span>
+								{% include 'SyliusWebBundle:Common/Address:_show.html.twig' with { 'address': order.billingAddress } %}
+							</div>
+						</div>
+					</div>
+
+					<div class="line-items">
+						<div class="headers clearfix">
+							<div class="row">
+								<div class="col-xs-4">Description</div>
+								<div class="col-xs-3">Quantity</div>
+								<div class="col-xs-5 text-right">Amount</div>
+							</div>
+						</div>
+						<div class="items">
+						{% for item in order.items %}
+							{% set product = item.product %}
+							<div class="row item">
+								<div class="col-xs-4 desc">
+									{{ product.name }}
+								</div>
+								<div class="col-xs-3 qty">
+									{{ item.quantity }}
+								</div>
+								<div class="col-xs-5 amount text-right">
+									{{ item.unitPrice|sylius_money }}
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+						<div class="total text-right">
+							<div class="field">
+								Subtotal <span>{{ order.itemsTotal|sylius_money }}</span>
+							</div>
+							<div class="field">
+								Shipping <span>{{ order.shippingTotal|sylius_money }}</span>
+							</div>
+							<div class="field">
+								{{ 'sylius.order.tax_total'|trans }} <span>{{ order.taxTotal|sylius_money }}</span>
+							</div>
+							<div class="field grand-total">
+								Total <span>{{ order.total|sylius_money }}</span>
+							</div>
+						</div>
+
+						<div class="print">
+							<a href="javascript:window.print();">
+								<i class="fa fa-print"></i>
+								Print this receipt
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer">
+					<p>&copy; <a href="http://www.legemdary.com" target="_blank">Legemdary</a>, {{ 'now'|date('Y') }}.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

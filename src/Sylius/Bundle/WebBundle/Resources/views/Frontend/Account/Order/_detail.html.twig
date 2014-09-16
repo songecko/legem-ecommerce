@@ -41,7 +41,7 @@
                     {{ include('SyliusWebBundle:Frontend/Product:_variant.html.twig', {'variant': item.variant}) }}
                 </td>
                 <td>{{ item.quantity }}</td>
-                <td>{{ item.unitPrice|sylius_money }}</td>
+                <td>{{ item.ringUnitPrice|sylius_money }}</td>
                 <td>{{ item.total|sylius_money }}</td>
             </tr>
         {% endfor %}

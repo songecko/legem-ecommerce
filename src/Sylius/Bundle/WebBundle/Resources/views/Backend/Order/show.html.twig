@@ -123,7 +123,7 @@
             </td>
             <td class="quantity text-center">{{ item.quantity }}</td>
             <td class="unit-price text-center">
-                {{ item.unitPrice|sylius_money(order.currency) }}
+                {{ item.ringUnitPrice|sylius_money(order.currency) }}
             </td>
             <td class="unit-price text-center">
                 {{ item.diamondBid.price|sylius_money(order.currency) }}

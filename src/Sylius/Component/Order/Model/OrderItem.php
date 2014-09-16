@@ -137,7 +137,12 @@ class OrderItem implements OrderItemInterface
      */
     public function getUnitPrice()
     {
-        return $this->unitPrice;
+        return $this->unitPrice + ($this->diamondBid?$this->diamondBid->getPrice():0);
+    }
+    
+    public function getRingUnitPrice()
+    {
+    	return $this->unitPrice;
     }
 
     /**
@@ -250,7 +255,7 @@ class OrderItem implements OrderItemInterface
     {
         $this->calculateAdjustmentsTotal();
 
-        $this->total = ($this->quantity * $this->unitPrice) + $this->adjustmentsTotal + ($this->diamondBid?$this->diamondBid->getPrice():0);
+        $this->total = ($this->quantity * $this->getUnitPrice()) + $this->adjustmentsTotal;
 
         if ($this->total < 0) {
             $this->total = 0;
