@@ -62,6 +62,21 @@ class HomepageController extends Controller
 		return $this->render('SyliusWebBundle:Frontend/Homepage:diamondEducation.html.twig');    	
 	}
 	
+	public function diamondGradingAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:diamondGrading.html.twig');
+	}
+	
+	public function ringStylesAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:ringStyles.html.twig');
+	}
+	
+	public function diamondCertificatesAction(Request $request)
+	{
+		return $this->render('SyliusWebBundle:Frontend/Homepage:diamondCertificates.html.twig');
+	}
+	
 	public function helpAction(Request $request)
 	{
 		return $this->render('SyliusWebBundle:Frontend/Homepage:help.html.twig');

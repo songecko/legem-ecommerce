@@ -3,7 +3,7 @@ $(document).ready(function()
 	var $navDots = $("#hero nav a")
 	var $next = $(".slide-nav.next");
 	var $prev = $(".slide-nav.prev");
-	var $slides = $("#hero .slides .slide");
+	var $slides = $("#hero .slides.homeSlide .slide");
 	var actualIndex = 0;
 	var swiping = false;
 	var interval;
@@ -74,7 +74,7 @@ $(document).ready(function()
 		$navDots.eq(index).addClass("active");
 
 		// update slides
-		var $activeSlide = $("#hero .slide.active");
+		var $activeSlide = $("#hero .slides.homeSlide .slide.active");
 		var $nextSlide = $slides.eq(index);
 
 		$activeSlide.fadeOut();

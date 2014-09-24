@@ -27,7 +27,7 @@ class LoadImagesData extends DataFixture
     {
         $uploader = $this->get('sylius.image_uploader');
 
-        $imageTypes = array('solitaire', 'side_stones', 'halo', 'unique_design');
+        $imageTypes = array('solitaire', 'side_stones', 'halo', 'petite');
         
         foreach ($imageTypes as $imageType)
         {

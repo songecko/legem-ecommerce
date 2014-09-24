@@ -21,6 +21,18 @@ sylius_diamond_education:
     pattern: /diamond-knowledge
     defaults: { _controller: sylius.controller.frontend.homepage:diamondEducationAction }
 
+sylius_diamond_education_4cs:
+    pattern: /diamond-knowledge/diamond-grading
+    defaults: { _controller: sylius.controller.frontend.homepage:diamondGradingAction }
+
+sylius_diamond_education_ring_styles:
+    pattern: /diamond-knowledge/ring-styles-and-metals
+    defaults: { _controller: sylius.controller.frontend.homepage:ringStylesAction }
+
+sylius_diamond_education_certificates:
+    pattern: /diamond-knowledge/diamond-certificates
+    defaults: { _controller: sylius.controller.frontend.homepage:diamondCertificatesAction }
+            
 sylius_help:
     pattern: /help
     defaults: { _controller: sylius.controller.frontend.homepage:helpAction }

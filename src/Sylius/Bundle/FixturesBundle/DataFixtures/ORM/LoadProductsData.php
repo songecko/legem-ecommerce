@@ -51,7 +51,7 @@ class LoadProductsData extends DataFixture
         
         $manager->persist($this->createRing(1, 'Solitaire'));
         $manager->persist($this->createRing(2, 'Side Stones'));
-        $manager->persist($this->createRing(3, 'Unique Design'));
+        $manager->persist($this->createRing(3, 'Petite'));
         $manager->persist($this->createRing(4, 'Halo'));
         
         for ($i = 5; $i <= 20; $i++) {
@@ -65,7 +65,7 @@ class LoadProductsData extends DataFixture
                 break;
 
                 case 2:
-                    $manager->persist($this->createRing($i, 'Unique Design'));
+                    $manager->persist($this->createRing($i, 'Petite'));
                 break;
 
                 case 3:

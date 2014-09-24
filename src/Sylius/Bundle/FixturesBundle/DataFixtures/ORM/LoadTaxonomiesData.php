@@ -26,7 +26,7 @@ class LoadTaxonomiesData extends DataFixture
     public function load(ObjectManager $manager)
     {
         $manager->persist($this->createTaxonomy('Ring type', array(
-            'Solitaire', 'Side Stones', 'Unique Design', 'Halo'
+            'Solitaire', 'Side Stones', 'Petite', 'Halo'
         )));
 
         $manager->flush();

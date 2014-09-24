@@ -1,0 +1,90 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block main %}
+<div id="features" class="diamondGrading">
+	<div class="container">
+		<div class="row header">
+			<div class="col-md-12">
+				<h2>Diamond Grading and the Four C’s</h2>
+				<p>The four C’s of diamond grading are <strong>C</strong>arat, <strong>C</strong>ut, <strong>C</strong>olor, and <strong>C</strong>larity.  These are the four main factors that help determine a diamond’s quality which ultimately translates into value.  The Four C’s, which were created by GIA, have been accepted as the global language of diamond quality and the benchmark grading for diamonds.</p>
+			</div>
+		</div>
+		<div class="row feature">
+			<div class="col-md-6 info">
+				<h4>Diamond Carat</h4>
+				<p>
+					A carat is a unit of measurement which determines the weight of a diamond. One carat is equal to 0.20 grams.  Each carat is divided into 100 points. Therefore, a half-carat stone may be referred to as 50 points. Larger carat sizes are rare, thus making larger carat sizes more expensive.
+				</p>
+				<p> 
+					Remember when evaluating carat, it refers to the weight of a stone and not necessarily the diamond’s proportions. Therefore, two diamonds with the same carat weight might appear different sizes because of their proportions which is determined by a diamond’s cut.
+				</p>
+			</div>
+			<div class="col-md-6 image" style="margin-top: 90px; padding: 0;">
+				<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-carat.png') }}" class="img-responsive" alt="Diamond carat" />
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="row feature backwards">
+			<div class="col-md-6 info">
+				<h4>Diamond Cut</h4>
+				<p>
+					Diamond Cut is arguably the most important grading quality of all the four C’s. The cut of a diamond, affects every other grading aspect, but most importantly is responsible for the way light interacts and reflects within the diamond.
+				</p>
+				<p> 
+					The parts of a diamond and their proportions in relation to each other are going to determine whether or not the stone sparkles. Think of it as a light prism, or better yet a tiny room of mirrors. Each mirror needs to be sized and angled correctly to ensure that when light enters it bounces around to ultimately reflect back to the top of the diamond to the viewer’s eye. Always choose the best possible cut.
+				</p>
+			</div>
+			<div class="col-md-6 image" style="margin-top: 60px;">
+				<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-cut.png') }}" class="img-responsive" alt="Diamond cut" />
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="row feature">
+			<div class="col-md-6 info">
+				<h4>Diamond Color</h4>
+				<p>
+					 Diamond color is graded on a scale by GIA from D to Z, with D being the highest grade and Z being the lowest.  The higher the color grade the more pure white the diamond will be in color.
+				</p>
+				<p> 
+					At color’s that are higher than J it’s harder to see the differences in color, without comparing stones side by side; especially when the diamonds are mounted in jewelry. Higher colors are considered more valuable thus are accompanied by an increase in price. If you’re shopping on a budget, we suggest choosing a diamond in the near colorless range of G to J.
+				</p>
+			</div>
+			<div class="col-md-6 image" style="margin-top: 90px; padding: 0;">
+				<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-color.png') }}" class="img-responsive" alt="Diamond color" />
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="row feature backwards">
+		<div id="slider">
+			<div class="col-md-5 info">
+				<h4>Diamond Clarity</h4>
+				<p>
+					Diamond clarity refers to the small, natural imperfections that occur in almost all diamonds. There are many terms gemologists use to describe these imperfections like blemishes, flaws, inclusions, etc.  The imperfections range and are attributed to various geological phenomenon that occur such as air pockets within the stone or microscopic deposits of foreign sediments.
+				</p>
+				<p> 
+					The key is to choose a diamond that is “eye clean”. This basically means that the imperfections are located in the right location and small enough that the naked eye cannot detect them.
+				</p>
+			</div>
+			<div class="col-md-7 slide-wrapper">
+				<div class="slideshow">
+					<div class="btn-nav prev"></div>
+					<div class="btn-nav next"></div>
+					<div class="slide active">
+						<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-clarity-IF.png') }}" alt="diamond clarity IF" />
+					</div>
+					<div class="slide">
+						<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-clarity-VVS.png') }}" alt="diamond clarity VVS" />
+					</div>
+					<div class="slide">
+						<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-clarity-VS.png') }}" alt="diamond clarity VS" />
+					</div>
+					<div class="slide">
+						<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-clarity-SI.png') }}" alt="diamond clarity SI" />
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>		
+</div>
+{% endblock %}

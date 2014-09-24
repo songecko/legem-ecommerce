@@ -76,10 +76,58 @@ header .navbar-brand img {
 	background-size: cover;
 }
 
+#home2 #hero.diamondEducation .slides .slide.second .bg {
+	background: url(../images/slider/diamond-grading.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#home2 #hero.diamondEducation .slides .slide.second .cta {
+	margin-bottom: 10px;
+}
+
+#home2 #hero.diamondEducation .slides .slide.second .cta span {
+	width: 400px;
+	display: inline-block;
+	background: #FFFFFF;
+	color: #000000;
+	padding: 10px 50px 10px 10px;
+}
+
 #home2 #hero .slides .slide.third .bg {
 	background: url(../images/slider/slider_1.jpg) no-repeat center;
 	background-size: cover;
 }
+
+#features.diamondGrading #slider .slide-wrapper .slideshow {
+	width: 100%;
+	height: 335px;
+	background: none;
+}
+
+#features.diamondGrading #slider .slide-wrapper .slideshow .slide img {
+	width: 100%;
+}
+
+#features.diamondGrading #slider .slide-wrapper .slideshow .btn-nav.active {
+	-moz-transform: translateX(-75px) !important;
+	-o-transform: translateX(-75px) !important;
+	-ms-transform: translateX(-75px) !important;
+	-webkit-transform: translateX(-75px) !important;
+	transform: translateX(-75px) !important; 
+}
+
+#features.diamondGrading #slider .slide-wrapper .slideshow .btn-nav.next.active {
+	-moz-transform: translateX(75px) !important;
+	-o-transform: translateX(75px) !important;
+	-ms-transform: translateX(75px) !important;
+	-webkit-transform: translateX(75px) !important;
+	transform: translateX(75px) !important; 
+}
+          
+#home2 #features.diamondCertificates .feature .info p {
+	width: 100%;
+}
+
 
 #features #showcase.showcase {
 	margin-bottom: 60px;	

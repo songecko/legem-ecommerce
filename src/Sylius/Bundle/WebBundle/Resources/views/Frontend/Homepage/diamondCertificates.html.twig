@@ -1,0 +1,41 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block main %}
+<div id="features" class="diamondCertificates">
+	<div class="container">
+		<div class="row header">
+			<div class="col-md-12">
+				<h2>Conflict Free Diamonds</h2>
+				<p>Legemdary diamonds are conflict free.</p>
+			</div>
+		</div>
+		<div class="row feature">
+			<div class="col-md-12 info">
+				<p>
+					Legemdary has a zero-tolerance policy toward conflict diamonds. We only partner with diamond suppliers who are carefully screened and who proudly adhere to and enforce the standards established by the Kimberley Process. Legemdary diamonds are conflict free. 
+				</p>
+				<p> 
+					In 2002, the Kimberley Process Certification System was established. This is a UN-backed process, which tracks diamonds from mine to market. It has virtually eliminated the trade in conflict diamonds.  In April 2003, Congress and President Bush passed a law adopting the Kimberley Process that requires all US diamond retailers to buy diamonds from manufacturers who have documentation warranting that the merchandise was obtained through legitimate channels. The US Customs Service actively enforces the Kimberley Process requirements as diamonds enter American ports. 
+				</p>
+				<p> 
+					Today over 99% of the world's supply of diamonds is from sources free of conflict.
+				</p>
+			</div>
+		</div>
+		
+		<div class="divider"></div>
+		
+		<div class="row header">
+			<div class="col-md-12">
+				<h2>GIA Certification</h2>
+				<p>All Legemdary diamonds are GIA certified. The Gemological Institute of America is the most respected and stringent diamond laboratory in the world.</p>
+			</div>
+		</div>
+		<div class="row feature">
+			<div class="col-md-12 image">
+				<img src="{{ asset('bundles/syliusweb/images/diamond-knowledge/diamond-certificate.jpg') }}" class="img-responsive" alt="Diamond certificate" />
+			</div>
+		</div>
+	</div>		
+</div>
+{% endblock %}
