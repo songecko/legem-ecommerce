@@ -115,6 +115,13 @@
                 </ul>
                 {% endif %}
                 <ul class="list-unstyled">
+					<li>
+						<strong>Diamond Vendor</strong>: 
+						{{ item.diamondBid.vendor.fullname }}
+						{% if item.diamondBid.pdf %}
+							<a href="{{ asset('media/pdf/'~item.diamondBid.pdf) }}" class="magnific" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a>
+						{% endif %}
+					</li>
 					<li><strong>Diamond Carat</strong>: {{ item.diamondBid.carat }}</li>
 					<li><strong>Diamond Color</strong>: {{ item.diamondBid.color }}</li>
 					<li><strong>Diamond Clarity</strong>: {{ item.diamondBid.clarity }}</li>

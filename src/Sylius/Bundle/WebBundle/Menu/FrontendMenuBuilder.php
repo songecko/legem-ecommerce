@@ -320,7 +320,7 @@ class FrontendMenuBuilder extends MenuBuilder
 
         $menu->addChild('phone_number', array(
         	'labelAttributes'    => array('class' => 'phoneNumber')
-        ))->setLabel("1-888-332-1714");
+        ))->setLabel("1-888-338-9721");
         
         if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_USER')) 
         {		
