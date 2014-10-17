@@ -597,11 +597,11 @@ input[type="file"] {
 	margin-top: 60px;
 }
 
-#sylius_product_videoFile .control-label {
+#sylius_product_videoFile .control-label:first-child {
 	display: none;
 }
 
-#sylius_product_videoFile > .form-group:last-child label {
+#sylius_product_videoFile > .form-group label {
 	display: block;
 	text-align: left;
 	width: 80px;
