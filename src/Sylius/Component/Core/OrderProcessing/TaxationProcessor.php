@@ -99,6 +99,7 @@ class TaxationProcessor implements TaxationProcessorInterface
         $zone = null;
 
         if (null !== $order->getShippingAddress()) {
+        	ld($order->getShippingAddress());
             $zone = $this->zoneMatcher->match($order->getShippingAddress()); // Match the tax zone.
         }
 
@@ -106,9 +107,12 @@ class TaxationProcessor implements TaxationProcessorInterface
             $zone = $zone ?: $this->settings->get('default_tax_zone'); // If address does not match any zone, use the default one.
         }
 
+        ldd($zone);
+        
         if (null === $zone) {
             return;
         }
+        
 
         $taxes = array();
 
