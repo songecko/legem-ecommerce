@@ -24,10 +24,15 @@ class DiamondBidRequestRepository extends EntityRepository
      * @param  array         $sorting
      * @return array
      */
-    public function findByUser(UserInterface $user, array $sorting = array())
+    public function findByUser(UserInterface $user, array $sorting = array(), $withoutBid = false)
     {
     	$queryBuilder = $this->getCollectionQueryBuilderByUser($user, $sorting);
     
+    	if($withoutBid)
+    	{
+    		$queryBuilder->andWhere('item.diamondBid IS NULL');	
+    	}
+    	
     	return $queryBuilder
     	->getQuery()
     	->getResult()

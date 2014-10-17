@@ -178,6 +178,9 @@ $(document).ready(function()
 			// other options
 	});
 	
+	// Pusher side navigation
+	$('.sidrButton').sidr();
+	
 	// Initialize Isotope plugin for filtering
     var $container = $('.isotope_container'),
           $filters = $("#filters a");

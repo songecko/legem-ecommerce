@@ -21,8 +21,9 @@
 				<tbody>
 					<tr>
 						<td style="padding: 0;">
-							<img src="{{ bidRequest.orderItem.variant.product.image ? bidRequest.orderItem.variant.product.image.path|imagine_filter('sylius_medium') : 'http://placehold.it/262x255' }}" class="img-responsive" style="height: 173px;
-margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}">
+							<img src="{{ bidRequest.orderItem.variant.product.image ? bidRequest.orderItem.variant.product.image.path|imagine_filter('sylius_medium') : 'http://placehold.it/262x255' }}" 
+								class="img-responsive" style="height: 173px;margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}"
+							>
 						</td>
 					</tr>
 				</tbody>
@@ -88,10 +89,10 @@ margin: 0 auto;" alt="{{ bidRequest.orderItem.variant.product.name }}">
 	                        	{% endif %}
 	                        </td>
 	                        <td>
-	                        	{{ bid.price|sylius_money }} 
+	                        	{{ bid.pricePlusFee|sylius_money }} 
 	                        	<br> 
-	                        	<span class="caratPrice">({{ (bid.price/bid.carat)|sylius_money }} per carat)</span></td>
-	                        <td><a href="#" class="btn btn-info btn-sm selectBidButton" data-price="{{ bid.price }}" data-checkout-url="{{ path('sylius_account_bids_apply_and_checkout', {'id': bidRequest.id, 'bidId': bid.id}) }}">Select</a></td>
+	                        	<span class="caratPrice">({{ (bid.pricePlusFee/bid.carat)|sylius_money }} per carat)</span></td>
+	                        <td><a href="#" class="btn btn-info btn-sm selectBidButton" data-price="{{ bid.pricePlusFee }}" data-checkout-url="{{ path('sylius_account_bids_apply_and_checkout', {'id': bidRequest.id, 'bidId': bid.id}) }}">Select</a></td>
 	                    </tr>
 	                {% endfor %}
 	            </tbody>

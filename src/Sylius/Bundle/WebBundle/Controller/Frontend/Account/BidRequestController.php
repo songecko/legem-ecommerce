@@ -20,7 +20,7 @@ class BidRequestController extends Controller
     {
         $bidRequests = $this
             ->getBidRequestRepository()
-            ->findByUser($this->getUser(), array('updatedAt' => 'desc'))
+            ->findByUser($this->getUser(), array('updatedAt' => 'desc'), true)
         ;
 
         return $this->render('SyliusWebBundle:Frontend/Account:Bids/index.html.twig', array(
@@ -59,8 +59,17 @@ class BidRequestController extends Controller
     	
     	if($bidRequest->isBidTimeout())
     	{
-    		$bidRequest->clearDiamondBids();
-    		$this->getDoctrine()->getManager()->flush();
+    		$em = $this->getDoctrine()->getManager();
+    		foreach($bidRequest->getDiamondBids() as $diamondBid)
+    		{
+    			$orderDiamondBid = $bidRequest->getOrderItem()->getDiamondBid();
+    			if(!$orderDiamondBid || ($orderDiamondBid->getId() != $diamondBid->getId()))
+    			{
+	    			$em->remove($diamondBid);
+    			}
+    		}
+    		
+    		$em->flush();
     	}
     	
     	return $this->redirect($this->generateUrl('sylius_account_bids_index'));

@@ -137,7 +137,7 @@ class OrderItem implements OrderItemInterface
      */
     public function getUnitPrice()
     {
-        return $this->unitPrice + ($this->diamondBid?$this->diamondBid->getPrice():0);
+        return $this->unitPrice + ($this->diamondBid?$this->diamondBid->getPricePlusFee():0);
     }
     
     public function getRingUnitPrice()

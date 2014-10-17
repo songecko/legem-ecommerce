@@ -52,12 +52,27 @@ var services = {
 		$sections = $tabs.find(".section");
 
 		$hexagons.click(function () {
+			window.location.hash = $(this).data("hexagon");
+			
 			$hexagons.removeClass("active");
 			$(this).addClass("active");
 			var index = $hexagons.index(this);
 			$sections.fadeOut();
 			$sections.eq(index).fadeIn();
 		});
+		
+		var hash = '#'+window.location.hash.substring(1);
+		if(hash != '#') 
+		{
+			var hexagon = $(hash+'Hexagon');
+			if(hexagon.length > 0)
+			{
+				hexagon.trigger('click');
+				$('html, body').animate({
+					scrollTop: $("#tabs").offset().top
+				}, 1000);
+			}
+		}
 	},
 	screenHover: function () {
 		$screens = $("#features-hover .images img");
@@ -86,17 +101,17 @@ var slideshow = {
 			$btnNext = $slideshow.find(".btn-nav.next");
 
 		var index = 0;
-		var interval = setInterval(function () {
+		/*var interval = setInterval(function () {
 			index++;
 			if (index >= $slides.length) {
 				index = 0;
 			}
 			updateSlides(index);
-		}, 4500);
+		}, 4500);*/
 
 		$btnPrev.click(function () {
-			clearInterval(interval);
-			interval = null;
+			//clearInterval(interval);
+			//interval = null;
 			index--;
 			if (index < 0) {
 				index = $slides.length - 1;
@@ -105,8 +120,8 @@ var slideshow = {
 		});
 
 		$btnNext.click(function () {
-			clearInterval(interval);
-			interval = null;
+			//clearInterval(interval);
+			//interval = null;
 			index++;
 			if (index >= $slides.length) {
 				index = 0;
@@ -114,13 +129,16 @@ var slideshow = {
 			updateSlides(index);
 		});
 
-		$slideshow.hover(function () {
+		$btnPrev.addClass("active");
+		$btnNext.addClass("active");
+		
+		/*$slideshow.hover(function () {
 			$btnPrev.addClass("active");
 			$btnNext.addClass("active");
 		}, function () {
 			$btnPrev.removeClass("active");
 			$btnNext.removeClass("active");
-		});
+		});*/
 
 
 		function updateSlides(index) {

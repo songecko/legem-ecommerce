@@ -50,7 +50,7 @@ class PurchaseStep extends CheckoutStep
         	 ));
         	
         	$request = new Request();
-        	$request->setField('AMT', $order->getTotal());
+        	$request->setField('AMT', $order->getTotal()/100);
         	$request->setField('CREATESECURETOKEN', 'Y');
         	$request->setField('SECURETOKENID', md5(time()));
         	

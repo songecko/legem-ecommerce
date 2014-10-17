@@ -57,6 +57,16 @@ class DiamondBid extends Diamond
 		return $this->price;
 	}
 	
+	public function getPriceFee()
+	{
+		return ($this->getPrice() * 5)/100;
+	}
+	
+	public function getPricePlusFee()
+	{
+		return $this->getPrice()+$this->getPriceFee();
+	}
+	
 	public function setPdf($pdf)
 	{
 		$this->pdf = $pdf;

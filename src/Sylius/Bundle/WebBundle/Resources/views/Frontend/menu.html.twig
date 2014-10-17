@@ -1,5 +1,13 @@
 {% extends 'SyliusWebBundle::menu.html.twig' %}
 
+{% macro attributes(attributes) %}
+{% for name, value in attributes %}
+    {%- if value is not none and value is not sameas(false) -%}
+        {{- ' %s="%s"'|format(name, value is sameas(true) ? name|e : value|e)|raw -}}
+    {%- endif -%}
+{%- endfor -%}
+{% endmacro %}
+
 {% block label %}
     {% if not item.labelAttribute('iconOnly') %}
         {% if options.allow_safe_labels and item.getExtra('safe_label', false) %}{{ item.label|trans|raw }}{% else %}{{ item.label|trans }}{% endif %}
@@ -7,3 +15,5 @@
     {% if item.labelAttribute('data-image') %}<img src="{{ item.labelAttribute('data-image')|imagine_filter('sylius_small', true) }}" alt="{{ item.name }}" class="menu-thumbnail"/>{% endif %}
     {% if item.labelAttribute('icon') %}<i class="{{ item.labelAttribute('icon') }}"></i>{% endif %}
 {% endblock %}
+
+{% block linkElement %}<a href="{{ item.uri }}{{ item.extras.hash is defined?'#'~item.extras.hash:'' }}"{{ _self.attributes(item.linkAttributes) }}>{{ block('label') }}</a>{% endblock %}

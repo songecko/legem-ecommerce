@@ -143,18 +143,23 @@ class FrontendMenuBuilder extends MenuBuilder
         ));
         $helpMenu->addChild('Free shipping', array(
         		'route' => 'sylius_help',
+        		'extras' => array('hash' => 'shipping')
         ));
         $helpMenu->addChild('30 day returns', array(
         		'route' => 'sylius_help',
+        		'extras' => array('hash' => 'returns')
         ));
         $helpMenu->addChild('Payment', array(
         		'route' => 'sylius_help',
+        		'extras' => array('hash' => 'payment')
         ));
         $helpMenu->addChild('Policies and security', array(
         		'route' => 'sylius_help',
+        		'extras' => array('hash' => 'policies')
         ));
         $helpMenu->addChild('Orders and alterations', array(
         		'route' => 'sylius_help',
+        		'extras' => array('hash' => 'orders')
         ));
         $helpMenu->addChild('Contact us', array(
         		'route' => 'sylius_contact',

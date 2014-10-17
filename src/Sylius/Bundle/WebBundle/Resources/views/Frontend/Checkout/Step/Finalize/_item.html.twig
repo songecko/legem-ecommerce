@@ -8,6 +8,11 @@
 			<li><strong>Diamond Color</strong>: {{ item.diamondBid.color }}</li>
 			<li><strong>Diamond Clarity</strong>: {{ item.diamondBid.clarity }}</li>
 			<li><strong>Diamond Cut</strong>: {{ item.diamondBid.cut }}</li>
+			{% if item.diamondBid.pdf %}
+			<li>
+				<a href="{{ asset('media/pdf/'~item.diamondBid.pdf) }}" class="magnific" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a>
+			</li>
+			{% endif %}
 		</ul> 
     </td>
     <td>{{ item.quantity }}</td>
@@ -18,7 +23,7 @@
     </td>
     <td>
         <span class="pull-right">
-        {{ item.diamondBid.price|sylius_money }}
+        {{ item.diamondBid.pricePlusFee|sylius_money }}
         </span>
     </td>
     <td>

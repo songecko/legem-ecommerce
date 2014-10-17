@@ -112,6 +112,50 @@ header .navbar-brand img {
 	width: 100%;
 }
 
+#home2 #features.diamondGrading #slider {
+	margin-top: 0;
+}
+
+#home2 #features.diamondGrading .header h2,
+#home2 #features.ringStyles .header h2,
+#home2 #features.diamondCertificates .header h2 {
+	font-size: 32px;
+}
+
+#home2 #features.diamondCertificates .feature {
+	margin-top: 15px;
+}
+
+#home2 #features.diamondGrading .feature .info p,
+#home2 #features.ringStyles .feature .info p {
+	width: 100%;
+}
+
+#home2 #features.diamondGrading .feature.backwards .info p,
+#home2 #features.ringStyles .feature.backwards .info p {
+	text-align: right;	
+}
+
+#home2 #features.diamondGrading .feature .info h4,
+#home2 #features.ringStyles .feature .info h4,
+#home2 #features.ringStyles #tabs .tabs-wrapper .tab-content .tab-pane .info h4,
+#home2 #features.diamondCertificates .feature .info h4 {
+	font-size: 45px;
+	font-family: "Lato", "Helvetica Neue", Arial;
+	line-height: 45px;
+}
+
+#home2 #features.ringStyles .feature .info h4,
+#home2 #features.ringStyles #tabs .tabs-wrapper .tab-content .tab-pane .info h4 {
+	font-size: 32px;
+	line-height: 32px;
+}
+
+#home2 #features.diamondGrading .feature.backwards .info h4,
+#home2 #features.ringStyles .feature.backwards .info h4 {
+	text-align: right;	
+}
+
 #features.diamondGrading #slider .slide-wrapper .slideshow .btn-nav.active {
 	-moz-transform: translateX(-75px) !important;
 	-o-transform: translateX(-75px) !important;
@@ -132,6 +176,13 @@ header .navbar-brand img {
 	width: 100%;
 }
 
+#features #slider .slide-wrapper .slideshow .btn-nav.next {
+	right: 81px;
+}
+
+#features #slider .slide-wrapper .slideshow .btn-nav.prev {
+	left: 81px;
+}
 
 #features #showcase.showcase {
 	margin-bottom: 60px;	
@@ -468,6 +519,56 @@ header .navbar-brand img {
 	display: none;
 }
 
+.sidr {	
+	background: #334353;
+	-webkit-box-shadow: inset -10px 0px 20px 0px #222;
+	-moz-box-shadow: inset -10px 0px 20px 0px #222;
+	box-shadow: inset -10px 0px 20px 0px #222;
+	-webkit-font-smoothing: antialiased;
+}
+
+.sidr a.back {
+	padding-top: 25px;
+	margin-bottom: 25px;
+	font-weight: 500;
+	font-size: 21px;
+	color: #fff;
+	text-align: center;
+}
+
+.sidr ul {
+	border-top: none;
+	border-bottom: none;
+}
+
+.sidr ul li {	
+	border-top: none;
+	border-bottom: none;
+}
+
+.sidr a, .sidr ul li a {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	display: block;
+	position: relative;
+	left: 0px;
+	padding: 20px 20px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 26px;
+	-webkit-transition: all 0.15s linear;
+	-moz-transition: all 0.15s linear;
+	-ms-transition: all 0.15s linear;
+	-o-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+}
+
+.sidr ul li:hover > a {
+	left: 10px;
+	box-shadow: none;
+}
+
 
 /** PRODUCT LIST **/
 #gallery #showcase .product-box {
@@ -658,3 +759,27 @@ header .navbar-brand img {
 	background: -webkit-linear-gradient(#5da4ff, #417bff);
 	margin: 0;
 }
+
+#home2 #features.diamondGrading 
+#home2 #features.diamondCertificates 
+#home2 #features.ringStyles {
+	margin-top: 50px;
+}
+
+#home2 #features .header.likeButton {
+	text-align: left;
+	margin-bottom: 25px;
+}
+
+#features .header h3.sidrButton, 
+#features #tabs .header h3.sidrButton {
+	display: inline-block;
+	font-size: 17px;
+	font-family: Myriad Pro, Lato, Helvetica Neue, Arial;
+	color: #53A6DA;
+	margin-top: 0px;
+	line-height: 25px;
+	font-weight: 500;
+	margin-bottom: 5px;
+	cursor: pointer;
+} 

@@ -4,7 +4,7 @@
 <div id="services">
 <div id="hero">
 	<div class="container">
-		<div class="row" style="overflow:hidden;">
+		<div class="row" style="overflow:hidden;padding-bottom: 50px;">
 			<div class="col-md-5 image">
 				<img src="{{ asset('bundles/syliusweb/images/gemology.jpg') }}" class="img-responsive animated fadeInUp" alt="Gemology">
 			</div>
@@ -13,7 +13,9 @@
 				<p>
 					Please let us know if there is anything we can do to improve your engagement ring shopping experience.
 					<br>
+					<br>
 					E-mail us anytime at: <a href="mailto:service@legemdary.com">service@legemdary.com</a>
+					<br>
 					<br>
 					Call: 1-888-338-9721, 7days a week from 8 am to 11pm EST
 				</p>
@@ -21,23 +23,23 @@
 		</div>
 	</div>
 </div>
-<div id="tabs">
+<div id="tabs" style="margin-top: 50px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 hexagons">
-				<div class="hexagon active">
+				<div class="hexagon active" id="shippingHexagon" data-hexagon="shipping">
 					<span class="icon ion-plane"></span>
 				</div>
-				<div class="hexagon">
+				<div class="hexagon" id="returnsHexagon" data-hexagon="returns">
 					<span class="icon ion-reply"></span>
 				</div>
-				<div class="hexagon">
+				<div class="hexagon" id="paymentHexagon" data-hexagon="payment">
 					<span class="icon ion-card"></span>
 				</div>
-				<div class="hexagon">
+				<div class="hexagon" id="policiesHexagon" data-hexagon="policies">
 					<span class="icon ion-ios7-locked-outline"></span>
 				</div>
-				<div class="hexagon">
+				<div class="hexagon" id="ordersHexagon" data-hexagon="orders">
 					<span class="icon ion-gear-b"></span>
 				</div>
 			</div>				
@@ -94,7 +96,7 @@
 							Legemdary diligently protects and secures our customers' purchases and information. We use secure encryption and fraud protection for all credit card transactions. All sensitive data is encrypted using 256-bit Secure Socket Layers (SSL). 
 						</p>
 						<p>
-							We do not share information with third parties. You can review our <a href="#">privacy policy</a> here.
+							We do not share information with third parties. You can review our <a href="{{ asset('bundles/syliusweb/legemdary-privacy-policy.pdf') }}" class="magnific" target="_blank">privacy policy</a> here.
 						</p>
 					</div>
 					<div class="section">
