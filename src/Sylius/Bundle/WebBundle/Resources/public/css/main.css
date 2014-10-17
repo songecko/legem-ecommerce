@@ -414,12 +414,15 @@ header .navbar-brand img {
 .wizard > .content .selection.caratSelection .selectionContent span {
 	float: left;
 	color: #FFFFFF;
-	margin-left: 15px;
+	margin-left: 2%;
+	text-align: right;
+	width: 16%;
 }
 
 .wizard > .content .selection.caratSelection .selectionContent span:first-child {
 	margin-left: 0;
-	margin-right: 15px;
+	margin-right: 2%;
+	text-align: left;
 }
 
 .wizard > .content .selection.colorSelection .selectionContent {
@@ -450,7 +453,7 @@ header .navbar-brand img {
 
 .wizard > .content .selection #caratSlider {
 	float: left;
-	width: 75%;
+	width: 64%;
 	margin-top: 5px;
 }
 

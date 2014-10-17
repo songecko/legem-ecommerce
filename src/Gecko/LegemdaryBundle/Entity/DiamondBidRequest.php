@@ -97,7 +97,7 @@ class DiamondBidRequest extends Diamond
 			{
 				$oldestBid = $diamondBid;
 			}else {
-				if($diamondBid->getCreatedAt() > $oldestBid->getCreatedAt())
+				if($diamondBid->getCreatedAt() < $oldestBid->getCreatedAt())
 				{
 					$oldestBid = $diamondBid;
 				}

@@ -596,3 +596,18 @@ input[type="file"] {
 .pricingMatrix button[type="submit"] {
 	margin-top: 60px;
 }
+
+#sylius_product_videoFile .control-label {
+	display: none;
+}
+
+#sylius_product_videoFile > .form-group:last-child label {
+	display: block;
+	text-align: left;
+	width: 80px;
+	padding-right: 0;
+}
+
+#sylius_product_videoFile > .form-group:last-child input {
+	margin-top: 10px;
+}

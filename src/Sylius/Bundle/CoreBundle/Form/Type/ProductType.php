@@ -34,6 +34,13 @@ class ProductType extends BaseProductType
                 'required' => false,
                 'label'    => 'sylius.form.product.short_description'
             ))
+            ->add('videoFile', 'vich_file', array(
+        		'required'      => false,
+        		'mapping'       => 'video', // mandatory
+        		'allow_delete'  => true, // not mandatory, default is true
+        		'download_link' => true, // not mandatory, default is true
+            	'label'    => 'Video'
+            ))
             ->add('taxCategory', 'sylius_tax_category_choice', array(
                 'required'    => false,
                 'empty_value' => '---',
