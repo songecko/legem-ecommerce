@@ -80,9 +80,9 @@
 	                    <tr class="bid" id="bid-{{ bid.id }}">
 	                    	<td>{{ bid.vendor.firstName }}</td>
 	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.carat }}</span></td>
-	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.color }}</span></td>
-	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.clarity }}</span></td>
-	                        <td><span{{ (bid.carat != bidRequest.carat)?' class="shaded"' }}>{{ bid.cut }}</span></td>
+	                        <td><span{{ (bid.color != bidRequest.color)?' class="shaded"' }}>{{ bid.color }}</span></td>
+	                        <td><span{{ (bid.clarity != bidRequest.clarity)?' class="shaded"' }}>{{ bid.clarity }}</span></td>
+	                        <td><span{{ (bid.cut != bidRequest.cut)?' class="shaded"' }}>{{ bid.cut }}</span></td>
 	                        <td>
 	                        	{% if bid.pdf %}
 	                        	<a href="{{ asset('media/pdf/'~bid.pdf) }}" class="magnific" target="_blank"><img src="{{ asset('bundles/syliusweb/images/view-pdf-button.png') }}" class="img-responsive" style="display:inline; width: 100px;"></a>
