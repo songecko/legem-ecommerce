@@ -23,6 +23,19 @@ var refreshProductPrice = function()
 	}
 };
 
+var isValidCarat = function()
+{
+	var min = $('.ctSelection').data('min');
+	var max = $('.ctSelection').data('max');
+	var value = $('.ctSelection').val();
+	
+	if(value >= min && value <= max){
+		return true;
+	}
+	
+	return false;
+};
+
 var pricingMatrix = null;
 
 var getSelectionValue = function(selectionType)
@@ -177,7 +190,12 @@ $(document).ready(function()
         {
         	//If going forward
         	if(newIndex > currentIndex)
-        	{
+        	{	
+        		if(currentIndex == 0 && !isValidCarat())
+        		{
+        			alert('Please select a valid carat value.');
+        			return false;
+        		}
 	        	if(currentIndex == 1 && getSelectionValue('color') == '-')
 	        		return false;
 	        	if(currentIndex == 2 && getSelectionValue('clarity') == '-')

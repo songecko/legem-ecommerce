@@ -22,6 +22,10 @@ monolog:
 assetic:
     use_controller: true
 
+
+swiftmailer:
+    disable_delivery: true
+    
 doctrine:
     dbal:
         dbname: %sylius.database.name%

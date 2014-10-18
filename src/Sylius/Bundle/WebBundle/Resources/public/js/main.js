@@ -181,6 +181,8 @@ $(document).ready(function()
 	// Pusher side navigation
 	$('.sidrButton').sidr();
 	
+	$('.ctSelection').inputmask({"mask": "9.99"}); 
+	
 	// Initialize Isotope plugin for filtering
     var $container = $('.isotope_container'),
           $filters = $("#filters a");
