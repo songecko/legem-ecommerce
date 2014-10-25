@@ -87,6 +87,7 @@ header .navbar-brand img {
 
 #home2 #hero.diamondEducation .slides .slide.second .cta {
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 #home2 #hero.diamondEducation .slides .slide.second .cta span {
@@ -129,11 +130,12 @@ header .navbar-brand img {
 #home2 #features.diamondGrading .feature .info p,
 #home2 #features.ringStyles .feature .info p {
 	width: 100%;
+	text-align: justify;
 }
 
 #home2 #features.diamondGrading .feature.backwards .info p,
 #home2 #features.ringStyles .feature.backwards .info p {
-	text-align: right;	
+	text-align: justify;	
 }
 
 #home2 #features.diamondGrading .feature .info h4,
@@ -483,7 +485,8 @@ header .navbar-brand img {
 	padding: 20px;
 	width: 80%;
 	color: #FFFFFF;
-	font-size: 12px;
+	font-size: 14px;
+	text-align: justify;
 }
 	
 .wizard > .actions {

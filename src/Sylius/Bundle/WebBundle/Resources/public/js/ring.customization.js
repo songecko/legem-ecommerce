@@ -108,6 +108,8 @@ var calculateApproxPrice = function()
 
 var refreshCaratValue = function(value)
 {
+	value = parseFloat(value);
+	
 	if($(".customizable #caratSlider").slider("value") != value)
 	{
 			$(".customizable #caratSlider").slider("value", value);
