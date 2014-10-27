@@ -20,3 +20,9 @@ services:
     legem.send.mailer:
         class: Gecko\LegemdaryBundle\Mailer\SendMailer
         arguments: ["@service_container"]
+        
+    legemdary.registration_listener:
+        class: Gecko\LegemdaryBundle\EventListener\RegistrationListener
+        arguments: [@service_container]
+        tags:
+            - { name: kernel.event_subscriber }
