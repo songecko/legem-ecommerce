@@ -20,7 +20,7 @@ class BidRequestController extends Controller
     {
         $bidRequests = $this
             ->getBidRequestRepository()
-            ->findByUser($this->getUser(), array('updatedAt' => 'desc'), true)
+            ->findByUser($this->getUser(), array('updatedAt' => 'desc'), false)
         ;
 
         return $this->render('SyliusWebBundle:Frontend/Account:Bids/index.html.twig', array(
@@ -67,9 +67,20 @@ class BidRequestController extends Controller
     			{
 	    			$em->remove($diamondBid);
     			}
+    			else {
+    				$bidRequest->getOrderItem()->setDiamondBid(null);
+    				$em->remove($diamondBid);
+    				//ldd($orderDiamondBid);
+    			}
     		}
     		
     		$em->flush();
+    		
+    		$users = $this->get('sylius.repository.user')->findByRole('ROLE_SYLIUS_VENDOR');
+    		foreach ($users as $user)
+    		{
+    			$this->get('legem.send.mailer')->sendToVendorsBidRequestedEmail($user);
+    		}
     	}
     	
     	return $this->redirect($this->generateUrl('sylius_account_bids_index'));

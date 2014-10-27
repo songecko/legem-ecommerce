@@ -288,7 +288,7 @@ class OrderItem implements OrderItemInterface
         return $this;
     }
     
-    public function setDiamondBid(DiamondBid $diamondBid)
+    public function setDiamondBid($diamondBid)
     {
     	$this->diamondBid = $diamondBid;
     	
