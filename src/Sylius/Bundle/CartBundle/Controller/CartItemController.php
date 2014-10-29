@@ -90,6 +90,12 @@ class CartItemController extends Controller
 
         // Write flash message
         //$eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_COMPLETED, new FlashEvent());
+        
+        $vendors = $this->get('sylius.repository.user')->findByRole('ROLE_SYLIUS_VENDOR');
+        foreach ($vendors as $vendor)
+        {
+        	$this->get('legem.send.mailer')->sendToVendorsBidRequestedEmail($vendor);
+        }
 		
         return $this->redirectToBidRequested($request);
     }

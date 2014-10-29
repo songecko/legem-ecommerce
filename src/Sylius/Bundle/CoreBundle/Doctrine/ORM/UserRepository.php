@@ -122,7 +122,8 @@ class UserRepository extends EntityRepository
     	$qb = $this->_em->createQueryBuilder();
     	$qb->select('u')
     	->from($this->_entityName, 'u')
-    	->where('u.roles LIKE :roles')
+    	->leftJoin('u.groups', 'g')
+    	->where('g.roles LIKE :roles')
     	->setParameter('roles', '%"' . $role . '"%');
     	
     	return $qb->getQuery()->getResult();

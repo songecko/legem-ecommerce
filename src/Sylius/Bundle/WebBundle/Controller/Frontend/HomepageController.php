@@ -48,12 +48,6 @@ class HomepageController extends Controller
     	$eventDispatcher = $this->container->get('event_dispatcher');
     	$eventDispatcher->dispatch(SyliusCartEvents::CART_CLEAR_INITIALIZE, new CartEvent($currentCart));
     	
-    	$users = $this->get('sylius.repository.user')->findByRole('ROLE_SYLIUS_VENDOR');
-    	foreach ($users as $user)
-    	{
-    		$this->get('legem.send.mailer')->sendToVendorsBidRequestedEmail($user);
-    	}
-    	
     	return $this->render('SyliusWebBundle:Frontend/Homepage:bidRequest.html.twig');
     }
     
