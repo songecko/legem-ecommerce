@@ -27,6 +27,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Payum\Paypal\ProCheckout\Nvp\Bridge\Buzz\Request;
 use Sylius\Component\Payment\Model\PaymentInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PurchaseStep extends CheckoutStep
 {
@@ -150,8 +151,10 @@ class PurchaseStep extends CheckoutStep
     	
     	$mode = $sandbox?'TEST':'LIVE';
     	
+    	$returnUrl = $this->generateUrl('sylius_checkout_forward', array('stepName' => $this->getName()), UrlGeneratorInterface::ABSOLUTE_URL);
+    	
     	return $this->getPaypalEndpoint($sandbox).
-    		'?MODE='.$mode.'&SECURETOKENID='.$tokenId.'&SECURETOKEN='.$token;
+    		'?MODE='.$mode.'&RETURNURL='.$returnUrl.'&SECURETOKENID='.$tokenId.'&SECURETOKEN='.$token;
     }
     
     /**
