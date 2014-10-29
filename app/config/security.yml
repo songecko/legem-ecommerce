@@ -59,7 +59,8 @@ security:
 
         - { path: ^/administration/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/administration/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: "/administration.*", role: [ROLE_SYLIUS_ADMIN, ROLE_SYLIUS_VENDOR] }
+        - { path: "/administration/bids.*", role: [ROLE_SYLIUS_ADMIN, ROLE_SYLIUS_VENDOR] }
+        - { path: "/administration.*", role: [ROLE_SYLIUS_ADMIN] }
 
         - { path: "^/cart.*", role: ROLE_USER }
         - { path: "/account.*", role: ROLE_USER }
