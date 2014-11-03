@@ -128,6 +128,11 @@ class PurchaseStep extends CheckoutStep
         $event = new PurchaseCompleteEvent($order->getPayment());
         $this->dispatchEvent(SyliusCheckoutEvents::PURCHASE_COMPLETE, $event);
 
+        if($gateway == 'paypal_pro')
+        {
+        	return $this->render('SyliusWebBundle:Frontend/Checkout/Step:purchase_paypalpro_confirmed.html.twig', array());
+        }
+        
         if ($event->hasResponse()) {
             return $event->getResponse();
         }
