@@ -52,9 +52,14 @@ abstract class CheckoutStep extends ControllerStep
      *
      * @return OrderInterface
      */
-    protected function getOrderBidRequest()
+    protected function getOrderBidRequest($orderId = null)
     {
-    	$order = $this->container->get('sylius.repository.order')->find($_SESSION['order_to_checkout']);
+    	if(!$orderId)
+    	{
+    		$orderId = $_SESSION['order_to_checkout'];	
+    	}
+    	
+    	$order = $this->container->get('sylius.repository.order')->find($orderId);
     	
     	return $order;
     }

@@ -53,12 +53,15 @@ class PurchaseStep extends CheckoutStep
         	$request = new Request();
         	$request->setField('AMT', $order->getTotal()/100);
         	$request->setField('CREATESECURETOKEN', 'Y');
+        	$request->setField('RETURNURL', $this->getReturnUrl());
         	$request->setField('SECURETOKENID', md5(time()));
+        	$request->setField('BILLTOSTREET', $order->getBillingAddress()->getStreet());
+        	$request->setField('BILLTOZIP', $order->getBillingAddress()->getPostcode());
         	
         	$response = $api->doPayment($request)->toArray();
         	
         	return $this->render('SyliusWebBundle:Frontend/Checkout/Step:purchase_paypalpro.html.twig', array(
-        		'iframe_src'   => $this->getPaypalProIframeSrc($response['SECURETOKENID'], $response['SECURETOKEN']),
+        		'iframe_src'   => $this->getReturnUrl(),
         	));
         	
         }else {
@@ -81,7 +84,8 @@ class PurchaseStep extends CheckoutStep
      */
     public function forwardAction(ProcessContextInterface $context)
     {
-    	$order = $this->getOrderBidRequest();
+    	$orderId = $this->getRequest()->get('orderId', null);
+    	$order = $this->getOrderBidRequest($orderId);
     	$gateway = $order->getPayment()->getMethod()->getGateway();
     	
     	if($gateway == 'paypal_pro')
@@ -156,10 +160,18 @@ class PurchaseStep extends CheckoutStep
     	
     	$mode = $sandbox?'TEST':'LIVE';
     	
-    	$returnUrl = $this->generateUrl('sylius_checkout_forward', array('stepName' => $this->getName()), UrlGeneratorInterface::ABSOLUTE_URL);
+    	$returnUrl = $this->getReturnUrl(); 
     	
     	return $this->getPaypalEndpoint($sandbox).
     		'?MODE='.$mode.'&RETURNURL='.$returnUrl.'&SECURETOKENID='.$tokenId.'&SECURETOKEN='.$token;
+    }
+    
+    public function getReturnUrl()
+    {
+    	$returnUrl = $this->generateUrl('sylius_checkout_forward', array('stepName' => $this->getName()), UrlGeneratorInterface::ABSOLUTE_URL);
+    	$returnUrl .= '?orderId='.$_SESSION['order_to_checkout'];
+    	
+    	return $returnUrl;
     }
     
     /**
