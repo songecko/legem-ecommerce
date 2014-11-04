@@ -61,7 +61,7 @@ class PurchaseStep extends CheckoutStep
         	$response = $api->doPayment($request)->toArray();
         	
         	return $this->render('SyliusWebBundle:Frontend/Checkout/Step:purchase_paypalpro.html.twig', array(
-        		'iframe_src'   => $this->getReturnUrl(),
+        		'iframe_src'   => $this->getPaypalProIframeSrc($response['SECURETOKENID'], $response['SECURETOKEN']),
         	));
         	
         }else {
