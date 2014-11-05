@@ -1,8 +1,12 @@
 # This file is part of the Sylius package.
 # (c) Paweł Jędrzejewski
 
+#sylius_coming_soon:
+#    pattern: /
+#    defaults: { _controller: sylius.controller.frontend.homepage:comingSoonAction }
+    
 sylius_homepage:
-    pattern: /home
+    pattern: /
     defaults: { _controller: sylius.controller.frontend.homepage:mainAction }
 
 sylius_get_pricing_matrix:
@@ -12,10 +16,6 @@ sylius_get_pricing_matrix:
 sylius_bid_request:
     pattern: /bid-requested
     defaults: { _controller: sylius.controller.frontend.homepage:bidRequestAction }
-    
-sylius_coming_soon:
-    pattern: /
-    defaults: { _controller: sylius.controller.frontend.homepage:comingSoonAction }
     
 sylius_diamond_education:
     pattern: /diamond-knowledge
