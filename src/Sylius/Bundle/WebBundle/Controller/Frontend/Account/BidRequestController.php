@@ -23,8 +23,18 @@ class BidRequestController extends Controller
             ->findByUser($this->getUser(), array('updatedAt' => 'desc'), false)
         ;
 
+        $bids = array();
+        foreach($bidRequests as $bidRequest)
+        {
+        	try {
+        		$bidRequest->getOrderItem()->getVariant()->getProduct();
+        		$bids[] = $bidRequest;
+        	}catch(\Exception $e)
+        	{}
+        }
+        
         return $this->render('SyliusWebBundle:Frontend/Account:Bids/index.html.twig', array(
-            'bidRequests' => $bidRequests
+            'bidRequests' => $bids
         ));
     }
 
